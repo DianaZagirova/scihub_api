@@ -1,0 +1,1529 @@
+{
+  "metadata": {
+    "doi": "10.1038/s41586-019-1754-6",
+    "title": "Teraelectronvolt emission from the γ-ray burst GRB 190114C MAGIC Collaboration*",
+    "abstract": "",
+    "authors": [
+      {
+        "name": "V Acciari"
+      },
+      {
+        "name": "S Ansoldi",
+        "affiliation": "Departamento Astrofísica\nInstituto de Astrofísica de Canarias\nUniversidad de La Laguna\n\nLa Laguna\nSpain"
+      },
+      {
+        "name": "L Antonelli",
+        "affiliation": "Department of Physics\nKyoto University\n\nKyoto\nJapan"
+      },
+      {
+        "name": "A Engels",
+        "affiliation": "National Institute for Astrophysics (INAF)\n\nRome\nItaly"
+      },
+      {
+        "name": "D Baack",
+        "affiliation": "ETH Zurich\n\nZurich\nSwitzerland"
+      },
+      {
+        "name": "A Babić",
+        "affiliation": "Croatian Consortium\nTechnische Universität Dortmund\n\nDortmund\nGermany"
+      },
+      {
+        "name": "B Banerjee",
+        "affiliation": "University of Zagreb -FER\n\nZagreb\nCroatia"
+      },
+      {
+        "name": "U Barres De Almeida",
+        "affiliation": "Centro Brasileiro de Pesquisas Físicas (CBPF)\nSaha Institute of Nuclear Physics\n\nHBNI Kolkata Rio de Janeiro\nIndia Brazil"
+      },
+      {
+        "name": "J Barrio",
+        "affiliation": "IPARCOS Institute and EMFTEL Department\nUniversidad Complutense de Madrid\n\nMadrid\nSpain"
+      },
+      {
+        "name": "J Becerra González"
+      },
+      {
+        "name": "W Bednarek",
+        "affiliation": "Department of Astrophysics\nUniversity of Łódź\n\nŁódź\nPoland"
+      },
+      {
+        "name": "L Bellizzi",
+        "affiliation": "Università di Siena\nINFN Pisa\n\nSiena\nItaly"
+      },
+      {
+        "name": "E Bernardini",
+        "affiliation": "Deutsches Elektronen-Synchrotron (DESY)\n\nZeuthen\nGermany"
+      },
+      {
+        "name": "A Berti",
+        "affiliation": "Istituto Nazionale Fisica Nucleare (INFN)\n\nFrascati\nItaly"
+      },
+      {
+        "name": "J Besenrieder",
+        "affiliation": "Max-Planck-Institut für Physik\n\nMunich\nGermany"
+      },
+      {
+        "name": "W Bhattacharyya",
+        "affiliation": "Deutsches Elektronen-Synchrotron (DESY)\n\nZeuthen\nGermany"
+      },
+      {
+        "name": "C Bigongiari",
+        "affiliation": "Department of Physics\nKyoto University\n\nKyoto\nJapan"
+      },
+      {
+        "name": "A Biland",
+        "affiliation": "National Institute for Astrophysics (INAF)\n\nRome\nItaly"
+      },
+      {
+        "name": "O Blanch"
+      },
+      {
+        "name": "G Bonnoli",
+        "affiliation": "Università di Siena\nINFN Pisa\n\nSiena\nItaly"
+      },
+      {
+        "name": "Ž Bošnjak",
+        "affiliation": "Croatian Consortium\nTechnische Universität Dortmund\n\nDortmund\nGermany"
+      },
+      {
+        "name": "G Busetto",
+        "affiliation": "Università di Padova and INFN\n\nPadua\nItaly"
+      },
+      {
+        "name": "A Carosi",
+        "affiliation": "Department of Physics\nKyoto University\n\nKyoto\nJapan"
+      },
+      {
+        "name": "R Carosi"
+      },
+      {
+        "name": "G Ceribella",
+        "affiliation": "Max-Planck-Institut für Physik\n\nMunich\nGermany"
+      },
+      {
+        "name": "Y Chai",
+        "affiliation": "Max-Planck-Institut für Physik\n\nMunich\nGermany"
+      },
+      {
+        "name": "A Chilingaryan"
+      },
+      {
+        "name": "S Cikota",
+        "affiliation": "Croatian Consortium\nTechnische Universität Dortmund\n\nDortmund\nGermany"
+      },
+      {
+        "name": "S Colak"
+      },
+      {
+        "name": "U Colin",
+        "affiliation": "Max-Planck-Institut für Physik\n\nMunich\nGermany"
+      },
+      {
+        "name": "E Colombo"
+      },
+      {
+        "name": "J Contreras",
+        "affiliation": "IPARCOS Institute and EMFTEL Department\nUniversidad Complutense de Madrid\n\nMadrid\nSpain"
+      },
+      {
+        "name": "J Cortina"
+      },
+      {
+        "name": "S Covino",
+        "affiliation": "Department of Physics\nKyoto University\n\nKyoto\nJapan"
+      },
+      {
+        "name": "G D'amico",
+        "affiliation": "Max-Planck-Institut für Physik\n\nMunich\nGermany"
+      },
+      {
+        "name": "V D'elia",
+        "affiliation": "Department of Physics\nKyoto University\n\nKyoto\nJapan"
+      },
+      {
+        "name": "P Da Vela"
+      },
+      {
+        "name": "F Dazzi",
+        "affiliation": "Department of Physics\nKyoto University\n\nKyoto\nJapan"
+      },
+      {
+        "name": "A De Angelis",
+        "affiliation": "Università di Padova and INFN\n\nPadua\nItaly"
+      },
+      {
+        "name": "B De Lotto",
+        "affiliation": "Departamento Astrofísica\nInstituto de Astrofísica de Canarias\nUniversidad de La Laguna\n\nLa Laguna\nSpain"
+      },
+      {
+        "name": "M Delfino"
+      },
+      {
+        "name": "J Delgado"
+      },
+      {
+        "name": "D Depaoli",
+        "affiliation": "Istituto Nazionale Fisica Nucleare (INFN)\n\nFrascati\nItaly"
+      },
+      {
+        "name": "F Pierro",
+        "affiliation": "Istituto Nazionale Fisica Nucleare (INFN)\n\nFrascati\nItaly"
+      },
+      {
+        "name": "L Di Venere"
+      },
+      {
+        "name": "E Do"
+      },
+      {
+        "name": "Souto Espiñeira",
+        "affiliation": "Istituto Nazionale Fisica Nucleare (INFN)\n\nFrascati\nItaly"
+      },
+      {
+        "name": "D Dominis Prester"
+      },
+      {
+        "name": "A Donini",
+        "affiliation": "Departamento Astrofísica\nInstituto de Astrofísica de Canarias\nUniversidad de La Laguna\n\nLa Laguna\nSpain"
+      },
+      {
+        "name": "D Dorner"
+      },
+      {
+        "name": "M Doro",
+        "affiliation": "Università di Padova and INFN\n\nPadua\nItaly"
+      },
+      {
+        "name": "D Elsaesser",
+        "affiliation": "ETH Zurich\n\nZurich\nSwitzerland"
+      },
+      {
+        "name": "V Fallah Ramazani"
+      },
+      {
+        "name": "A Fattorini",
+        "affiliation": "ETH Zurich\n\nZurich\nSwitzerland"
+      },
+      {
+        "name": "A Fernández-Barral",
+        "affiliation": "Università di Padova and INFN\n\nPadua\nItaly"
+      },
+      {
+        "name": "G Ferrara",
+        "affiliation": "Department of Physics\nKyoto University\n\nKyoto\nJapan"
+      },
+      {
+        "name": "D Fidalgo",
+        "affiliation": "IPARCOS Institute and EMFTEL Department\nUniversidad Complutense de Madrid\n\nMadrid\nSpain"
+      },
+      {
+        "name": "L Foffano",
+        "affiliation": "Università di Padova and INFN\n\nPadua\nItaly"
+      },
+      {
+        "name": "M Fonseca",
+        "affiliation": "IPARCOS Institute and EMFTEL Department\nUniversidad Complutense de Madrid\n\nMadrid\nSpain"
+      },
+      {
+        "name": "L Font"
+      },
+      {
+        "name": "C Fruck",
+        "affiliation": "Max-Planck-Institut für Physik\n\nMunich\nGermany"
+      },
+      {
+        "name": "S Fukami"
+      },
+      {
+        "name": "S Gallozzi"
+      },
+      {
+        "name": "R García López"
+      },
+      {
+        "name": "M Garczarczyk",
+        "affiliation": "Deutsches Elektronen-Synchrotron (DESY)\n\nZeuthen\nGermany"
+      },
+      {
+        "name": "S Gasparyan"
+      },
+      {
+        "name": "M Gaug"
+      },
+      {
+        "name": "N Giglietto",
+        "affiliation": "Istituto Nazionale Fisica Nucleare (INFN)\n\nFrascati\nItaly"
+      },
+      {
+        "name": "F Giordano"
+      },
+      {
+        "name": "N Godinović"
+      },
+      {
+        "name": "D Green"
+      },
+      {
+        "name": "D Guberman"
+      },
+      {
+        "name": "D Hadasch"
+      },
+      {
+        "name": "A Hahn"
+      },
+      {
+        "name": "J Herrera"
+      },
+      {
+        "name": "J Hoang"
+      },
+      {
+        "name": "D Hrupec"
+      },
+      {
+        "name": "M Hütten"
+      },
+      {
+        "name": "T Inada"
+      },
+      {
+        "name": "S Inoue"
+      },
+      {
+        "name": "K Ishio"
+      },
+      {
+        "name": "Y Iwamura"
+      },
+      {
+        "name": "L Jouvin"
+      },
+      {
+        "name": "D Kerszberg"
+      },
+      {
+        "name": "H Kubo"
+      },
+      {
+        "name": "J Kushida"
+      },
+      {
+        "name": "A Lamastra"
+      },
+      {
+        "name": "D Lelas"
+      },
+      {
+        "name": "F Leone"
+      },
+      {
+        "name": "E Lindfors"
+      },
+      {
+        "name": "S Lombardi"
+      },
+      {
+        "name": "F Longo"
+      },
+      {
+        "name": "M López"
+      },
+      {
+        "name": "R López-Coto"
+      },
+      {
+        "name": "A López-Oramas"
+      },
+      {
+        "name": "S Loporchio"
+      },
+      {
+        "name": "B Machado De Oliveira Fraga"
+      },
+      {
+        "name": "C Maggio"
+      },
+      {
+        "name": "P Majumdar"
+      },
+      {
+        "name": "M Makariev"
+      },
+      {
+        "name": "M Mallamaci"
+      },
+      {
+        "name": "G Maneva"
+      },
+      {
+        "name": "M Manganaro"
+      },
+      {
+        "name": "K Mannheim"
+      },
+      {
+        "name": "L Maraschi"
+      },
+      {
+        "name": "M Mariotti"
+      },
+      {
+        "name": "M Martínez"
+      },
+      {
+        "name": "S Masuda"
+      },
+      {
+        "name": "D Mazin"
+      },
+      {
+        "name": "S Mićanović"
+      },
+      {
+        "name": "D Miceli"
+      },
+      {
+        "name": "M Minev"
+      },
+      {
+        "name": "J Miranda",
+        "affiliation": "Università di Siena\nINFN Pisa\n\nSiena\nItaly"
+      },
+      {
+        "name": "R Mirzoyan"
+      },
+      {
+        "name": "E Molina"
+      },
+      {
+        "name": "A Moralejo"
+      },
+      {
+        "name": "D Morcuende"
+      },
+      {
+        "name": "V Moreno"
+      },
+      {
+        "name": "E Moretti"
+      },
+      {
+        "name": "P Munar-Adrover"
+      },
+      {
+        "name": "V Neustroev"
+      },
+      {
+        "name": "C Nigro"
+      },
+      {
+        "name": "K Nilsson"
+      },
+      {
+        "name": "D Ninci"
+      },
+      {
+        "name": "K Nishijima"
+      },
+      {
+        "name": "K Noda"
+      },
+      {
+        "name": "L Nogués"
+      },
+      {
+        "name": "M Nöthe"
+      },
+      {
+        "name": "S Nozaki"
+      },
+      {
+        "name": "S Paiano"
+      },
+      {
+        "name": "J Palacio"
+      },
+      {
+        "name": "M Palatiello"
+      },
+      {
+        "name": "D Paneque"
+      },
+      {
+        "name": "R Paoletti"
+      },
+      {
+        "name": "J Paredes"
+      },
+      {
+        "name": "P Peñil"
+      },
+      {
+        "name": "M Peresano"
+      },
+      {
+        "name": "M Persic"
+      },
+      {
+        "name": "P Prada Moroni"
+      },
+      {
+        "name": "E Prandini"
+      },
+      {
+        "name": "I Puljak"
+      },
+      {
+        "name": "W Rhode"
+      },
+      {
+        "name": "M Ribó"
+      },
+      {
+        "name": "J Rico"
+      },
+      {
+        "name": "C Righi"
+      },
+      {
+        "name": "A Rugliancich"
+      },
+      {
+        "name": "L Saha"
+      },
+      {
+        "name": "N Sahakyan"
+      },
+      {
+        "name": "T Saito"
+      },
+      {
+        "name": "S Sakurai"
+      },
+      {
+        "name": "K Satalecka"
+      },
+      {
+        "name": "K Schmidt"
+      },
+      {
+        "name": "T Schweizer"
+      },
+      {
+        "name": "J Sitarek",
+        "affiliation": "Department of Astrophysics\nUniversity of Łódź\n\nŁódź\nPoland"
+      },
+      {
+        "name": "I Šnidarić"
+      },
+      {
+        "name": "D Sobczynska"
+      },
+      {
+        "name": "A Somero"
+      },
+      {
+        "name": "A Stamerra"
+      },
+      {
+        "name": "D Strom"
+      },
+      {
+        "name": "M Strzys"
+      },
+      {
+        "name": "Y Suda"
+      },
+      {
+        "name": "T Surić"
+      },
+      {
+        "name": "M Takahashi"
+      },
+      {
+        "name": "F Tavecchio"
+      },
+      {
+        "name": "P Temnikov"
+      },
+      {
+        "name": "T Terzić"
+      },
+      {
+        "name": "M Teshima"
+      },
+      {
+        "name": "N Torres-Albà"
+      },
+      {
+        "name": "L Tosti"
+      },
+      {
+        "name": "S Tsujimoto"
+      },
+      {
+        "name": "V Vagelli"
+      },
+      {
+        "name": "J Van Scherpenberg"
+      },
+      {
+        "name": "G Vanzo"
+      },
+      {
+        "name": "M Vazquez Acosta"
+      },
+      {
+        "name": "C Vigorito"
+      },
+      {
+        "name": "V Vitale"
+      },
+      {
+        "name": "I Vovk"
+      },
+      {
+        "name": "M Will"
+      },
+      {
+        "name": "D Zarić"
+      },
+      {
+        "name": "L Nava"
+      },
+      {
+        "name": "N Gehrels"
+      },
+      {
+        "name": "P Mészáros"
+      },
+      {
+        "name": "P Kumar"
+      },
+      {
+        "name": "B Zhang"
+      },
+      {
+        "name": "P Mészáros"
+      },
+      {
+        "name": "T Piran"
+      },
+      {
+        "name": "P Mészáros"
+      },
+      {
+        "name": "S Razzaque"
+      },
+      {
+        "name": "B Zhang"
+      },
+      {
+        "name": "Y.-Z Fan"
+      },
+      {
+        "name": "T Piran"
+      },
+      {
+        "name": "S Inoue"
+      },
+      {
+        "name": "L Nava"
+      },
+      {
+        "name": "P Mészáros"
+      },
+      {
+        "name": "M Rees"
+      },
+      {
+        "name": "H Papathanassiou"
+      },
+      {
+        "name": "B Zhang"
+      },
+      {
+        "name": "P Mészáros"
+      },
+      {
+        "name": "P Beniamini"
+      },
+      {
+        "name": "L Nava"
+      },
+      {
+        "name": "R Duran"
+      },
+      {
+        "name": "T Piran"
+      },
+      {
+        "name": "M Vietri"
+      },
+      {
+        "name": "M Böttcher"
+      },
+      {
+        "name": "C Dermer"
+      },
+      {
+        "name": "J Gropp"
+      },
+      {
+        "name": "Grb"
+      },
+      {
+        "name": "R Hamburg"
+      },
+      {
+        "name": "Grb"
+      },
+      {
+        "name": "H Krimm"
+      },
+      {
+        "name": "J Selsing"
+      },
+      {
+        "name": "Grb"
+      },
+      {
+        "name": "A Castro-Tirado"
+      },
+      {
+        "name": "Grb"
+      },
+      {
+        "name": "J Aleksić"
+      },
+      {
+        "name": "J Aleksić"
+      },
+      {
+        "name": "R Mirzoyan"
+      },
+      {
+        "name": "R Mirzoyan"
+      },
+      {
+        "name": "E Dwek"
+      },
+      {
+        "name": "F Krennrich"
+      },
+      {
+        "name": "A Domínguez"
+      },
+      {
+        "name": "M Ravasio"
+      },
+      {
+        "name": "X.-Y Wang"
+      },
+      {
+        "name": "R.-Y Liu"
+      },
+      {
+        "name": "H.-M Zhang"
+      },
+      {
+        "name": "S.-Q Xi"
+      },
+      {
+        "name": "B Zhang"
+      },
+      {
+        "name": "M Ackermann"
+      },
+      {
+        "name": "T Piran"
+      },
+      {
+        "name": "E Nakar"
+      },
+      {
+        "name": "M Ackermann"
+      },
+      {
+        "name": "C Kouveliotou"
+      },
+      {
+        "name": "L Amati"
+      },
+      {
+        "name": "D Yonetoku"
+      },
+      {
+        "name": "L Nava"
+      },
+      {
+        "name": "J Vandenbroucke"
+      },
+      {
+        "name": "Grb"
+      },
+      {
+        "name": "S Barthelmy"
+      },
+      {
+        "name": "A Carosi"
+      },
+      {
+        "name": "Magic Grb Group"
+      },
+      {
+        "name": "V Fomin"
+      },
+      {
+        "name": "M Ahnen"
+      },
+      {
+        "name": "C Fruck"
+      },
+      {
+        "name": "T Li"
+      },
+      {
+        "name": "Y Ma"
+      },
+      {
+        "name": "M Schmelling"
+      },
+      {
+        "name": "A Franceschini"
+      },
+      {
+        "name": "G Rodighiero"
+      },
+      {
+        "name": "M Vaccari"
+      },
+      {
+        "name": "J Finke"
+      },
+      {
+        "name": "S Razzaque"
+      },
+      {
+        "name": "C Dermer"
+      },
+      {
+        "name": "R Gilmore"
+      },
+      {
+        "name": "R Somerville"
+      },
+      {
+        "name": "J Primack"
+      },
+      {
+        "name": "A Domínguez"
+      },
+      {
+        "name": "A Beardmore"
+      },
+      {
+        "name": "L Nava"
+      },
+      {
+        "name": "L Sironi"
+      },
+      {
+        "name": "G Ghisellini"
+      },
+      {
+        "name": "A Celotti"
+      },
+      {
+        "name": "G Ghirlanda"
+      },
+      {
+        "name": "T Totani"
+      },
+      {
+        "name": "S Razzaque"
+      },
+      {
+        "name": "A Galli"
+      },
+      {
+        "name": "L Piro"
+      },
+      {
+        "name": "V Connaughton",
+        "affiliation": "VERITAS Collaboration"
+      },
+      {
+        "name": "R Atkins"
+      },
+      {
+        "name": "R Atkins"
+      },
+      {
+        "name": "A Abdo"
+      },
+      {
+        "name": "D Horan"
+      },
+      {
+        "name": "F Aharonian"
+      },
+      {
+        "name": "F Aharonian"
+      },
+      {
+        "name": "V Acciari"
+      },
+      {
+        "name": "H Collaboration"
+      },
+      {
+        "name": "R Alfaro"
+      },
+      {
+        "name": "C Hoischen"
+      },
+      {
+        "name": "A Abeysekara"
+      },
+      {
+        "name": "J Albert"
+      },
+      {
+        "name": "J Aleksić"
+      },
+      {
+        "name": "J Aleksić"
+      },
+      {
+        "name": "G Ghirlanda"
+      },
+      {
+        "name": "D Perley"
+      },
+      {
+        "name": "D Lennarz"
+      },
+      {
+        "name": "A Smith"
+      },
+      {
+        "name": "T Aune"
+      },
+      {
+        "name": "P Saz Parkinson"
+      },
+      {
+        "name": "P Evans"
+      }
+    ],
+    "journal": null,
+    "volume": null,
+    "issue": null,
+    "year": "2019",
+    "pages": null,
+    "keywords": []
+  },
+  "full_text": {
+    "body": [
+      {
+        "title": "Unnamed Section",
+        "content": "Long-duration γ-ray bursts (GRBs) are the most luminous sources of electromagnetic radiation known in the Universe. They arise from outflows of plasma with velocities near the speed of light that are ejected by newly formed neutron stars or black holes (of stellar mass) at cosmological distances 1,2 . Prompt flashes of megaelectronvoltenergy γ-rays are followed by a longer-lasting afterglow emission in a wide range of energies (from radio waves to gigaelectronvolt γ-rays), which originates from synchrotron radiation generated by energetic electrons in the accompanying shock waves 3,4 . Although emission of γ-rays at even higher (teraelectronvolt) energies by other radiation mechanisms has been theoretically predicted [5][6][7][8] , it has not been previously detected 7,8 . Here we report observations of teraelectronvolt emission from the γ-ray burst GRB 190114C. γ-rays were observed in the energy range 0.2-1 teraelectronvolt from about one minute after the burst (at more than 50 standard deviations in the first 20 minutes), revealing a distinct emission component of the afterglow with power comparable to that of the synchrotron component. The observed similarity in the radiated power and temporal behaviour of the teraelectronvolt and X-ray bands points to processes such as inverse Compton upscattering as the mechanism of the teraelectronvolt emission [9][10][11] . By contrast, processes such as synchrotron emission by ultrahigh-energy protons 10,12,13 are not favoured because of their low radiative efficiency. These results are anticipated to be a step towards a deeper understanding of the physics of GRBs and relativistic shock waves.\n\nGRB 190114C was first identified as a long-duration GRB by the Burst Alert Telescope (BAT) onboard the Neil Gehrels Swift Observatory (Swift) 14 and the Gamma-ray Burst Monitor (GBM) instrument onboard the Fermi satellite 15 on 14 January 2019, 20:57:03 universal time (ut) (hereafter T 0 ). Its duration in terms of T 90 (the time interval containing 90% of the total photon counts) was measured to be about 116 s by Fermi-GBM 15 and about 362 s by Swift-BAT 16 . Soon afterwards, reports followed on the detection of its afterglow emission at various wavebands from 1.3 GHz to 23 GeV (ref. 17 ) and the measurement of its redshift 18,19 , z = 0.4245 ± 0.0005 (corresponding to cosmic distance). The isotropic-equivalent energy of the emission at energy of ε = 1-10 4 keV during T 90 observed by Fermi-GBM was E iso ≈ 3 × 10 53 erg (1 erg = 10 -7 J), implying that GRB 190114C was fairly energetic, but not exceptionally so compared to previous events (Methods).\n\nTriggered by the Swift-BAT alert, the Major Atmospheric Gamma Imaging Cherenkov (MAGIC) telescopes 20,21 observed GRB 190114C from T 0 + 57 s until T 0 + 15,912 s (Extended Data Fig. 1). γ-rays with energies above 0.2 TeV were detected with high significance from the beginning of the observations 22,23 ; in the first 20 minutes of the data, the significance of the total γ-ray signal is more than 50 standard deviations (Methods, Extended Data Fig. 2).\n\nFor cosmologically distant objects such as GRBs, the observed γ-ray spectra can be substantially modified owing to attenuation by the extragalactic background light (EBL) 24 . The EBL is the diffuse background of infrared, optical and ultraviolet radiation that permeates intergalactic space, constituting the emission from all galaxies in the Universe. γ-rays can be effectively absorbed during their propagation via photon-photon pair-production interactions with low-energy photons of the EBL; this absorption is more severe for higher photon energies and higher redshifts. The γ-ray spectrum that would be observed if the EBL was absent, referred to as the intrinsic spectrum, can be inferred from the observed spectrum by 'correcting' for EBL attenuation, assuming a plausible model of the EBL 25 .\n\nEmission from GRBs occurs in two stages, which can partially overlap in time. The 'prompt' emission phase is characterized by a brief but intense flash of γ-rays, primarily at megaelectronvolt energies. It exhibits irregular variability on timescales shorter than milliseconds and lasts up to hundreds of seconds for long-duration GRBs. These γ-rays are generated in the inner regions of collimated jets of plasma, which are ejected with ultrarelativistic velocities from highly magnetized neutron stars or black holes that form following the death of massive stars 2 . The ensuing 'afterglow' phase is characterized by emission that spans a broader wavelength range and decays gradually over much longer timescales compared to the prompt emission. This originates from shock waves caused by the interaction of the jet with the ambient gas ('external shocks'). Its evolution is typified by a power-law decay"
+      },
+      {
+        "title": "Article",
+        "content": "in time owing to the self-similar properties of the decelerating shock wave 3,4 . The afterglow emission of previously observed GRBs, from radio frequencies to gigaelectronvolt energies, is generally interpreted as synchrotron radiation from energetic electrons that are accelerated within magnetized plasma at the external shock 2 . Clues to whether the newly observed teraelectronvolt emission is associated with the prompt or the afterglow phase are offered by the observed light curve (flux F(t) as a function of time t).\n\nFigure 1 shows such a light curve for the EBL-corrected intrinsic flux in the energy range ε = 0.3-1 TeV (see also Extended Data Table 1). It is well fitted with a simple power-law function F(t) ∝ t β with β = -1.60 ± 0.07. The flux evolves from F(t) ≈ 5 × 10 -8 erg cm -2 s -1 at t ≈ T 0 + 80 s to F(t) ≈ 6 × 10 -10 erg cm -2 s -1 at t ≳ T 0 + 10 3 s, after which it falls below the sensitivity level of the telescopes and is undetectable. There is no clear evidence for breaks or cutoffs in the light curve, nor irregular variability beyond the monotonic decay. The light curves in the kiloelectronvolt and gigaelectronvolt bands display behaviour similar to the teraelectronvolt band, with a somewhat shallower decay slope for the gigaelectronvolt band (Fig. 1). These properties indicate that most of the observed emission is associated with the afterglow phase, rather than the prompt phase, which typically shows irregular variability. We note that although the measured T 90 is as long as about 360 s, the kiloelectronvolt-megaelectronvolt emission does not exhibit clear temporal or spectral evidence for a prompt component after about T 0 + 25 s (ref. 26 ; Methods). Nevertheless, a sub-dominant contribution to the teraelectronvolt emission from a prompt component at later times cannot be excluded. The flux initially observed at t ≈ T 0 + 80 s corresponds to an apparent isotropic-equivalent luminosity of L iso ≈ 3 × 10 49 erg s -1 at ε = 0.3-1 TeV, making this the most luminous source known at these energies.\n\nThe power radiated in the teraelectronvolt band is comparable, within a factor of about 2, to that in the soft-X-ray and gigaelectronvolt bands during the periods when simultaneous teraelectronvoltkiloelectronvolt or teraelectronvolt-gigaelectronvolt data are available (Fig. 1). The isotropic-equivalent energy radiated at ε = 0.3-1 TeV, integrated over the time period between T 0 + 62 s and T 0 + 2,454 s, is E 0.3-1TeV ≈ 4 × 10 51 erg. This is a lower limit to the total teraelectronvolt-band output, as it does not account for data before T 0 + 62 s or potential emission at ε > 1 TeV. From the megaelectronvolt-gigaelectronvolt data, the power-law decay phase is inferred to start at about T 0 + 6 s (refs. 26,27 ). Assuming that the MAGIC light curve evolved as F(t) ∝ t -1.60 after that time, the teraelectronvolt-band energy integrated between T 0 + 6 s and T 0 + 2,454 s is E 0.3-1TeV ≈ 2 × 10 52 erg. This would be about 10% of the E iso value measured by Fermi-GBM at ε = 1-10 4 keV.\n\nFigure 1 also shows the time evolution of the intrinsic spectral photon index α int , determined by fitting the EBL-corrected, time-dependent differential photon spectrum with the power-law function F ε ε d /d ∝ α int . Considering the statistical and systematic errors (Methods), there is no significant evidence for spectral variability. Throughout the observations, the data are consistent with α int ≈ -2, indicating that the radiated power is nearly equally distributed in ε over this band.\n\nFigure 2 presents both the observed and the EBL-corrected intrinsic spectra above 0.2 TeV, averaged over (T 0 + 62 s, T 0 + 2,454 s). The observed spectrum can be fitted in the energy range 0.2-1 TeV with a simple power law with photon index α obs = -5.43 ± 0.22 (statistical error only), one of the steepest spectra ever observed for a γ-ray source. It is remarkable that photons are observed at ε ≈ 1 TeV (Extended Data Table 2), despite the severe EBL attenuation expected at these energies (by a factor of about 300, according to plausible EBL models; see Methods). Assuming a particular EBL model 25 , the intrinsic spectrum is well described as a power law with α = -2.22 int -0.25 +0. 23 (statistical error only), extending beyond 1 TeV at 95% confidence level with no evidence for a spectral break or cutoff (Methods). Adopting other EBL models leads to only small differences in α int , which are within the uncertainties (Methods). Consistency with α int ≈ -2 implies a roughly equal power radiated over 0.2-1 TeV and possibly beyond, strengthening the inference that there is substantial energy output at teraelectronvolt energies. Much of the observed emission up to gigaelectronvolt energies for GRB 190114C is probably afterglow synchrotron emission from electrons, similar to that of many previous GRBs 2, 28 . The teraelectronvolt emission observed here is also plausibly associated with the afterglow. However, it cannot be a simple spectral extension of the electron synchrotron emission. The maximum energy of the emitting electrons is determined by the balance between their energy losses, which are b Flux (erg cm -2 s -1 ) Luminosity (erg s -1 ) 10 -9 10 -8 10 -7 10 50 10 49 10 48 10 -6 T-T 0 (s) 10 2 10 3 Fig. 1 | Light curves in the kiloelectronvolt, gigaelectronvolt and teraelectronvolt bands, and spectral evolution in the teraelectronvolt band for GRB 190114C. a, Light curves in units of energy flux (left axis) and apparent luminosity (right axis), for MAGIC at 0.3-1 TeV (red symbols), the Fermi Large Area Telescope (LAT) at 0.1-10 GeV (purple band) and the Swift X-ray Telescope (XRT) at 1-10 keV (green band). For the MAGIC data, the intrinsic flux is shown, corrected for EBL attenuation 25 from the observed flux. b, Temporal evolution of the power-law photon index, determined from time-resolved intrinsic spectra. The horizontal dashed line indicates the value -2. The errors shown in both panels are statistical only (one standard deviation).  25 (blue filled circles). The errors on the flux correspond to one standard deviation. The upper limits at 95% confidence level are shown for the first non-significant bin at high energies. Also shown is the best-fit model for the intrinsic spectrum (black curve) when assuming a powerlaw function. The grey solid curve for the observed spectrum is obtained by convolving this curve with the effect of EBL attenuation. The grey dashed curve is the forward-folding fit to the observed spectrum with a power-law function (Methods). dominated by synchrotron radiation, and their acceleration. The timescale of the latter should not be much shorter than that of their gyration around the magnetic field at the external shock. The energy of afterglow synchrotron photons is then limited to a maximum value, the so-called synchrotron burnoff limit 29,30 of ε syn,max ≈ 100(Γ b /1,000) GeV, which depends only on the bulk Lorentz factor Γ b . The latter is unlikely to considerably exceed Γ b ≈ 1,000 (Methods). Figure 3 compares the observed photon energies with expectations of ε syn,max under different assumptions. Although a few γ-rays with energy approaching ε syn,max have been previously detected from a GRB by Fermi 30 , the evidence for a separate spectral component was not conclusive, given the uncertainties in Γ b , the electron acceleration rate and the spatial structure of the emitting region 31 . Here, even the lowest-energy photons detected by MAGIC are considerably above ε syn,max and extend beyond 1 TeV at 95% confidence level (Methods). Thus, this observation provides the first unequivocal evidence for a new emission component beyond synchrotron emission in the afterglow of a GRB. Moreover, this component is energetically important, with a power nearly comparable to that of the synchrotron component observed contemporaneously.\n\nComparing with previous MAGIC observations of GRBs, the fact that GRB 190114C was the first to be clearly detected may be due to a favourable combination of its low redshift and suitable observing conditions, rather than its intrinsic properties being exceptional (Methods), although firm conclusions cannot yet be drawn with only one positive detection. The capability of the telescopes to react fast and operate during moonlight conditions was crucial in achieving this detection.\n\nThe discovery of an energetically important emission component beyond electron synchrotron emission that may be common in GRB afterglows offers important new insight into the physics of GRBs. The similarity of the radiated power and temporal decay slopes in the teraelectronvolt and X-ray bands suggests that this component is intimately related to the electron synchrotron emission. Promising mechanisms for the teraelectronvolt emission are 'leptonic' processes in the afterglow such as inverse Compton radiation, in which the electrons in the external shock Compton-scatter ambient low-energy photons to higher energies [9][10][11] . On the other hand, 'hadronic' processes induced by ultrahigh-energy protons in the external shock 10,12,13 may also be viable if the acceleration of electrons and protons occurs in a correlated manner. However, such processes typically have low radiative efficiency, and are not favoured as the origin of the luminous teraelectronvolt emission observed in GRB 190114C for cases such as proton synchrotron emission (Methods). Continuing efforts with existing and future γ-ray telescopes will test these expectations and provide further insight into the physics of GRBs and related issues."
+      },
+      {
+        "title": "Online content",
+        "content": "Any methods, additional references, Nature Research reporting summaries, source data, extended data, supplementary information, acknowledgements, peer review information; details of author contributions and competing interests; and statements of data and code availability are available at https://doi.org/10.1038/s41586-019-1750-x. Institut de Física d'Altes Energies (IFAE), The Barcelona Institute of Science and Technology (BIST), Barcelona, Spain. 18 Università di Pisa and INFN Pisa, Pisa, Italy. 19 The Armenian Consortium, ICRANet-Armenia at NAS RA, A. Alikhanyan National Laboratory, Yerevan, Armenia.  Port d'Informació Científica (PIC), Barcelona, Spain. 22 Croatian Consortium, Department of Physics, University of Rijeka, Rijeka, Croatia. 23 Universität Würzburg, Würzburg, Germany. 24   Finnish MAGIC Consortium, Finnish Centre of Astronomy with ESO (FINCA), University of Turku, Turku, Finland. 25 Departament de Física and CERES-IEEC, Universitat Autònoma de Barcelona, Bellaterra, Spain. 26 Japanese MAGIC Consortium, ICRR, The University of Tokyo, Kashiwa, Japan. 27 Croatian Consortium, University of Split -FESB, Split, Croatia. 28 Croatian Consortium, Josip Juraj Strossmayer University of Osijek, Osijek, Croatia. 29 Japanese MAGIC Consortium, RIKEN, Wako, Japan. 30 Japanese MAGIC Consortium, Tokai University, Hiratsuka, Japan. 31 Dipartimento di Fisica, Università di Trieste, Trieste, Italy. 32 Institute for Fundamental Physics of the Universe (IFPU), Trieste, Italy. 33 Institute for Nuclear Research and Nuclear Energy, Bulgarian Academy of Sciences, Sofia, Bulgaria. 34 Universitat de Barcelona, ICCUB, IEEC-UB, Barcelona, Spain. 35 Finnish MAGIC Consortium, Astronomy Research Unit, University of Oulu, Oulu, Finland. 36 Croatian Consortium, Rudjer Boskovic Institute, Zagreb, Croatia. 37 Istituto Nazionale Fisica Nucleare (INFN), Trieste, Italy. 38 Present address: Laboratoire d'Annecy de Physique des Particules, Université Grenoble Alpes, Université Savoie Mont Blanc, CNRS, LAPP, Annecy, France. *e-mail: contact.magic@mpp.mpg.de"
+      },
+      {
+        "title": "General properties of GRB 190114C",
+        "content": "GRB 190114C was first identified by the Swift-BAT 14 and Fermi-GBM 15 instruments on 14 January 2019, 20:57:03 ut. Subsequently, it was also detected by several other space-based instruments, including Fermi-LAT, INTEGRAL/SPI-ACS, AGILE/MCAL, Insight/HXMT and Konus-Wind 17,26 . Its redshift was reported as z = 0.4245 ± 0.0005 by the Nordic Optical Telescope 18 and confirmed by Gran Telescopio Canarias 19 . The measured duration of T 90 ≈ 116 s by Fermi-GBM and T 90 ≈ 362 s by Swift-BAT 16 puts GRB 190114C unambiguously in the long-duration subclass of GRBs 1 . The fluence and peak photon flux of the emission at 10-1,000 keV during T 90 measured by Fermi-GBM are (3.990 ± 0.008) × 10 -4 erg cm -2 and (246.86 ± 0.86) cm -2 s -1 (ref. 15 ). The corresponding isotropic equivalent energy and luminosity at 1-10 4 keV are E iso ≈ 3 × 10 53 erg and L iso ≈ 1 × 10 53 erg s -1 , respectively 26 . These values are consistent with the known correlations between the spectral peak energy ε peak and E iso (ref. 32 ) and between ε peak and L iso (ref. 33 ) for GRBs. The light curve of the kiloelectronvolt-megaelectronvolt emission exhibits two prominent emission episodes with irregular multi-peaked structure at t ≈ 0-5 s and t ≈ 15-25 s (Extended Data Fig. 1). The spectra for these episodes are typical of GRB prompt emission 26 . On the other hand, at t ≈ 15-25 s and t ≥ 25 s, the temporal and spectral properties of the kiloelectronvolt-megaelectronvolt emission are consistent with an afterglow component, indicating a considerable overlap in time between the prompt and afterglow phases. Indeed, from a joint spectral and temporal analysis of the Fermi-GBM and Fermi-LAT data, the onset of the afterglow for GRB 190114C was estimated to occur at t ≈ 6 s, much earlier than T 90 (ref. 26 ).\n\nThe event is fairly energetic but not exceptionally so, with E iso lying in the highest ~30% of its known distribution 34 . No neutrinos were detected by the IceCube Observatory in the energy range 100 TeV to 10 PeV, under non-optimal observing conditions 35 ."
+      },
+      {
+        "title": "MAGIC telescopes and automatic alert system",
+        "content": "The MAGIC telescopes comprise two 17-m diameter imaging atmospheric Cherenkov telescopes (IACTs; MAGIC-I and MAGIC-II) operating in stereoscopic mode, located at the Roque de los Muchachos Observatory in La Palma, Canary Islands, Spain 20,21 . By imaging Cherenkov light from extended air shower events, the telescopes can detect γ-rays above an energy threshold of 30 GeV, depending on the observing mode and conditions, with a field of view of ~10 square degrees.\n\nObserving GRBs with IACTs such as those of MAGIC warrants a dedicated strategy. Because IACTs have a low probability of discovering GRBs serendipitously in their relatively small field of view, they rely on external alerts provided by satellite instruments with larger fields of view to trigger follow-up observations. Since their inception, the MAGIC telescopes were designed to perform fast follow-up observations of GRBs. By virtue of their light-weight reinforced-carbon-fibre structure and high repositioning speed, they can respond quickly to GRB alerts received via the Gamma-ray Coordinates Network (GCN; https://gcn.  gsfc.nasa.gov) 36 . After various updates to the entire system over the years 20,21 , the telescopes can currently slew to a target with a repositioning speed of 7° s -1 . To achieve the fastest possible response to GRB alerts, an automatic alert system (AAS) has been developed, which is a multi-threaded programme that performs different tasks, such as connecting to the GCN servers, receiving GCN notices that contain the sky coordinates of the GRB and sending commands to the Central Control (CC) software of the MAGIC telescopes. This also includes a check of the visibility of the new target according to predefined criteria. A priority list has been set up for cases in which several different types of alerts are received simultaneously. Moreover, if there are multiple alerts for the same GRB, the AAS selects the one with the best localization.\n\nIf an alert is tagged as observable by the AAS, the telescopes automatically repoint to the new sky position. An automatic procedure, implemented in 2013, prepares the subsystems for data taking during the telescope slewing 37,38 : data taken previously are saved, relevant trigger tables are loaded, appropriate electronics thresholds are set and the mirror segments are suitably adjusted by the Automatic Mirror Control hardware. While moving, the telescopes calibrate the imaging cameras. The data acquisition system continues taking data while it receives information about the target from the CC software. The presence of a trigger limiter set to 1 kHz prevents high rates and the saturation of the data acquisition system. When the repositioning has finished, the target is tracked in wobble mode, which is the standard observing mode for MAGIC 39 . The fastest so far GRB followup was achieved for GRB 160821B, when the data taking started only 24 s after the GRB."
+      },
+      {
+        "title": "MAGIC observations of GRB 190114C",
+        "content": "On the night of 14 January 2019, at 20:57:25 ut (T 0 + 22 s), Swift-BAT distributed an alert reporting the first estimated coordinates of GRB 190114C (right ascension, +03 h 38 min 02 s; declination, -26 d 56 min 18 s). The AAS validated it as observable and triggered the automatic repointing procedure, and the telescopes began slewing in fast mode from their position before the alert. The MAGIC-I and MAGIC-II telescopes were on target and began tracking GRB 190114C at 20:57:52.858 ut and 20:57:53.260 ut (T 0 + 50 s), respectively, starting from a zenith angle of 55.8° and an azimuth angle of 175.1° in local coordinates. After starting the slewing, the telescopes reached the target position in approximately 27 s, moving by 42.82° in zenith and 177.5° in azimuth. At the end of the slewing, the cameras on the telescopes oscillated for a short time. Subsequently, we performed dedicated tests that reproduced the movement of the telescopes. We verified that the duration of the oscillations was less than 10 s after the start of the tracking, and their amplitude was less than 0.6′ when data taking began. Data acquisition started at 20:58:00 (T 0 + 57 s) and the data acquisition system was operating stably from 20:58:05 (T 0 + 62 s), as denoted in Extended Data Fig. 1.\n\nObservations were performed in the presence of moonlight, implying a relatively high night sky background (NSB), approximately 6 times the level for dark observations (moonless nights with good weather conditions) 40 . Data taking for GRB 190114C stopped on 15 January 2019, 01:22:15 ut, when the target reached a zenith angle of 81.14° and an azimuth angle of 232.6°. The total exposure time for GRB 190114C was 4.12 h."
+      },
+      {
+        "title": "MAGIC data analysis for GRB 190114C",
+        "content": "Data collected from GRB 190114C were analysed using the standard MAGIC analysis software 21 and with the analysis chain tuned for data taken under moonlight conditions 40 . No detailed information on the atmospheric transmission was available because the LIDAR facility 41 was not operating during the night of the observation. Therefore, the quality of the data was assessed by checking other auxiliary weather-monitoring devices, as well as the value and stability of the data acquisition rates.\n\nA dedicated set of Monte Carlo simulation γ-ray data was produced for the analysis, matching the trigger settings (discriminator thresholds), the zenith-azimuth distribution and the NSB level of the GRB 190114C observations. The final dataset comprises events starting from 20:58:05 ut. Owing to the higher NSB compared to standard analysis, a higher level of image cleaning was applied to both the measured and the Monte Carlo data, and a higher cut on the integrated charge of the event image, set to 80 photoelectrons, was used for evaluating photon fluxes 40 . The significance of the γ-ray signal was computed using the Li & Ma method 42 .\n\nThe spectra in Fig. 2 were derived by assuming a simple power-law function for the intrinsic spectrum"
+      },
+      {
+        "title": "Article",
+        "content": "with the forward-folding method to derive the best-fit parameters and the Schmelling unfolding prescription for the spectral points 43 , starting from the observed spectrum and correcting for EBL attenuation with the model of Dominguez et al. 25 . The best-fit values are α = -2.22 (statistical) (systematic) int -0.25 +0.23 -0.26 +0.21 and f = [8.45 (statistical) (systematic)] × 10 TeV cm s 0,int -0.65 +0.68 -3.97 +4.42 -9 -1\n\n-2 -1 at 0.46 TeV. We note that owing to the soft spectrum of the source, the systematic errors reported here are larger than those given in ref. 21 .\n\nThe absolute energy scale for MAGIC measurements is systematically affected by the imperfect knowledge of different aspects, such as the atmospheric transmission, the mirror reflectance and the properties of photomultipliers. A dedicated study 21 identified the light-scale matching of measured and Monte Carlo data as the most important contribution to the systematic errors on the absolute energy scale. A miscalibration of the Monte Carlo energy scale can lead to mis-reconstruction of the spectrum that affects both the flux and the spectral shape, especially at the lowest energies. These studies demonstrated that the reconstructed spectra for MAGIC are affected by a systematic error due to the variation of the light scale by less than ±15%. In the case of moonlight observations, additional systematic effects on the flux arise from mismatches between Monte Carlo and measured data, in particular of the trigger discriminator thresholds and of the higher noise in the photomultipliers. Dedicated studies for moonlight observations 40 reveal that these errors affect only the overall flux (and not the spectral index) and depend on the NSB level. The contribution to the systematic error from the moonlight observations is minor compared to that due to the lightscale variations. Moreover, in the case of GRB 190114C, the influence of moonlight conditions on the overall systematic errors is mitigated by the improved data-Monte Carlo agreement achieved by simulating the recorded trigger discriminator thresholds and NSB during the GRB 190114C observation. For the analysis of the GRB 190114C data, we reproduced the effect of the light-scale variations on the spectra to derive the systematic errors on the energy flux and the errors on the photon index reported in Extended Data Table 1. The light-scale modifications were applied to the spectra before their deconvolution with EBL attenuation, which ultimately affects the low-and high-energy ends of the spectra in different ways. The fit to the obtained curves was performed in the same manner as the nominal case. Finally, the systematic errors were obtained from the difference of the parameter values computed for the nominal case and for the cases of light-scale variations by ±15%.\n\nAn additional systematic effect originates from uncertainties in existing EBL models. To quantify the corresponding systematic errors on the derived photon indices, the observed spectra were corrected by adopting several EBL models [44][45][46] for the redshift of this GRB. The results can be found in Extended Data Table 4. The spectral indices inferred using different EBL models differ less than their statistical uncertainties (one standard deviation). Taking as reference the EBL model of Dominguez et al. 25 , the spectral index for the time-integrated spectrum has an additional systematic error due to uncertainties in the EBL such that α = -2.\n\n22 (statistical) (systematic) (systematic ) int -0.25 +0.23 -0.26 +0.21 -0.17 +0.07\n\nEBL . The observed spectrum in the 0.2-1.0 TeV energy range can be roughly described by a power law with photon index α obs = -5.43 ± 0.22 (statistical) and flux normalization f 0,obs = [4.09 ± 0.34 (statistical)] × 10 -10 TeV -1 cm -2 s -1 at 0.475 TeV.\n\nThe upper limit for the first non-significant energy bin in the observed spectrum shown in Fig. 2 is calculated from a likelihood ratio test between two models. The first, baseline, model considers only background events and spillover events from lower energy. The second model additionally assumes that the spectrum extends to higher energy as an unbroken power law, with the flux normalization as a free parameter. Given the low event statistics in the higher-energy bins, the validity of the upper limit was checked by performing 10,000 Monte Carlo simulations of the likelihood ratio test. The test statistic distribution derived from this toy simulation was then used to determine the upper limit on the flux at 95% confidence level. The corresponding upper limit for the intrinsic spectrum was derived from that for the observed spectrum by correcting for EBL attenuation.\n\nThe time-dependent, EBL-corrected energy flux values shown in Fig. 1 and reported in Extended Data Table 1 were computed with an analytical procedure. For each time bin, the value of the energy flux was computed as the integral between 0.3 and 1 TeV of the best-fit spectral power-law function derived with the forward-folding method. Accordingly, the errors were calculated analytically through standard procedures for error propagation, taking into account the covariance matrix. Moreover, the analytical results were checked against those computed with a toy Monte Carlo simulation, which gave comparable results.\n\nThe lower limits on the maximum event energy were computed by an iterative procedure in which a power-law model was assumed for the intrinsic spectrum and a different cut was applied to the maximum event energy for each iteration. For each value of the energy cut, a forward-folding fit was performed and a χ 2 value was obtained. The final result was obtained by finding the value of the energy cut for which the χ 2 variation corresponded to a given confidence level, set here to 95%.\n\nThe number of events in each time and energy bin shown in Fig. 3 was computed using the forward-folding EBL-corrected spectrum, the instrument effective area and the effective time of the observation. For the highest-energy bins, the corresponding numbers for the time interval between T 0 + 62 s and T 0 + 1,227 s are listed in Extended Data Table 2.\n\nThe number of observed excess events in bins of estimated energy are reported in Extended Data Table 3. Also listed are the expected number of photons in the same energy bins, obtained from the powerlaw model of the intrinsic spectrum by convolving it with the effect of EBL attenuation and the instrument response function for the zenith angles of this observation. We note that the counts in bins of estimated energy cannot be used to derive physical inferences. Spectral information that is physically meaningful must be computed as a function of the true energy of the events through an unfolding procedure using the energy migration matrix. Figure 2 shows such unfolded spectra (both intrinsic and observed) as a function of the true event energies."
+      },
+      {
+        "title": "Fermi-LAT data analysis for GRB 190114C",
+        "content": "The publicly available Pass 8 (P8R3) LAT data for GRB 190114C were processed using the Conda Fermitools v1.0.2 package, distributed by the Fermi collaboration (https://fermi.gsfc.nasa.gov/ssc/data/analysis/  software/). Events of the 'Transient' class (P8R3_TRANSIENT020_V2) were selected within 10° from the source position. We assumed a powerlaw spectrum in the 0.1-10 GeV energy range, also accounting for the diffuse Galactic and extragalactic backgrounds, as described in the analysis manual (https://fermi.gsfc.nasa.gov/ssc/data/analysis/sci- tools/). To compute the source fluxes, we first checked that the spectral index was consistent with -2 for the entire 62-180 s interval after T 0 , and then repeated the fit, fixing the index to this value. The LAT energy flux shown in Fig. 1 was computed as the integral of the best-fit power-law model within the corresponding energy range."
+      },
+      {
+        "title": "XRT light curve",
+        "content": "The XRT light curve shown in Fig. 1 was derived using the online analysis tool that is publicly available at the Swift-XRT repository (http://www.  swift.ac.uk/xrt_curves/). The spectral data collected in the 'windowed timing' mode suffered from an instrumental effect, causing a nonphysical excess of counts below ~0.8 keV (ref. 47 ). To remove this effect, we considered the best-fit model of spectral data above 1 keV and estimated a conversion factor from the number of counts to deabsorbed flux equal to 10 -10 erg cm -2 per count. To obtain the energy-flux light curve, we applied this conversion factor to the count rate as a function of time in the interval 62-2,000 s."
+      },
+      {
+        "title": "Synchrotron burnoff limit for the afterglow emission",
+        "content": "GRB afterglows are triggered by external shocks that decelerate and dissipate their kinetic energy in the ambient medium, consequently producing a nonthermal distribution of electrons via mechanisms such as shock acceleration 2 . The maximum energy of electrons that can be attained in the reference frame comoving with the post-shock region can be estimated by equating the timescales of acceleration, τ acc , and energy loss, τ loss ; the latter is primarily due to synchrotron radiation 29 . These are expected to scale with the electron Lorentz factor, γ, and the magnetic field strength, B, as τ acc ∝ γB -1 and τ loss ∝ γ -1 B -2 , so that the maximum electron Lorentz factor is γ max ∝ B -1/2 . Thus, the maximum energy of synchrotron emission ε Bγ ∝ syn,max max 2 is independent of B. Its numerical value in the shock comoving frame is ε′ ≈50 -100 MeV syn,max , which is determined only from fundamental constants and a factor of order 1 that characterizes the uncertainties in the acceleration timescale. The observed spectrum of afterglow synchrotron emission is then expected to display a cutoff below the energy ε syn,max ≈ 100 MeV × [Γ b (t)/(1 + z)], which depends only on the timedependent bulk Lorentz factor Γ b (t) of the external shock. To estimate ε syn,max and its evolution, we use the Γ b (t) values derived from solutions to the dynamical equations of the external shock 48 . The resulting curves for ε syn,max are shown for cases of a medium with constant density (n = constant) and a medium with a radial density profile of n(R) = AR -2 (with A = 3 × 10 35 A⁎ cm -1 , where A⁎ is a parameter characterizing the normalization of the density), expected when a dense stellar wind is produced by the progenitor star (dotted and dashed lines in Fig. 3, respectively). These curves have been derived assuming small values for the density (n = 0.01 and A⁎ = 0.01) and the efficiency of prompt emission (η γ = 1%), which imply a large value for the isotropic-equivalent blast-wave kinetic energy (E k,aft = E iso (1 -η γ )/η γ ), resulting in high values of ε syn,max . Even with such extreme assumptions, the energy of photons detected by MAGIC are well above ε syn,max (Fig. 3)."
+      },
+      {
+        "title": "Constraints on proton synchrotron afterglow emission",
+        "content": "Synchrotron emission by protons accelerated to ultrahigh energies in the external shock has been proposed as a mechanism for gigaelectronvolt-teraelectronvolt emission in GRB afterglows, potentially at energies above the burnoff limit for electron synchrotron emission 10,12,13,49,50 . We discuss whether this process provides a viable explanation for the teraelectronvolt emission observed here, following the formulation of ref. 12 . For the case of a uniform external medium with density n = n 0 cm -3 , the maximum expected energy of proton synchrotron emission in the observer frame is\n\n/2 0 k,53 3/4 s -1/4 -3/4\n\nwhere E k,aft = 10 53 E k,53 erg, t s is the observer time after the burst in seconds, ϵ B is the fraction of energy in magnetic fields relative to that dissipated behind the shock, and η is a factor of order 1 that characterizes the acceleration timescale. Even when assuming optimistic values of ϵ B = 0.5 and η = 1, realizing ε psyn,max ≳ 1 TeV at t ≈ 100 s for a GRB at z = 0.42 requires n 0 E k,53 ≳ 10 4 , which is a very high value for the product of the blastwave energy and the external medium density. Even more severe is the requirement to reproduce the observed teraelectronvolt flux and spectrum. Assuming a power-law energy distribution with index -p for the accelerated protons, their synchrotron emission is expected to have a single power-law spectrum with photon index α int = -(p + 1)/2, extending from a minimum energy\n\nwith differential energy flux\n\nup to ε = ε psyn,max , where ξ p is the fraction of the number of protons swept up by the shock that are accelerated, ϵ p is the fraction of the energy of the accelerated protons relative to that dissipated behind the shock, and D = 10 28 D 28 cm is the luminosity distance of the GRB. The observed intrinsic spectral index α int ≈ -2 at t ≈ 100 s implies p ≈ 3. If p = 3 and the spectrum extends to ε = 1 TeV without a cutoff, the energy flux at 1 TeV is . Even in the extreme case of a GRB occurring at the centre of a dense molecular cloud with n = 10 6 cm -3 , the blastwave energy must be E k,aft > 2 × 10 59 erg, greatly exceeding the energy available for any plausible GRB progenitor 2 . This conclusion is qualitatively valid regardless of how the electron synchrotron emission is modelled or whether the external medium has a density profile characteristic of a progenitor stellar wind. Although proton synchrotron emission may possibly explain the gigaelectronvolt emission observed in some GRBs 50 , it is not favoured as the origin of the luminous teraelectronvolt emission observed in GRB 190114C, owing to its low radiative efficiency. A more plausible mechanism may be inverse Compton emission by accelerated electrons [9][10][11]51 ."
+      },
+      {
+        "title": "Past teraelectronvolt-band observations of GRBs with MAGIC and other facilities",
+        "content": "Although the search for teraelectronvolt γ-rays from GRBs has continued over many years using a variety of experimental techniques, no clear detections had been previously achieved [52][53][54][55][56][57][58][59][60][61][62][63] . Designed with the primary goal of GRB follow-up observations, MAGIC has been responding to GRB alerts since 15 July 2004. For the first five years, MAGIC operated as a single telescope (MAGIC-I), reacting mainly to alerts from Swift. After the second telescope (MAGIC-II) was added in 2009, GRB observations have been carried out in stereoscopic mode. Excluding cases when useful data could not be taken owing to hardware problems or adverse weather conditions, 105 GRBs were observed from July 2004 to February 2019. Of these, 40 have determined redshifts, among which 8 and 3 have redshifts lower than 1 and 0.5, respectively. Observations started less than 30 min after the burst for 66 events (of which 33 lack redshifts) and less than 60 s for 14 events; the small number of events in the latter case is mainly due to bad weather conditions or observational criteria not being fulfilled at the time of the alert.\n\nDespite 15 years of dedicated efforts, no unambiguous evidence for γ-ray signals from GRBs had been seen by MAGIC before GRB 190114C. The flux upper limits for GRBs observed in 2005-2006 were found to be consistent with simple power-law extrapolations of their low-energy spectra when EBL attenuation was taken into account 64 . More detailed studies were presented for GRB 080430 65 and GRB 090102 66 , which were observed simultaneously with MAGIC and other instruments in different energy bands. Since 2013, GRB observations have been performed with the new automatic procedure described above 37,38 . In addition, for some bright GRBs detected by Fermi-LAT, late-time observations have been conducted up to one day after the burst to search for potential signals extended in time.\n\nThe case of GRB 190114C can be compared with other GRBs followed up by MAGIC under similar conditions. Aside from the intrinsic spectrum, the main factors affecting the detectability of a GRB by IACTs are the redshift z (stronger EBL attenuation for higher z), the zenith distance (higher energy threshold for higher zenith distance), the external light conditions and the delay time T delay between the GRB and the beginning of the observations. If we select GRBs with z < 1 and T delay < 1 h, only four events remain, as listed in Extended Data Table 5. Except for GRB 190114C, these are all short GRBs, which is not surprising as they are known to be distributed at redshifts appreciably lower than those of long GRBs 67 . A few other long GRBs with z < 1 and T delay < 1 h were followed up by MAGIC, but the observations were not successful owing to technical problems or adverse observing conditions. There is also a fair fraction of events without measured redshifts. Assuming that they follow the known z distribution of long GRBs, ~20% of the events are expected at z < 1 (ref. 68 ). Since 30 long GRBs without redshifts were observed by MAGIC with T delay < 1 h, only a few events with observing conditions and z similar to that of GRB 190114C are expected to be observed during the whole MAGIC GRB campaign .\n\nA similar analysis for past GRBs observed by other Cherenkov telescopes is not possible, because not all of the relevant ancillary information is available. However, summaries of past efforts have been reported. Of the 150 GRBs followed up by VERITAS until February 2018 63 , 50 had observations starting within 180 s from the satellite trigger time. H.E.S.S. also conducted several tens of GRB follow-up observations until 2017 58,69 . 64 GRBs were observed by HAWC 61 until February 2017. Milagrito and Milagro observed 54 GRBs from February 1997 to May 1998 70 and more than 130 GRBs from January 2000 to March 2008, respectively 71,72 . None of these considerable observational efforts provided any convincing detection, although some hints at low significance have been found. A case of particular interest was the Milagrito result for GRB 970417A 53 , although its statistical significance was not high enough to fully rule out a background event.\n\nExtended Data Fig. 1 | Light curves in the teraelectronvolt and kiloelectronvolt bands for GRB 190114C. Photon flux light curve above 0.3 TeV measured by MAGIC (red; from T 0 + 62 s to T 0 + 210 s), compared with that between 15 keV and 50 keV measured by Swift-BAT 73 (grey; from T 0 to T 0 + 210 s) and the photon flux above 0.3 TeV of the Crab Nebula (blue dashed line). The errors on the MAGIC photon fluxes correspond to one standard deviation. Vertical lines indicate the times when the alert was received (T 0 + 22 s) by MAGIC, when the tracking of the GRB by the telescopes started (T 0 + 50 s), when the data acquisition started (T 0 + 57 s), and when the data acquisition system (DAQ) became stable (T 0 + 62 s; dotted line).\n\nExtended Data Fig. 2 | Significance of the γ-ray signal between T 0 + 62 s and T 0 + 1,227 s for GRB 190114C. Distribution of the squared angular distance, θ 2 , for the MAGIC data (points) and background events (grey shaded area). θ 2 is defined as the squared angular distance between the nominal position of the source and the reconstructed arrival direction of the events. The dashed vertical line represents the value of the cut on θ 2 . This defines the signal region, where the number of events coming from the source (N on ) and from the background (N off ) are computed. The errors for 'on' events are derived from Poissonian statistics. From N on and N off , the number of excess events (N ex ) is computed. The significance is calculated using the Li & Ma method 42 ."
+      }
+    ],
+    "references": [
+      {
+        "title": "Gamma-ray bursts",
+        "authors": [
+          "N Gehrels",
+          "P Mészáros"
+        ],
+        "year": "2012"
+      },
+      {
+        "title": "The physics of gamma-ray bursts & relativistic jets",
+        "authors": [
+          "P Kumar",
+          "B Zhang"
+        ],
+        "year": "2015"
+      },
+      {
+        "title": "Theories of gamma-ray bursts",
+        "authors": [
+          "P Mészáros"
+        ],
+        "year": "2002"
+      },
+      {
+        "title": "The physics of gamma-ray bursts",
+        "authors": [
+          "T Piran"
+        ],
+        "year": "2005"
+      },
+      {
+        "title": "GeV-TeV emission from γ-ray bursts",
+        "authors": [
+          "P Mészáros",
+          "S Razzaque",
+          "B Zhang"
+        ],
+        "year": "2004"
+      },
+      {
+        "title": "High-energy γ-ray emission from gamma-ray bursts -before GLAST",
+        "authors": [
+          "Y.-Z Fan",
+          "T Piran"
+        ],
+        "year": "2008"
+      },
+      {
+        "title": "Gamma-ray burst science in the era of the Cherenkov Telescope Array",
+        "authors": [
+          "S Inoue"
+        ],
+        "year": "2013"
+      },
+      {
+        "title": "High-energy emission from gamma-ray bursts",
+        "authors": [
+          "L Nava"
+        ],
+        "year": "2018"
+      },
+      {
+        "title": "Spectral properties of blast-wave models of gamma-ray burst sources",
+        "authors": [
+          "P Mészáros",
+          "M Rees",
+          "H Papathanassiou"
+        ],
+        "year": "1994"
+      },
+      {
+        "title": "High-energy spectral components in gamma-ray burst afterglows",
+        "authors": [
+          "B Zhang",
+          "P Mészáros"
+        ],
+        "year": "2001"
+      },
+      {
+        "title": "Energies of GRB blast waves and prompt efficiencies as implied by modelling of X-ray and GeV afterglows",
+        "authors": [
+          "P Beniamini",
+          "L Nava",
+          "R Duran",
+          "T Piran"
+        ],
+        "year": "2015"
+      },
+      {
+        "title": "GeV photons from ultrahigh energy cosmic rays accelerated in gamma-ray bursts",
+        "authors": [
+          "M Vietri"
+        ],
+        "year": "1997"
+      },
+      {
+        "title": "High-energy gamma rays from ultra-high-energy cosmic-ray protons in gamma-ray bursts",
+        "authors": [
+          "M Böttcher",
+          "C Dermer"
+        ],
+        "year": "1998"
+      },
+      {
+        "title": "C: Swift detection of a very bright burst with a bright optical counterpart",
+        "authors": [
+          "J Gropp",
+          "Grb"
+        ],
+        "year": "2019"
+      },
+      {
+        "title": "C: Fermi GBM detection",
+        "authors": [
+          "R Hamburg",
+          "Grb"
+        ],
+        "year": "2019"
+      },
+      {
+        "title": "GRB 190114C: Swift-BAT refined analysis",
+        "authors": [
+          "H Krimm"
+        ],
+        "year": "2019"
+      },
+      {
+        "title": "Observation of inverse Compton emission from a long γ-ray burst",
+        "year": "2019"
+      },
+      {
+        "title": "C: NOT optical counterpart and redshift",
+        "authors": [
+          "J Selsing",
+          "Grb"
+        ],
+        "year": "2019"
+      },
+      {
+        "title": "C: refined redshift by the 10.4m GTC",
+        "authors": [
+          "A Castro-Tirado",
+          "Grb"
+        ],
+        "year": "2019"
+      },
+      {
+        "title": "The major upgrade of the MAGIC telescopes, part I: the hardware improvements and the commissioning of the system",
+        "authors": [
+          "J Aleksić"
+        ],
+        "year": "2016"
+      },
+      {
+        "title": "The major upgrade of the MAGIC telescopes, part II: a performance study using observations of the Crab Nebula",
+        "authors": [
+          "J Aleksić"
+        ],
+        "year": "2016"
+      },
+      {
+        "title": "First time detection of a GRB at sub-TeV energies; MAGIC detects the GRB 190114C",
+        "authors": [
+          "R Mirzoyan"
+        ],
+        "year": "2019"
+      },
+      {
+        "title": "MAGIC detects the GRB 190114C in the TeV energy domain",
+        "authors": [
+          "R Mirzoyan"
+        ],
+        "year": "2019"
+      },
+      {
+        "title": "The extragalactic background light and the gamma-ray opacity of the universe",
+        "authors": [
+          "E Dwek",
+          "F Krennrich"
+        ],
+        "year": "2013"
+      },
+      {
+        "title": "Extragalactic background light inferred from AEGIS galaxy-SED-type fractions",
+        "authors": [
+          "A Domínguez"
+        ],
+        "year": "2011"
+      },
+      {
+        "title": "GRB 190114C: from prompt to afterglow?",
+        "authors": [
+          "M Ravasio"
+        ],
+        "year": "2019"
+      },
+      {
+        "title": "Synchrotron self-Compton emission from afterglow shocks as the origin of the sub-TeV emission in GRB 180720B and GRB",
+        "authors": [
+          "X.-Y Wang",
+          "R.-Y Liu",
+          "H.-M Zhang",
+          "S.-Q Xi",
+          "B Zhang"
+        ]
+      },
+      {
+        "title": "The first Fermi-LAT gamma-ray burst catalog",
+        "authors": [
+          "M Ackermann"
+        ],
+        "year": "2013"
+      },
+      {
+        "title": "On the external shock synchrotron model for gamma-ray bursts' GeV emission",
+        "authors": [
+          "T Piran",
+          "E Nakar"
+        ],
+        "year": "2010"
+      },
+      {
+        "title": "Fermi-LAT observations of the gamma-ray burst GRB 130427",
+        "authors": [
+          "M Ackermann"
+        ],
+        "year": "2014"
+      },
+      {
+        "title": "NuSTAR observations of GRB 130427A establish a single component synchrotron afterglow origin for the late optical to multi-GeV emission",
+        "authors": [
+          "C Kouveliotou"
+        ],
+        "year": "2013"
+      },
+      {
+        "title": "Intrinsic spectra and energetics of BeppoSAX gamma-ray bursts with known redshifts",
+        "authors": [
+          "L Amati"
+        ],
+        "year": "2002"
+      },
+      {
+        "title": "Gamma-ray burst formation rate inferred from the spectral peak energy-peak luminosity relation",
+        "authors": [
+          "D Yonetoku"
+        ],
+        "year": "2004"
+      },
+      {
+        "title": "A complete sample of bright Swift long gamma-ray bursts: testing the spectral-energy correlations",
+        "authors": [
+          "L Nava"
+        ],
+        "year": "2012"
+      },
+      {
+        "title": "C: Search for high-energy neutrinos with IceCube",
+        "authors": [
+          "J Vandenbroucke",
+          "Grb"
+        ],
+        "year": "2019"
+      },
+      {
+        "title": "GCN capabilities and status, and the incorporation of LIGO/Virgo",
+        "authors": [
+          "S Barthelmy"
+        ],
+        "year": "2016"
+      },
+      {
+        "title": "Recent follow-up observations of GRBs in the very high energy band with the MAGIC Telescopes",
+        "authors": [
+          "A Carosi"
+        ],
+        "year": "2015"
+      },
+      {
+        "title": "Search for high energy emission from GRBs with MAGIC",
+        "authors": [
+          "Magic Grb Group"
+        ],
+        "year": "2016"
+      },
+      {
+        "title": "New methods of atmospheric Cherenkov imaging for gamma-ray astronomy. I. The false source method",
+        "authors": [
+          "V Fomin"
+        ],
+        "year": "1994"
+      },
+      {
+        "title": "Performance of the MAGIC telescopes under moonlight",
+        "authors": [
+          "M Ahnen"
+        ],
+        "year": "2017"
+      },
+      {
+        "title": "A novel LIDAR-based atmospheric calibration method for improving the data analysis of MAGIC",
+        "authors": [
+          "C Fruck"
+        ],
+        "year": "2014"
+      },
+      {
+        "title": "Analysis methods for results in gamma-ray astronomy",
+        "authors": [
+          "T Li",
+          "Y Ma"
+        ],
+        "year": "1983"
+      },
+      {
+        "title": "The method of reduced cross-entropy. A general approach to unfold probability distributions",
+        "authors": [
+          "M Schmelling"
+        ],
+        "year": "1994"
+      },
+      {
+        "title": "Extragalactic optical-infrared background radiation, its time evolution and the cosmic photon-photon opacity",
+        "authors": [
+          "A Franceschini",
+          "G Rodighiero",
+          "M Vaccari"
+        ],
+        "year": "2008"
+      },
+      {
+        "title": "Modeling the extragalactic background light from stars and dust",
+        "authors": [
+          "J Finke",
+          "S Razzaque",
+          "C Dermer"
+        ],
+        "year": "2010"
+      },
+      {
+        "title": "Semi-analytic modelling of the extragalactic background light and consequences for extragalactic gamma-ray spectra",
+        "authors": [
+          "R Gilmore",
+          "R Somerville",
+          "J Primack",
+          "A Domínguez"
+        ],
+        "year": "2012"
+      },
+      {
+        "title": "The Swift-XRT WT mode spectrum of GRB190114C",
+        "authors": [
+          "A Beardmore"
+        ],
+        "year": "2019"
+      },
+      {
+        "title": "Afterglow emission in gammaray bursts -I. Pair-enriched ambient medium and radiative blast waves",
+        "authors": [
+          "L Nava",
+          "L Sironi",
+          "G Ghisellini",
+          "A Celotti",
+          "G Ghirlanda"
+        ],
+        "year": "2013"
+      },
+      {
+        "title": "Very strong TeV emission as gamma-ray burst afterglows",
+        "authors": [
+          "T Totani"
+        ],
+        "year": "1998"
+      },
+      {
+        "title": "A leptonic-hadronic model for the afterglow of gamma-ray burst 090510",
+        "authors": [
+          "S Razzaque"
+        ],
+        "year": "2010"
+      },
+      {
+        "title": "Prospects for detection of very high-energy emission from GRB in the context of the external shock model",
+        "authors": [
+          "A Galli",
+          "L Piro"
+        ],
+        "year": "2008"
+      },
+      {
+        "title": "Gamma-ray bursts at VERITAS energies",
+        "authors": [
+          "V Connaughton"
+        ],
+        "year": "1999"
+      },
+      {
+        "title": "Evidence for TEV Emission from GRB 970417A",
+        "authors": [
+          "R Atkins"
+        ],
+        "year": "2000"
+      },
+      {
+        "title": "Limits on very high energy emission from gamma-ray bursts with the milagro observatory",
+        "authors": [
+          "R Atkins"
+        ],
+        "year": "2004"
+      },
+      {
+        "title": "Milagro constraints on very high energy emission from short-duration gamma-ray bursts",
+        "authors": [
+          "A Abdo"
+        ],
+        "year": "2007"
+      },
+      {
+        "title": "Very high energy observations of gamma-ray burst locations with the Whipple telescope",
+        "authors": [
+          "D Horan"
+        ],
+        "year": "2007"
+      },
+      {
+        "title": "HESS observations of the prompt and afterglow phases of GRB 060602",
+        "authors": [
+          "F Aharonian"
+        ],
+        "year": "2009"
+      },
+      {
+        "title": "HESS observations of γ-ray bursts in 2003-2007",
+        "authors": [
+          "F Aharonian"
+        ],
+        "year": "2009"
+      },
+      {
+        "title": "VERITAS observations of gamma-ray bursts detected by Swift",
+        "authors": [
+          "V Acciari"
+        ],
+        "year": "2011"
+      },
+      {
+        "title": "Search for TeV gamma-ray emission from GRB 100621A, an extremely bright GRB in X-rays",
+        "authors": [
+          "H Collaboration"
+        ],
+        "year": "2014"
+      },
+      {
+        "title": "Search for very-high-energy emission from gamma-ray bursts using the first 18 months of data from the HAWC gamma-ray observatory",
+        "authors": [
+          "R Alfaro"
+        ],
+        "year": "2017"
+      },
+      {
+        "title": "International Cosmic Ray Conference (ICRC2017)",
+        "authors": [
+          "C Hoischen"
+        ],
+        "year": "2017"
+      },
+      {
+        "title": "A strong limit on the very-high-energy emission from GRB 150323A",
+        "authors": [
+          "A Abeysekara"
+        ],
+        "year": "2018"
+      },
+      {
+        "title": "MAGIC upper limits on the very high energy emission from gamma-ray bursts",
+        "authors": [
+          "J Albert"
+        ],
+        "year": "2007"
+      },
+      {
+        "title": "MAGIC observation of the GRB 080430 afterglow",
+        "authors": [
+          "J Aleksić"
+        ],
+        "year": "2010"
+      },
+      {
+        "title": "MAGIC upper limits on the GRB 090102 afterglow",
+        "authors": [
+          "J Aleksić"
+        ],
+        "year": "2014"
+      },
+      {
+        "title": "Short gamma-ray bursts at the dawn of the gravitational wave era",
+        "authors": [
+          "G Ghirlanda"
+        ],
+        "year": "2016"
+      },
+      {
+        "title": "The Swift gamma-ray burst host galaxy legacy survey. I. Sample selection and redshift distribution",
+        "authors": [
+          "D Perley"
+        ],
+        "year": "2016"
+      },
+      {
+        "title": "Searching for TeV emission from GRBs: the status of the",
+        "authors": [
+          "D Lennarz"
+        ],
+        "year": "2013"
+      },
+      {
+        "title": "Results from the Milagrito experiment",
+        "authors": [
+          "A Smith"
+        ],
+        "year": "2000"
+      },
+      {
+        "title": "A search for GeV-TeV emission from GRBs using the Milagro detector",
+        "authors": [
+          "T Aune"
+        ],
+        "year": "2009"
+      },
+      {
+        "title": "A search for GeV-TeV emission from gamma-ray bursts using the Milagro detector",
+        "authors": [
+          "P Saz Parkinson"
+        ],
+        "year": "2009"
+      },
+      {
+        "title": "The Swift Burst Analyser. I. BAT and XRT spectral and flux evolution of gamma-ray bursts",
+        "authors": [
+          "P Evans"
+        ],
+        "year": "2010"
+      }
+    ]
+  }
+}

@@ -1,0 +1,2523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Teraelectronvolt emission from the γ-ray burst GRB 190114C MAGIC Collaboration*</title>
+				<funder>
+					<orgName type="full">Torino division of the Italian INFN</orgName>
+				</funder>
+				<funder ref="#_UNG9CUE #_Q9yYSQY">
+					<orgName type="full">Spanish Ministry of Economy and Competitiveness</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">ERDF</orgName>
+				</funder>
+				<funder ref="#_rMjPkpz">
+					<orgName type="full">Bulgarian Ministry of Education and Science, National RI Roadmap</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">CNPq</orgName>
+				</funder>
+				<funder ref="#_5Yu8rZF #_GYwJnqV">
+					<orgName type="full">JSPS KAKENHI</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Italian INFN</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Physics Department of the University of Torino</orgName>
+				</funder>
+				<funder ref="#_j9cqtM6">
+					<orgName type="full">ICRR, University of Tokyo</orgName>
+				</funder>
+				<funder ref="#_h6qaDZX">
+					<orgName type="full">University of Rijeka</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">German BMBF and MPG</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">INAF</orgName>
+				</funder>
+				<funder ref="#_vqrjgAB">
+					<orgName type="full">Academy of Finland</orgName>
+				</funder>
+				<funder ref="#_U5hyD6E #_RK5VBxt">
+					<orgName type="full">Spanish Centro de Excelencia &apos;Severo Ochoa</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Swiss National Fund</orgName>
+					<orgName type="abbreviated">SNF</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Brazilian MCTIC</orgName>
+				</funder>
+				<funder ref="#_nahPMm4">
+					<orgName type="full">Croatian Science Foundation (HrZZ)</orgName>
+				</funder>
+				<funder ref="#_5NzBptK">
+					<orgName type="full">Indian Department of Atomic Energy</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">MEXT, Japan</orgName>
+				</funder>
+				<funder ref="#_buJwfC9 #_2EhkhM4">
+					<orgName type="full">DFG Collaborative Research Centers</orgName>
+				</funder>
+				<funder ref="#_MvVk5kE #_bUs2PJ5 #_MWebG8v #_6N9Yyyq #_PNPb2aa #_abmAPeP">
+					<orgName type="full">unknown</orgName>
+				</funder>
+				<funder ref="#_FeS5NGV #_76cb8kE">
+					<orgName type="full">European Union</orgName>
+				</funder>
+				<funder ref="#_7XFwt4M">
+					<orgName type="full">Polish National Research Centre</orgName>
+				</funder>
+				<funder ref="#_ynGFWX5">
+					<orgName type="full">Unidad de Excelencia &apos;María de Maeztu</orgName>
+				</funder>
+				<funder ref="#_SJX32v4">
+					<orgName type="full">RIKEN</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Japanese JSPS and MEXT</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">Department of Excellence)</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2019-11-20">20 November 2019</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author>
+							<persName><forename type="first">V</forename><forename type="middle">A</forename><surname>Acciari</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Ansoldi</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Departamento Astrofísica</orgName>
+								<orgName type="institution" key="instit1">Instituto de Astrofísica de Canarias</orgName>
+								<orgName type="institution" key="instit2">Universidad de La Laguna</orgName>
+								<address>
+									<settlement>La Laguna</settlement>
+									<country key="ES">Spain</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff1">
+								<orgName type="department">Japanese MAGIC Consortium</orgName>
+								<orgName type="institution" key="instit1">Università di Udine</orgName>
+								<orgName type="institution" key="instit2">INFN Trieste</orgName>
+								<address>
+									<settlement>Udine</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">L</forename><forename type="middle">A</forename><surname>Antonelli</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Physics</orgName>
+								<orgName type="institution">Kyoto University</orgName>
+								<address>
+									<settlement>Kyoto</settlement>
+									<country key="JP">Japan</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><forename type="middle">Arbet</forename><surname>Engels</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="institution">National Institute for Astrophysics (INAF)</orgName>
+								<address>
+									<settlement>Rome</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Baack</surname></persName>
+							<affiliation key="aff4">
+								<orgName type="institution">ETH Zurich</orgName>
+								<address>
+									<settlement>Zurich</settlement>
+									<country key="CH">Switzerland</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Babić</surname></persName>
+							<affiliation key="aff5">
+								<orgName type="department">Croatian Consortium</orgName>
+								<orgName type="institution">Technische Universität Dortmund</orgName>
+								<address>
+									<settlement>Dortmund</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">B</forename><surname>Banerjee</surname></persName>
+							<affiliation key="aff6">
+								<orgName type="institution">University of Zagreb -FER</orgName>
+								<address>
+									<settlement>Zagreb</settlement>
+									<country key="HR">Croatia</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">U</forename><surname>Barres De Almeida</surname></persName>
+							<affiliation key="aff7">
+								<orgName type="department">Centro Brasileiro de Pesquisas Físicas (CBPF)</orgName>
+								<orgName type="institution">Saha Institute of Nuclear Physics</orgName>
+								<address>
+									<settlement>HBNI Kolkata Rio de Janeiro</settlement>
+									<country>India Brazil</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Barrio</surname></persName>
+							<affiliation key="aff8">
+								<orgName type="department">IPARCOS Institute and EMFTEL Department</orgName>
+								<orgName type="institution">Universidad Complutense de Madrid</orgName>
+								<address>
+									<settlement>Madrid</settlement>
+									<country key="ES">Spain</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><surname>Becerra González</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">W</forename><surname>Bednarek</surname></persName>
+							<affiliation key="aff9">
+								<orgName type="department">Department of Astrophysics</orgName>
+								<orgName type="institution">University of Łódź</orgName>
+								<address>
+									<settlement>Łódź</settlement>
+									<country key="PL">Poland</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">L</forename><surname>Bellizzi</surname></persName>
+							<affiliation key="aff10">
+								<orgName type="institution" key="instit1">Università di Siena</orgName>
+								<orgName type="institution" key="instit2">INFN Pisa</orgName>
+								<address>
+									<settlement>Siena</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">E</forename><surname>Bernardini</surname></persName>
+							<affiliation key="aff11">
+								<orgName type="department">Deutsches Elektronen-Synchrotron (DESY)</orgName>
+								<address>
+									<settlement>Zeuthen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff12">
+								<orgName type="institution">Università di Padova and INFN</orgName>
+								<address>
+									<settlement>Padua</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Berti</surname></persName>
+							<affiliation key="aff13">
+								<orgName type="institution">Istituto Nazionale Fisica Nucleare (INFN)</orgName>
+								<address>
+									<settlement>Frascati</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><surname>Besenrieder</surname></persName>
+							<affiliation key="aff14">
+								<orgName type="institution">Max-Planck-Institut für Physik</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">W</forename><surname>Bhattacharyya</surname></persName>
+							<affiliation key="aff11">
+								<orgName type="department">Deutsches Elektronen-Synchrotron (DESY)</orgName>
+								<address>
+									<settlement>Zeuthen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">C</forename><surname>Bigongiari</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Physics</orgName>
+								<orgName type="institution">Kyoto University</orgName>
+								<address>
+									<settlement>Kyoto</settlement>
+									<country key="JP">Japan</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Biland</surname></persName>
+							<affiliation key="aff3">
+								<orgName type="institution">National Institute for Astrophysics (INAF)</orgName>
+								<address>
+									<settlement>Rome</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">O</forename><surname>Blanch</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">G</forename><surname>Bonnoli</surname></persName>
+							<affiliation key="aff10">
+								<orgName type="institution" key="instit1">Università di Siena</orgName>
+								<orgName type="institution" key="instit2">INFN Pisa</orgName>
+								<address>
+									<settlement>Siena</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Ž</forename><surname>Bošnjak</surname></persName>
+							<affiliation key="aff5">
+								<orgName type="department">Croatian Consortium</orgName>
+								<orgName type="institution">Technische Universität Dortmund</orgName>
+								<address>
+									<settlement>Dortmund</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">G</forename><surname>Busetto</surname></persName>
+							<affiliation key="aff12">
+								<orgName type="institution">Università di Padova and INFN</orgName>
+								<address>
+									<settlement>Padua</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Carosi</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Physics</orgName>
+								<orgName type="institution">Kyoto University</orgName>
+								<address>
+									<settlement>Kyoto</settlement>
+									<country key="JP">Japan</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">R</forename><surname>Carosi</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">G</forename><surname>Ceribella</surname></persName>
+							<affiliation key="aff14">
+								<orgName type="institution">Max-Planck-Institut für Physik</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Y</forename><surname>Chai</surname></persName>
+							<affiliation key="aff14">
+								<orgName type="institution">Max-Planck-Institut für Physik</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Chilingaryan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Cikota</surname></persName>
+							<affiliation key="aff5">
+								<orgName type="department">Croatian Consortium</orgName>
+								<orgName type="institution">Technische Universität Dortmund</orgName>
+								<address>
+									<settlement>Dortmund</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Colak</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">U</forename><surname>Colin</surname></persName>
+							<affiliation key="aff14">
+								<orgName type="institution">Max-Planck-Institut für Physik</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">E</forename><surname>Colombo</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Contreras</surname></persName>
+							<affiliation key="aff8">
+								<orgName type="department">IPARCOS Institute and EMFTEL Department</orgName>
+								<orgName type="institution">Universidad Complutense de Madrid</orgName>
+								<address>
+									<settlement>Madrid</settlement>
+									<country key="ES">Spain</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><surname>Cortina</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Covino</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Physics</orgName>
+								<orgName type="institution">Kyoto University</orgName>
+								<address>
+									<settlement>Kyoto</settlement>
+									<country key="JP">Japan</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">G</forename><surname>D'amico</surname></persName>
+							<affiliation key="aff14">
+								<orgName type="institution">Max-Planck-Institut für Physik</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">V</forename><surname>D'elia</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Physics</orgName>
+								<orgName type="institution">Kyoto University</orgName>
+								<address>
+									<settlement>Kyoto</settlement>
+									<country key="JP">Japan</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">P</forename><surname>Da Vela</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">F</forename><surname>Dazzi</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Physics</orgName>
+								<orgName type="institution">Kyoto University</orgName>
+								<address>
+									<settlement>Kyoto</settlement>
+									<country key="JP">Japan</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>De Angelis</surname></persName>
+							<affiliation key="aff12">
+								<orgName type="institution">Università di Padova and INFN</orgName>
+								<address>
+									<settlement>Padua</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">B</forename><surname>De Lotto</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Departamento Astrofísica</orgName>
+								<orgName type="institution" key="instit1">Instituto de Astrofísica de Canarias</orgName>
+								<orgName type="institution" key="instit2">Universidad de La Laguna</orgName>
+								<address>
+									<settlement>La Laguna</settlement>
+									<country key="ES">Spain</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Delfino</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><surname>Delgado</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Depaoli</surname></persName>
+							<affiliation key="aff13">
+								<orgName type="institution">Istituto Nazionale Fisica Nucleare (INFN)</orgName>
+								<address>
+									<settlement>Frascati</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">F</forename><forename type="middle">Di</forename><surname>Pierro</surname></persName>
+							<affiliation key="aff13">
+								<orgName type="institution">Istituto Nazionale Fisica Nucleare (INFN)</orgName>
+								<address>
+									<settlement>Frascati</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">L</forename><surname>Di Venere</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">E</forename><surname>Do</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Souto</forename><surname>Espiñeira</surname></persName>
+							<affiliation key="aff13">
+								<orgName type="institution">Istituto Nazionale Fisica Nucleare (INFN)</orgName>
+								<address>
+									<settlement>Frascati</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Dominis Prester</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Donini</surname></persName>
+							<affiliation key="aff0">
+								<orgName type="department">Departamento Astrofísica</orgName>
+								<orgName type="institution" key="instit1">Instituto de Astrofísica de Canarias</orgName>
+								<orgName type="institution" key="instit2">Universidad de La Laguna</orgName>
+								<address>
+									<settlement>La Laguna</settlement>
+									<country key="ES">Spain</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Dorner</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Doro</surname></persName>
+							<affiliation key="aff12">
+								<orgName type="institution">Università di Padova and INFN</orgName>
+								<address>
+									<settlement>Padua</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Elsaesser</surname></persName>
+							<affiliation key="aff4">
+								<orgName type="institution">ETH Zurich</orgName>
+								<address>
+									<settlement>Zurich</settlement>
+									<country key="CH">Switzerland</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">V</forename><surname>Fallah Ramazani</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Fattorini</surname></persName>
+							<affiliation key="aff4">
+								<orgName type="institution">ETH Zurich</orgName>
+								<address>
+									<settlement>Zurich</settlement>
+									<country key="CH">Switzerland</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Fernández-Barral</surname></persName>
+							<affiliation key="aff12">
+								<orgName type="institution">Università di Padova and INFN</orgName>
+								<address>
+									<settlement>Padua</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">G</forename><surname>Ferrara</surname></persName>
+							<affiliation key="aff2">
+								<orgName type="department">Department of Physics</orgName>
+								<orgName type="institution">Kyoto University</orgName>
+								<address>
+									<settlement>Kyoto</settlement>
+									<country key="JP">Japan</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Fidalgo</surname></persName>
+							<affiliation key="aff8">
+								<orgName type="department">IPARCOS Institute and EMFTEL Department</orgName>
+								<orgName type="institution">Universidad Complutense de Madrid</orgName>
+								<address>
+									<settlement>Madrid</settlement>
+									<country key="ES">Spain</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">L</forename><surname>Foffano</surname></persName>
+							<affiliation key="aff12">
+								<orgName type="institution">Università di Padova and INFN</orgName>
+								<address>
+									<settlement>Padua</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><forename type="middle">V</forename><surname>Fonseca</surname></persName>
+							<affiliation key="aff8">
+								<orgName type="department">IPARCOS Institute and EMFTEL Department</orgName>
+								<orgName type="institution">Universidad Complutense de Madrid</orgName>
+								<address>
+									<settlement>Madrid</settlement>
+									<country key="ES">Spain</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">L</forename><surname>Font</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">C</forename><surname>Fruck</surname></persName>
+							<affiliation key="aff14">
+								<orgName type="institution">Max-Planck-Institut für Physik</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Fukami</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Gallozzi</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>García López</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Garczarczyk</surname></persName>
+							<affiliation key="aff11">
+								<orgName type="department">Deutsches Elektronen-Synchrotron (DESY)</orgName>
+								<address>
+									<settlement>Zeuthen</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Gasparyan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Gaug</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">N</forename><surname>Giglietto</surname></persName>
+							<affiliation key="aff13">
+								<orgName type="institution">Istituto Nazionale Fisica Nucleare (INFN)</orgName>
+								<address>
+									<settlement>Frascati</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">F</forename><surname>Giordano</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">N</forename><surname>Godinović</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Green</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Guberman</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Hadasch</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Hahn</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><surname>Herrera</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><surname>Hoang</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Hrupec</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Hütten</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">T</forename><surname>Inada</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Inoue</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">K</forename><surname>Ishio</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Y</forename><surname>Iwamura</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">L</forename><surname>Jouvin</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Kerszberg</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">H</forename><surname>Kubo</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><surname>Kushida</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Lamastra</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Lelas</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">F</forename><surname>Leone</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">E</forename><surname>Lindfors</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Lombardi</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">F</forename><surname>Longo</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>López</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">R</forename><surname>López-Coto</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>López-Oramas</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Loporchio</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">B</forename><surname>Machado De Oliveira Fraga</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">C</forename><surname>Maggio</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">P</forename><surname>Majumdar</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Makariev</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Mallamaci</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">G</forename><surname>Maneva</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Manganaro</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">K</forename><surname>Mannheim</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">L</forename><surname>Maraschi</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Mariotti</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Martínez</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Masuda</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Mazin</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Mićanović</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Miceli</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Minev</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Miranda</surname></persName>
+							<affiliation key="aff10">
+								<orgName type="institution" key="instit1">Università di Siena</orgName>
+								<orgName type="institution" key="instit2">INFN Pisa</orgName>
+								<address>
+									<settlement>Siena</settlement>
+									<country key="IT">Italy</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">R</forename><surname>Mirzoyan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">E</forename><surname>Molina</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Moralejo</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Morcuende</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">V</forename><surname>Moreno</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">E</forename><surname>Moretti</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">P</forename><surname>Munar-Adrover</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">V</forename><surname>Neustroev</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">C</forename><surname>Nigro</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">K</forename><surname>Nilsson</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Ninci</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">K</forename><surname>Nishijima</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">K</forename><surname>Noda</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">L</forename><surname>Nogués</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Nöthe</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Nozaki</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Paiano</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><surname>Palacio</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Palatiello</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Paneque</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">R</forename><surname>Paoletti</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Paredes</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">P</forename><surname>Peñil</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Peresano</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Persic</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">P</forename><forename type="middle">G</forename><surname>Prada Moroni</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">E</forename><surname>Prandini</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">I</forename><surname>Puljak</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">W</forename><surname>Rhode</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Ribó</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><surname>Rico</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">C</forename><surname>Righi</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Rugliancich</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">L</forename><surname>Saha</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">N</forename><surname>Sahakyan</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">T</forename><surname>Saito</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Sakurai</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">K</forename><surname>Satalecka</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">K</forename><surname>Schmidt</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">T</forename><surname>Schweizer</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><surname>Sitarek</surname></persName>
+							<affiliation key="aff9">
+								<orgName type="department">Department of Astrophysics</orgName>
+								<orgName type="institution">University of Łódź</orgName>
+								<address>
+									<settlement>Łódź</settlement>
+									<country key="PL">Poland</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">I</forename><surname>Šnidarić</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Sobczynska</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Somero</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">A</forename><surname>Stamerra</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Strom</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Strzys</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Y</forename><surname>Suda</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">T</forename><surname>Surić</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Takahashi</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">F</forename><surname>Tavecchio</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">P</forename><surname>Temnikov</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">T</forename><surname>Terzić</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Teshima</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">N</forename><surname>Torres-Albà</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">L</forename><surname>Tosti</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">S</forename><surname>Tsujimoto</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">V</forename><surname>Vagelli</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">J</forename><surname>Van Scherpenberg</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">G</forename><surname>Vanzo</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Vazquez Acosta</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">C</forename><forename type="middle">F</forename><surname>Vigorito</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">V</forename><surname>Vitale</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">I</forename><surname>Vovk</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">M</forename><surname>Will</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">D</forename><surname>Zarić</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">L</forename><surname>Nava</surname></persName>
+						</author>
+						<title level="a" type="main">Teraelectronvolt emission from the γ-ray burst GRB 190114C MAGIC Collaboration*</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2019-11-20">20 November 2019</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">CC0F40F56D3AC707BAA993DDFEE59CFB</idno>
+					<note type="submission">Received: 10 May 2019 Accepted: 2 September 2019</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.2" ident="GROBID" when="2025-10-09T18:39+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">a91ee48</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=0, consolidateFunders=0, includeRawAffiliations=false, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], sentenceSegmentation=false, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract/>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Long-duration γ-ray bursts (GRBs) are the most luminous sources of electromagnetic radiation known in the Universe. They arise from outflows of plasma with velocities near the speed of light that are ejected by newly formed neutron stars or black holes (of stellar mass) at cosmological distances <ref type="bibr" target="#b0">1,</ref><ref type="bibr" target="#b1">2</ref> . Prompt flashes of megaelectronvoltenergy γ-rays are followed by a longer-lasting afterglow emission in a wide range of energies (from radio waves to gigaelectronvolt γ-rays), which originates from synchrotron radiation generated by energetic electrons in the accompanying shock waves <ref type="bibr" target="#b2">3,</ref><ref type="bibr" target="#b3">4</ref> . Although emission of γ-rays at even higher (teraelectronvolt) energies by other radiation mechanisms has been theoretically predicted <ref type="bibr" target="#b4">[5]</ref><ref type="bibr" target="#b5">[6]</ref><ref type="bibr" target="#b6">[7]</ref><ref type="bibr" target="#b7">[8]</ref> , it has not been previously detected <ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b7">8</ref> . Here we report observations of teraelectronvolt emission from the γ-ray burst GRB 190114C. γ-rays were observed in the energy range 0.2-1 teraelectronvolt from about one minute after the burst (at more than 50 standard deviations in the first 20 minutes), revealing a distinct emission component of the afterglow with power comparable to that of the synchrotron component. The observed similarity in the radiated power and temporal behaviour of the teraelectronvolt and X-ray bands points to processes such as inverse Compton upscattering as the mechanism of the teraelectronvolt emission <ref type="bibr" target="#b8">[9]</ref><ref type="bibr" target="#b9">[10]</ref><ref type="bibr" target="#b10">[11]</ref> . By contrast, processes such as synchrotron emission by ultrahigh-energy protons <ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b11">12,</ref><ref type="bibr" target="#b12">13</ref> are not favoured because of their low radiative efficiency. These results are anticipated to be a step towards a deeper understanding of the physics of GRBs and relativistic shock waves.</p><p>GRB 190114C was first identified as a long-duration GRB by the Burst Alert Telescope (BAT) onboard the Neil Gehrels Swift Observatory (Swift) <ref type="bibr" target="#b13">14</ref> and the Gamma-ray Burst Monitor (GBM) instrument onboard the Fermi satellite <ref type="bibr" target="#b14">15</ref> on 14 January 2019, 20:57:03 universal time (ut) (hereafter T 0 ). Its duration in terms of T 90 (the time interval containing 90% of the total photon counts) was measured to be about 116 s by Fermi-GBM <ref type="bibr" target="#b14">15</ref> and about 362 s by Swift-BAT <ref type="bibr" target="#b15">16</ref> . Soon afterwards, reports followed on the detection of its afterglow emission at various wavebands from 1.3 GHz to 23 GeV (ref. <ref type="bibr" target="#b16">17</ref> ) and the measurement of its redshift <ref type="bibr" target="#b17">18,</ref><ref type="bibr" target="#b18">19</ref> , z = 0.4245 ± 0.0005 (corresponding to cosmic distance). The isotropic-equivalent energy of the emission at energy of ε = 1-10 4 keV during T 90 observed by Fermi-GBM was E iso ≈ 3 × 10 53 erg (1 erg = 10 -7 J), implying that GRB 190114C was fairly energetic, but not exceptionally so compared to previous events (Methods).</p><p>Triggered by the Swift-BAT alert, the Major Atmospheric Gamma Imaging Cherenkov (MAGIC) telescopes <ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b20">21</ref> observed GRB 190114C from T 0 + 57 s until T 0 + 15,912 s (Extended Data Fig. <ref type="figure" target="#fig_0">1</ref>). γ-rays with energies above 0.2 TeV were detected with high significance from the beginning of the observations <ref type="bibr" target="#b21">22,</ref><ref type="bibr" target="#b22">23</ref> ; in the first 20 minutes of the data, the significance of the total γ-ray signal is more than 50 standard deviations (Methods, Extended Data Fig. <ref type="figure" target="#fig_1">2</ref>).</p><p>For cosmologically distant objects such as GRBs, the observed γ-ray spectra can be substantially modified owing to attenuation by the extragalactic background light (EBL) <ref type="bibr" target="#b23">24</ref> . The EBL is the diffuse background of infrared, optical and ultraviolet radiation that permeates intergalactic space, constituting the emission from all galaxies in the Universe. γ-rays can be effectively absorbed during their propagation via photon-photon pair-production interactions with low-energy photons of the EBL; this absorption is more severe for higher photon energies and higher redshifts. The γ-ray spectrum that would be observed if the EBL was absent, referred to as the intrinsic spectrum, can be inferred from the observed spectrum by 'correcting' for EBL attenuation, assuming a plausible model of the EBL <ref type="bibr" target="#b24">25</ref> .</p><p>Emission from GRBs occurs in two stages, which can partially overlap in time. The 'prompt' emission phase is characterized by a brief but intense flash of γ-rays, primarily at megaelectronvolt energies. It exhibits irregular variability on timescales shorter than milliseconds and lasts up to hundreds of seconds for long-duration GRBs. These γ-rays are generated in the inner regions of collimated jets of plasma, which are ejected with ultrarelativistic velocities from highly magnetized neutron stars or black holes that form following the death of massive stars 2 . The ensuing 'afterglow' phase is characterized by emission that spans a broader wavelength range and decays gradually over much longer timescales compared to the prompt emission. This originates from shock waves caused by the interaction of the jet with the ambient gas ('external shocks'). Its evolution is typified by a power-law decay</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Article</head><p>in time owing to the self-similar properties of the decelerating shock wave <ref type="bibr" target="#b2">3,</ref><ref type="bibr" target="#b3">4</ref> . The afterglow emission of previously observed GRBs, from radio frequencies to gigaelectronvolt energies, is generally interpreted as synchrotron radiation from energetic electrons that are accelerated within magnetized plasma at the external shock <ref type="bibr" target="#b1">2</ref> . Clues to whether the newly observed teraelectronvolt emission is associated with the prompt or the afterglow phase are offered by the observed light curve (flux F(t) as a function of time t).</p><p>Figure <ref type="figure" target="#fig_0">1</ref> shows such a light curve for the EBL-corrected intrinsic flux in the energy range ε = 0.3-1 TeV (see also Extended Data Table <ref type="table">1</ref>). It is well fitted with a simple power-law function F(t) ∝ t β with β = -1.60 ± 0.07. The flux evolves from F(t) ≈ 5 × 10 -8 erg cm -2 s -1 at t ≈ T 0 + 80 s to F(t) ≈ 6 × 10 -10 erg cm -2 s -1 at t ≳ T 0 + 10 3 s, after which it falls below the sensitivity level of the telescopes and is undetectable. There is no clear evidence for breaks or cutoffs in the light curve, nor irregular variability beyond the monotonic decay. The light curves in the kiloelectronvolt and gigaelectronvolt bands display behaviour similar to the teraelectronvolt band, with a somewhat shallower decay slope for the gigaelectronvolt band (Fig. <ref type="figure" target="#fig_0">1</ref>). These properties indicate that most of the observed emission is associated with the afterglow phase, rather than the prompt phase, which typically shows irregular variability. We note that although the measured T 90 is as long as about 360 s, the kiloelectronvolt-megaelectronvolt emission does not exhibit clear temporal or spectral evidence for a prompt component after about T 0 + 25 s (ref. <ref type="bibr" target="#b25">26</ref> ; Methods). Nevertheless, a sub-dominant contribution to the teraelectronvolt emission from a prompt component at later times cannot be excluded. The flux initially observed at t ≈ T 0 + 80 s corresponds to an apparent isotropic-equivalent luminosity of L iso ≈ 3 × 10 49 erg s -1 at ε = 0.3-1 TeV, making this the most luminous source known at these energies.</p><p>The power radiated in the teraelectronvolt band is comparable, within a factor of about 2, to that in the soft-X-ray and gigaelectronvolt bands during the periods when simultaneous teraelectronvoltkiloelectronvolt or teraelectronvolt-gigaelectronvolt data are available (Fig. <ref type="figure" target="#fig_0">1</ref>). The isotropic-equivalent energy radiated at ε = 0.3-1 TeV, integrated over the time period between T 0 + 62 s and T 0 + 2,454 s, is E 0.3-1TeV ≈ 4 × 10 51 erg. This is a lower limit to the total teraelectronvolt-band output, as it does not account for data before T 0 + 62 s or potential emission at ε &gt; 1 TeV. From the megaelectronvolt-gigaelectronvolt data, the power-law decay phase is inferred to start at about T 0 + 6 s (refs. <ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b26">27</ref> ). Assuming that the MAGIC light curve evolved as F(t) ∝ t -1.60 after that time, the teraelectronvolt-band energy integrated between T 0 + 6 s and T 0 + 2,454 s is E 0.3-1TeV ≈ 2 × 10 52 erg. This would be about 10% of the E iso value measured by Fermi-GBM at ε = 1-10 4 keV.</p><p>Figure <ref type="figure" target="#fig_0">1</ref> also shows the time evolution of the intrinsic spectral photon index α int , determined by fitting the EBL-corrected, time-dependent differential photon spectrum with the power-law function F ε ε d /d ∝ α int . Considering the statistical and systematic errors (Methods), there is no significant evidence for spectral variability. Throughout the observations, the data are consistent with α int ≈ -2, indicating that the radiated power is nearly equally distributed in ε over this band.</p><p>Figure <ref type="figure" target="#fig_1">2</ref> presents both the observed and the EBL-corrected intrinsic spectra above 0.2 TeV, averaged over (T 0 + 62 s, T 0 + 2,454 s). The observed spectrum can be fitted in the energy range 0.2-1 TeV with a simple power law with photon index α obs = -5.43 ± 0.22 (statistical error only), one of the steepest spectra ever observed for a γ-ray source. It is remarkable that photons are observed at ε ≈ 1 TeV (Extended Data Table <ref type="table">2</ref>), despite the severe EBL attenuation expected at these energies (by a factor of about 300, according to plausible EBL models; see Methods). Assuming a particular EBL model <ref type="bibr" target="#b24">25</ref> , the intrinsic spectrum is well described as a power law with α = -2.22 int -0.25 +0. <ref type="bibr" target="#b22">23</ref> (statistical error only), extending beyond 1 TeV at 95% confidence level with no evidence for a spectral break or cutoff (Methods). Adopting other EBL models leads to only small differences in α int , which are within the uncertainties (Methods). Consistency with α int ≈ -2 implies a roughly equal power radiated over 0.2-1 TeV and possibly beyond, strengthening the inference that there is substantial energy output at teraelectronvolt energies. Much of the observed emission up to gigaelectronvolt energies for GRB 190114C is probably afterglow synchrotron emission from electrons, similar to that of many previous GRBs 2, <ref type="bibr" target="#b27">28</ref> . The teraelectronvolt emission observed here is also plausibly associated with the afterglow. However, it cannot be a simple spectral extension of the electron synchrotron emission. The maximum energy of the emitting electrons is determined by the balance between their energy losses, which are b Flux (erg cm -2 s -1 ) Luminosity (erg s -1 ) 10 -9 10 -8 10 -7 10 50 10 49 10 48 10 -6 T-T 0 (s) 10 2 10 3 Fig. 1 | Light curves in the kiloelectronvolt, gigaelectronvolt and teraelectronvolt bands, and spectral evolution in the teraelectronvolt band for GRB 190114C. a, Light curves in units of energy flux (left axis) and apparent luminosity (right axis), for MAGIC at 0.3-1 TeV (red symbols), the Fermi Large Area Telescope (LAT) at 0.1-10 GeV (purple band) and the Swift X-ray Telescope (XRT) at 1-10 keV (green band). For the MAGIC data, the intrinsic flux is shown, corrected for EBL attenuation 25 from the observed flux. b, Temporal evolution of the power-law photon index, determined from time-resolved intrinsic spectra. The horizontal dashed line indicates the value -2. The errors shown in both panels are statistical only (one standard deviation).  <ref type="bibr" target="#b24">25</ref> (blue filled circles). The errors on the flux correspond to one standard deviation. The upper limits at 95% confidence level are shown for the first non-significant bin at high energies. Also shown is the best-fit model for the intrinsic spectrum (black curve) when assuming a powerlaw function. The grey solid curve for the observed spectrum is obtained by convolving this curve with the effect of EBL attenuation. The grey dashed curve is the forward-folding fit to the observed spectrum with a power-law function (Methods). dominated by synchrotron radiation, and their acceleration. The timescale of the latter should not be much shorter than that of their gyration around the magnetic field at the external shock. The energy of afterglow synchrotron photons is then limited to a maximum value, the so-called synchrotron burnoff limit <ref type="bibr" target="#b28">29,</ref><ref type="bibr" target="#b29">30</ref> of ε syn,max ≈ 100(Γ b /1,000) GeV, which depends only on the bulk Lorentz factor Γ b . The latter is unlikely to considerably exceed Γ b ≈ 1,000 (Methods). Figure <ref type="figure" target="#fig_2">3</ref> compares the observed photon energies with expectations of ε syn,max under different assumptions. Although a few γ-rays with energy approaching ε syn,max have been previously detected from a GRB by Fermi <ref type="bibr" target="#b29">30</ref> , the evidence for a separate spectral component was not conclusive, given the uncertainties in Γ b , the electron acceleration rate and the spatial structure of the emitting region <ref type="bibr" target="#b30">31</ref> . Here, even the lowest-energy photons detected by MAGIC are considerably above ε syn,max and extend beyond 1 TeV at 95% confidence level (Methods). Thus, this observation provides the first unequivocal evidence for a new emission component beyond synchrotron emission in the afterglow of a GRB. Moreover, this component is energetically important, with a power nearly comparable to that of the synchrotron component observed contemporaneously.</p><p>Comparing with previous MAGIC observations of GRBs, the fact that GRB 190114C was the first to be clearly detected may be due to a favourable combination of its low redshift and suitable observing conditions, rather than its intrinsic properties being exceptional (Methods), although firm conclusions cannot yet be drawn with only one positive detection. The capability of the telescopes to react fast and operate during moonlight conditions was crucial in achieving this detection.</p><p>The discovery of an energetically important emission component beyond electron synchrotron emission that may be common in GRB afterglows offers important new insight into the physics of GRBs. The similarity of the radiated power and temporal decay slopes in the teraelectronvolt and X-ray bands suggests that this component is intimately related to the electron synchrotron emission. Promising mechanisms for the teraelectronvolt emission are 'leptonic' processes in the afterglow such as inverse Compton radiation, in which the electrons in the external shock Compton-scatter ambient low-energy photons to higher energies <ref type="bibr" target="#b8">[9]</ref><ref type="bibr" target="#b9">[10]</ref><ref type="bibr" target="#b10">[11]</ref> . On the other hand, 'hadronic' processes induced by ultrahigh-energy protons in the external shock <ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b11">12,</ref><ref type="bibr" target="#b12">13</ref> may also be viable if the acceleration of electrons and protons occurs in a correlated manner. However, such processes typically have low radiative efficiency, and are not favoured as the origin of the luminous teraelectronvolt emission observed in GRB 190114C for cases such as proton synchrotron emission (Methods). Continuing efforts with existing and future γ-ray telescopes will test these expectations and provide further insight into the physics of GRBs and related issues.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Online content</head><p>Any methods, additional references, Nature Research reporting summaries, source data, extended data, supplementary information, acknowledgements, peer review information; details of author contributions and competing interests; and statements of data and code availability are available at <ref type="url" target="https://doi.org/10.1038/s41586-019-1750-x">https://doi.org/10.1038/s41586-019-1750-x</ref>. Institut de Física d'Altes Energies (IFAE), The Barcelona Institute of Science and Technology (BIST), Barcelona, Spain. <ref type="bibr" target="#b17">18</ref> Università di Pisa and INFN Pisa, Pisa, Italy. <ref type="bibr" target="#b18">19</ref> The Armenian Consortium, ICRANet-Armenia at NAS RA, A. Alikhanyan National Laboratory, Yerevan, Armenia.  Port d'Informació Científica (PIC), Barcelona, Spain. <ref type="bibr" target="#b21">22</ref> Croatian Consortium, Department of Physics, University of Rijeka, Rijeka, Croatia. <ref type="bibr" target="#b22">23</ref> Universität Würzburg, Würzburg, Germany. 24   Finnish MAGIC Consortium, Finnish Centre of Astronomy with ESO (FINCA), University of Turku, Turku, Finland. <ref type="bibr" target="#b24">25</ref> Departament de Física and CERES-IEEC, Universitat Autònoma de Barcelona, Bellaterra, Spain. <ref type="bibr" target="#b25">26</ref> Japanese MAGIC Consortium, ICRR, The University of Tokyo, Kashiwa, Japan. <ref type="bibr" target="#b26">27</ref> Croatian Consortium, University of Split -FESB, Split, Croatia. <ref type="bibr" target="#b27">28</ref> Croatian Consortium, Josip Juraj Strossmayer University of Osijek, Osijek, Croatia. <ref type="bibr" target="#b28">29</ref> Japanese MAGIC Consortium, RIKEN, Wako, Japan. <ref type="bibr" target="#b29">30</ref> Japanese MAGIC Consortium, Tokai University, Hiratsuka, Japan. <ref type="bibr" target="#b30">31</ref> Dipartimento di Fisica, Università di Trieste, Trieste, Italy. <ref type="bibr" target="#b31">32</ref> Institute for Fundamental Physics of the Universe (IFPU), Trieste, Italy. <ref type="bibr" target="#b32">33</ref> Institute for Nuclear Research and Nuclear Energy, Bulgarian Academy of Sciences, Sofia, Bulgaria. <ref type="bibr" target="#b33">34</ref> Universitat de Barcelona, ICCUB, IEEC-UB, Barcelona, Spain. <ref type="bibr" target="#b34">35</ref> Finnish MAGIC Consortium, Astronomy Research Unit, University of Oulu, Oulu, Finland. <ref type="bibr" target="#b35">36</ref> Croatian Consortium, Rudjer Boskovic Institute, Zagreb, Croatia. <ref type="bibr" target="#b36">37</ref> Istituto Nazionale Fisica Nucleare (INFN), Trieste, Italy. <ref type="bibr" target="#b37">38</ref> Present address: Laboratoire d'Annecy de Physique des Particules, Université Grenoble Alpes, Université Savoie Mont Blanc, CNRS, LAPP, Annecy, France. *e-mail: contact.magic@mpp.mpg.de</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Methods</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>General properties of GRB 190114C</head><p>GRB 190114C was first identified by the Swift-BAT <ref type="bibr" target="#b13">14</ref> and Fermi-GBM <ref type="bibr" target="#b14">15</ref> instruments on 14 January 2019, 20:57:03 ut. Subsequently, it was also detected by several other space-based instruments, including Fermi-LAT, INTEGRAL/SPI-ACS, AGILE/MCAL, Insight/HXMT and Konus-Wind <ref type="bibr" target="#b16">17,</ref><ref type="bibr" target="#b25">26</ref> . Its redshift was reported as z = 0.4245 ± 0.0005 by the Nordic Optical Telescope <ref type="bibr" target="#b17">18</ref> and confirmed by Gran Telescopio Canarias <ref type="bibr" target="#b18">19</ref> . The measured duration of T 90 ≈ 116 s by Fermi-GBM and T 90 ≈ 362 s by Swift-BAT <ref type="bibr" target="#b15">16</ref> puts GRB 190114C unambiguously in the long-duration subclass of GRBs 1 . The fluence and peak photon flux of the emission at 10-1,000 keV during T 90 measured by Fermi-GBM are (3.990 ± 0.008) × 10 -4 erg cm -2 and (246.86 ± 0.86) cm -2 s -1 (ref. <ref type="bibr" target="#b14">15</ref> ). The corresponding isotropic equivalent energy and luminosity at 1-10 <ref type="bibr" target="#b3">4</ref> keV are E iso ≈ 3 × 10 53 erg and L iso ≈ 1 × 10 53 erg s -1 , respectively <ref type="bibr" target="#b25">26</ref> . These values are consistent with the known correlations between the spectral peak energy ε peak and E iso (ref. <ref type="bibr" target="#b31">32</ref> ) and between ε peak and L iso (ref. <ref type="bibr" target="#b32">33</ref> ) for GRBs. The light curve of the kiloelectronvolt-megaelectronvolt emission exhibits two prominent emission episodes with irregular multi-peaked structure at t ≈ 0-5 s and t ≈ 15-25 s (Extended Data Fig. <ref type="figure" target="#fig_0">1</ref>). The spectra for these episodes are typical of GRB prompt emission <ref type="bibr" target="#b25">26</ref> . On the other hand, at t ≈ 15-25 s and t ≥ 25 s, the temporal and spectral properties of the kiloelectronvolt-megaelectronvolt emission are consistent with an afterglow component, indicating a considerable overlap in time between the prompt and afterglow phases. Indeed, from a joint spectral and temporal analysis of the Fermi-GBM and Fermi-LAT data, the onset of the afterglow for GRB 190114C was estimated to occur at t ≈ 6 s, much earlier than T 90 (ref. <ref type="bibr" target="#b25">26</ref> ).</p><p>The event is fairly energetic but not exceptionally so, with E iso lying in the highest ~30% of its known distribution <ref type="bibr" target="#b33">34</ref> . No neutrinos were detected by the IceCube Observatory in the energy range 100 TeV to 10 PeV, under non-optimal observing conditions <ref type="bibr" target="#b34">35</ref> .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>MAGIC telescopes and automatic alert system</head><p>The MAGIC telescopes comprise two 17-m diameter imaging atmospheric Cherenkov telescopes (IACTs; MAGIC-I and MAGIC-II) operating in stereoscopic mode, located at the Roque de los Muchachos Observatory in La Palma, Canary Islands, Spain <ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b20">21</ref> . By imaging Cherenkov light from extended air shower events, the telescopes can detect γ-rays above an energy threshold of 30 GeV, depending on the observing mode and conditions, with a field of view of ~10 square degrees.</p><p>Observing GRBs with IACTs such as those of MAGIC warrants a dedicated strategy. Because IACTs have a low probability of discovering GRBs serendipitously in their relatively small field of view, they rely on external alerts provided by satellite instruments with larger fields of view to trigger follow-up observations. Since their inception, the MAGIC telescopes were designed to perform fast follow-up observations of GRBs. By virtue of their light-weight reinforced-carbon-fibre structure and high repositioning speed, they can respond quickly to GRB alerts received via the Gamma-ray Coordinates Network (GCN; <ref type="url" target="https://gcn.gsfc.nasa.gov">https://gcn.  gsfc.nasa.gov</ref>) <ref type="bibr" target="#b35">36</ref> . After various updates to the entire system over the years <ref type="bibr" target="#b19">20,</ref><ref type="bibr" target="#b20">21</ref> , the telescopes can currently slew to a target with a repositioning speed of 7° s -1 . To achieve the fastest possible response to GRB alerts, an automatic alert system (AAS) has been developed, which is a multi-threaded programme that performs different tasks, such as connecting to the GCN servers, receiving GCN notices that contain the sky coordinates of the GRB and sending commands to the Central Control (CC) software of the MAGIC telescopes. This also includes a check of the visibility of the new target according to predefined criteria. A priority list has been set up for cases in which several different types of alerts are received simultaneously. Moreover, if there are multiple alerts for the same GRB, the AAS selects the one with the best localization.</p><p>If an alert is tagged as observable by the AAS, the telescopes automatically repoint to the new sky position. An automatic procedure, implemented in 2013, prepares the subsystems for data taking during the telescope slewing <ref type="bibr" target="#b36">37,</ref><ref type="bibr" target="#b37">38</ref> : data taken previously are saved, relevant trigger tables are loaded, appropriate electronics thresholds are set and the mirror segments are suitably adjusted by the Automatic Mirror Control hardware. While moving, the telescopes calibrate the imaging cameras. The data acquisition system continues taking data while it receives information about the target from the CC software. The presence of a trigger limiter set to 1 kHz prevents high rates and the saturation of the data acquisition system. When the repositioning has finished, the target is tracked in wobble mode, which is the standard observing mode for MAGIC <ref type="bibr" target="#b38">39</ref> . The fastest so far GRB followup was achieved for GRB 160821B, when the data taking started only 24 s after the GRB.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>MAGIC observations of GRB 190114C</head><p>On the night of 14 January 2019, at 20:57:25 ut (T 0 + 22 s), Swift-BAT distributed an alert reporting the first estimated coordinates of GRB 190114C (right ascension, +03 h 38 min 02 s; declination, -26 d 56 min 18 s). The AAS validated it as observable and triggered the automatic repointing procedure, and the telescopes began slewing in fast mode from their position before the alert. The MAGIC-I and MAGIC-II telescopes were on target and began tracking GRB 190114C at 20:57:52.858 ut and 20:57:53.260 ut (T 0 + 50 s), respectively, starting from a zenith angle of 55.8° and an azimuth angle of 175.1° in local coordinates. After starting the slewing, the telescopes reached the target position in approximately 27 s, moving by 42.82° in zenith and 177.5° in azimuth. At the end of the slewing, the cameras on the telescopes oscillated for a short time. Subsequently, we performed dedicated tests that reproduced the movement of the telescopes. We verified that the duration of the oscillations was less than 10 s after the start of the tracking, and their amplitude was less than 0.6′ when data taking began. Data acquisition started at 20:58:00 (T 0 + 57 s) and the data acquisition system was operating stably from 20:58:05 (T 0 + 62 s), as denoted in Extended Data Fig. <ref type="figure" target="#fig_0">1</ref>.</p><p>Observations were performed in the presence of moonlight, implying a relatively high night sky background (NSB), approximately 6 times the level for dark observations (moonless nights with good weather conditions) <ref type="bibr" target="#b39">40</ref> . Data taking for GRB 190114C stopped on 15 January 2019, 01:22:15 ut, when the target reached a zenith angle of 81.14° and an azimuth angle of 232.6°. The total exposure time for GRB 190114C was 4.12 h.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>MAGIC data analysis for GRB 190114C</head><p>Data collected from GRB 190114C were analysed using the standard MAGIC analysis software <ref type="bibr" target="#b20">21</ref> and with the analysis chain tuned for data taken under moonlight conditions <ref type="bibr" target="#b39">40</ref> . No detailed information on the atmospheric transmission was available because the LIDAR facility <ref type="bibr" target="#b40">41</ref> was not operating during the night of the observation. Therefore, the quality of the data was assessed by checking other auxiliary weather-monitoring devices, as well as the value and stability of the data acquisition rates.</p><p>A dedicated set of Monte Carlo simulation γ-ray data was produced for the analysis, matching the trigger settings (discriminator thresholds), the zenith-azimuth distribution and the NSB level of the GRB 190114C observations. The final dataset comprises events starting from 20:58:05 ut. Owing to the higher NSB compared to standard analysis, a higher level of image cleaning was applied to both the measured and the Monte Carlo data, and a higher cut on the integrated charge of the event image, set to 80 photoelectrons, was used for evaluating photon fluxes <ref type="bibr" target="#b39">40</ref> . The significance of the γ-ray signal was computed using the Li &amp; Ma method <ref type="bibr" target="#b41">42</ref> .</p><p>The spectra in Fig. <ref type="figure" target="#fig_1">2</ref> were derived by assuming a simple power-law function for the intrinsic spectrum</p><formula xml:id="formula_0">      F ε f ε ε d d = × α 0 0 -</formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Article</head><p>with the forward-folding method to derive the best-fit parameters and the Schmelling unfolding prescription for the spectral points <ref type="bibr" target="#b42">43</ref> , starting from the observed spectrum and correcting for EBL attenuation with the model of Dominguez et al. <ref type="bibr" target="#b24">25</ref> . The best-fit values are α = -2.22 (statistical) (systematic) int -0.25 +0.23 -0.26 +0.21 and f = [8.45 (statistical) (systematic)] × 10 TeV cm s 0,int -0.65 +0.68 -3.97 +4.42 -9 -1</p><p>-2 -1 at 0.46 TeV. We note that owing to the soft spectrum of the source, the systematic errors reported here are larger than those given in ref. <ref type="bibr" target="#b20">21</ref> .</p><p>The absolute energy scale for MAGIC measurements is systematically affected by the imperfect knowledge of different aspects, such as the atmospheric transmission, the mirror reflectance and the properties of photomultipliers. A dedicated study <ref type="bibr" target="#b20">21</ref> identified the light-scale matching of measured and Monte Carlo data as the most important contribution to the systematic errors on the absolute energy scale. A miscalibration of the Monte Carlo energy scale can lead to mis-reconstruction of the spectrum that affects both the flux and the spectral shape, especially at the lowest energies. These studies demonstrated that the reconstructed spectra for MAGIC are affected by a systematic error due to the variation of the light scale by less than ±15%. In the case of moonlight observations, additional systematic effects on the flux arise from mismatches between Monte Carlo and measured data, in particular of the trigger discriminator thresholds and of the higher noise in the photomultipliers. Dedicated studies for moonlight observations <ref type="bibr" target="#b39">40</ref> reveal that these errors affect only the overall flux (and not the spectral index) and depend on the NSB level. The contribution to the systematic error from the moonlight observations is minor compared to that due to the lightscale variations. Moreover, in the case of GRB 190114C, the influence of moonlight conditions on the overall systematic errors is mitigated by the improved data-Monte Carlo agreement achieved by simulating the recorded trigger discriminator thresholds and NSB during the GRB 190114C observation. For the analysis of the GRB 190114C data, we reproduced the effect of the light-scale variations on the spectra to derive the systematic errors on the energy flux and the errors on the photon index reported in Extended Data Table <ref type="table">1</ref>. The light-scale modifications were applied to the spectra before their deconvolution with EBL attenuation, which ultimately affects the low-and high-energy ends of the spectra in different ways. The fit to the obtained curves was performed in the same manner as the nominal case. Finally, the systematic errors were obtained from the difference of the parameter values computed for the nominal case and for the cases of light-scale variations by ±15%.</p><p>An additional systematic effect originates from uncertainties in existing EBL models. To quantify the corresponding systematic errors on the derived photon indices, the observed spectra were corrected by adopting several EBL models <ref type="bibr" target="#b43">[44]</ref><ref type="bibr" target="#b44">[45]</ref><ref type="bibr" target="#b45">[46]</ref> for the redshift of this GRB. The results can be found in Extended Data Table <ref type="table">4</ref>. The spectral indices inferred using different EBL models differ less than their statistical uncertainties (one standard deviation). Taking as reference the EBL model of Dominguez et al. <ref type="bibr" target="#b24">25</ref> , the spectral index for the time-integrated spectrum has an additional systematic error due to uncertainties in the EBL such that α = -2.</p><p>22 (statistical) (systematic) (systematic ) int -0.25 +0.23 -0.26 +0.21 -0.17 +0.07</p><p>EBL . The observed spectrum in the 0.2-1.0 TeV energy range can be roughly described by a power law with photon index α obs = -5.43 ± 0.22 (statistical) and flux normalization f 0,obs = [4.09 ± 0.34 (statistical)] × 10 -10 TeV -1 cm -2 s -1 at 0.475 TeV.</p><p>The upper limit for the first non-significant energy bin in the observed spectrum shown in Fig. <ref type="figure" target="#fig_1">2</ref> is calculated from a likelihood ratio test between two models. The first, baseline, model considers only background events and spillover events from lower energy. The second model additionally assumes that the spectrum extends to higher energy as an unbroken power law, with the flux normalization as a free parameter. Given the low event statistics in the higher-energy bins, the validity of the upper limit was checked by performing 10,000 Monte Carlo simulations of the likelihood ratio test. The test statistic distribution derived from this toy simulation was then used to determine the upper limit on the flux at 95% confidence level. The corresponding upper limit for the intrinsic spectrum was derived from that for the observed spectrum by correcting for EBL attenuation.</p><p>The time-dependent, EBL-corrected energy flux values shown in Fig. <ref type="figure" target="#fig_0">1</ref> and reported in Extended Data Table <ref type="table">1</ref> were computed with an analytical procedure. For each time bin, the value of the energy flux was computed as the integral between 0.3 and 1 TeV of the best-fit spectral power-law function derived with the forward-folding method. Accordingly, the errors were calculated analytically through standard procedures for error propagation, taking into account the covariance matrix. Moreover, the analytical results were checked against those computed with a toy Monte Carlo simulation, which gave comparable results.</p><p>The lower limits on the maximum event energy were computed by an iterative procedure in which a power-law model was assumed for the intrinsic spectrum and a different cut was applied to the maximum event energy for each iteration. For each value of the energy cut, a forward-folding fit was performed and a χ 2 value was obtained. The final result was obtained by finding the value of the energy cut for which the χ 2 variation corresponded to a given confidence level, set here to 95%.</p><p>The number of events in each time and energy bin shown in Fig. <ref type="figure" target="#fig_2">3</ref> was computed using the forward-folding EBL-corrected spectrum, the instrument effective area and the effective time of the observation. For the highest-energy bins, the corresponding numbers for the time interval between T 0 + 62 s and T 0 + 1,227 s are listed in Extended Data Table <ref type="table">2</ref>.</p><p>The number of observed excess events in bins of estimated energy are reported in Extended Data Table <ref type="table">3</ref>. Also listed are the expected number of photons in the same energy bins, obtained from the powerlaw model of the intrinsic spectrum by convolving it with the effect of EBL attenuation and the instrument response function for the zenith angles of this observation. We note that the counts in bins of estimated energy cannot be used to derive physical inferences. Spectral information that is physically meaningful must be computed as a function of the true energy of the events through an unfolding procedure using the energy migration matrix. Figure <ref type="figure" target="#fig_1">2</ref> shows such unfolded spectra (both intrinsic and observed) as a function of the true event energies.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Fermi-LAT data analysis for GRB 190114C</head><p>The publicly available Pass 8 (P8R3) LAT data for GRB 190114C were processed using the Conda Fermitools v1.0.2 package, distributed by the Fermi collaboration (<ref type="url" target="https://fermi.gsfc.nasa.gov/ssc/data/analysis/software/">https://fermi.gsfc.nasa.gov/ssc/data/analysis/  software/</ref>). Events of the 'Transient' class (P8R3_TRANSIENT020_V2) were selected within 10° from the source position. We assumed a powerlaw spectrum in the 0.1-10 GeV energy range, also accounting for the diffuse Galactic and extragalactic backgrounds, as described in the analysis manual (<ref type="url" target="https://fermi.gsfc.nasa.gov/ssc/data/analysis/scitools/">https://fermi.gsfc.nasa.gov/ssc/data/analysis/sci- tools/</ref>). To compute the source fluxes, we first checked that the spectral index was consistent with -2 for the entire 62-180 s interval after T 0 , and then repeated the fit, fixing the index to this value. The LAT energy flux shown in Fig. <ref type="figure" target="#fig_0">1</ref> was computed as the integral of the best-fit power-law model within the corresponding energy range.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>XRT light curve</head><p>The XRT light curve shown in Fig. <ref type="figure" target="#fig_0">1</ref> was derived using the online analysis tool that is publicly available at the Swift-XRT repository (<ref type="url" target="http://www.swift.ac.uk/xrt_curves/">http://www.  swift.ac.uk/xrt_curves/</ref>). The spectral data collected in the 'windowed timing' mode suffered from an instrumental effect, causing a nonphysical excess of counts below ~0.8 keV (ref. <ref type="bibr" target="#b46">47</ref> ). To remove this effect, we considered the best-fit model of spectral data above 1 keV and estimated a conversion factor from the number of counts to deabsorbed flux equal to 10 -10 erg cm -2 per count. To obtain the energy-flux light curve, we applied this conversion factor to the count rate as a function of time in the interval 62-2,000 s.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Synchrotron burnoff limit for the afterglow emission</head><p>GRB afterglows are triggered by external shocks that decelerate and dissipate their kinetic energy in the ambient medium, consequently producing a nonthermal distribution of electrons via mechanisms such as shock acceleration <ref type="bibr" target="#b1">2</ref> . The maximum energy of electrons that can be attained in the reference frame comoving with the post-shock region can be estimated by equating the timescales of acceleration, τ acc , and energy loss, τ loss ; the latter is primarily due to synchrotron radiation <ref type="bibr" target="#b28">29</ref> . These are expected to scale with the electron Lorentz factor, γ, and the magnetic field strength, B, as τ acc ∝ γB -1 and τ loss ∝ γ -1 B -2 , so that the maximum electron Lorentz factor is γ max ∝ B -1/2 . Thus, the maximum energy of synchrotron emission ε Bγ ∝ syn,max max 2 is independent of B. Its numerical value in the shock comoving frame is ε′ ≈50 -100 MeV syn,max , which is determined only from fundamental constants and a factor of order 1 that characterizes the uncertainties in the acceleration timescale. The observed spectrum of afterglow synchrotron emission is then expected to display a cutoff below the energy ε syn,max ≈ 100 MeV × [Γ b (t)/(1 + z)], which depends only on the timedependent bulk Lorentz factor Γ b (t) of the external shock. To estimate ε syn,max and its evolution, we use the Γ b (t) values derived from solutions to the dynamical equations of the external shock <ref type="bibr" target="#b47">48</ref> . The resulting curves for ε syn,max are shown for cases of a medium with constant density (n = constant) and a medium with a radial density profile of n(R) = AR -2 (with A = 3 × 10 35 A⁎ cm -1 , where A⁎ is a parameter characterizing the normalization of the density), expected when a dense stellar wind is produced by the progenitor star (dotted and dashed lines in Fig. <ref type="figure" target="#fig_2">3</ref>, respectively). These curves have been derived assuming small values for the density (n = 0.01 and A⁎ = 0.01) and the efficiency of prompt emission (η γ = 1%), which imply a large value for the isotropic-equivalent blast-wave kinetic energy (E k,aft = E iso (1 -η γ )/η γ ), resulting in high values of ε syn,max . Even with such extreme assumptions, the energy of photons detected by MAGIC are well above ε syn,max (Fig. <ref type="figure" target="#fig_2">3</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Constraints on proton synchrotron afterglow emission</head><p>Synchrotron emission by protons accelerated to ultrahigh energies in the external shock has been proposed as a mechanism for gigaelectronvolt-teraelectronvolt emission in GRB afterglows, potentially at energies above the burnoff limit for electron synchrotron emission <ref type="bibr" target="#b9">10,</ref><ref type="bibr" target="#b11">12,</ref><ref type="bibr" target="#b12">13,</ref><ref type="bibr" target="#b48">49,</ref><ref type="bibr" target="#b49">50</ref> . We discuss whether this process provides a viable explanation for the teraelectronvolt emission observed here, following the formulation of ref. <ref type="bibr" target="#b11">12</ref> . For the case of a uniform external medium with density n = n 0 cm -3 , the maximum expected energy of proton synchrotron emission in the observer frame is</p><formula xml:id="formula_1">ε ηϵ n E t z = (7.6 GeV) ( ) ( 1 + )<label>(1) psyn,max -2 B 3</label></formula><p>/2 0 k,53 3/4 s -1/4 -3/4</p><p>where E k,aft = 10 53 E k,53 erg, t s is the observer time after the burst in seconds, ϵ B is the fraction of energy in magnetic fields relative to that dissipated behind the shock, and η is a factor of order 1 that characterizes the acceleration timescale. Even when assuming optimistic values of ϵ B = 0.5 and η = 1, realizing ε psyn,max ≳ 1 TeV at t ≈ 100 s for a GRB at z = 0.42 requires n 0 E k,53 ≳ 10 4 , which is a very high value for the product of the blastwave energy and the external medium density. Even more severe is the requirement to reproduce the observed teraelectronvolt flux and spectrum. Assuming a power-law energy distribution with index -p for the accelerated protons, their synchrotron emission is expected to have a single power-law spectrum with photon index α int = -(p + 1)/2, extending from a minimum energy</p><formula xml:id="formula_2">ε ξϵ ϵ E t z = (3.7 × 10 eV) ( 1 + ) (2) m -3 p -2 p 2 B 1/2 k,53 1/2 s -3/2 1/2</formula><p>with differential energy flux</p><formula xml:id="formula_3">f ε ε ξ ϵ n E D z ( = ) = (1.3 × 10 erg cm s Hz ) × ( 1 + ) (3) m -28 -2 -1 -1 p B 1/2 0 1/2 k,<label>53 28 -2</label></formula><p>up to ε = ε psyn,max , where ξ p is the fraction of the number of protons swept up by the shock that are accelerated, ϵ p is the fraction of the energy of the accelerated protons relative to that dissipated behind the shock, and D = 10 28 D 28 cm is the luminosity distance of the GRB. The observed intrinsic spectral index α int ≈ -2 at t ≈ 100 s implies p ≈ 3. If p = 3 and the spectrum extends to ε = 1 TeV without a cutoff, the energy flux at 1 TeV is . Even in the extreme case of a GRB occurring at the centre of a dense molecular cloud with n = 10 6 cm -3 , the blastwave energy must be E k,aft &gt; 2 × 10 59 erg, greatly exceeding the energy available for any plausible GRB progenitor 2 . This conclusion is qualitatively valid regardless of how the electron synchrotron emission is modelled or whether the external medium has a density profile characteristic of a progenitor stellar wind. Although proton synchrotron emission may possibly explain the gigaelectronvolt emission observed in some GRBs <ref type="bibr" target="#b49">50</ref> , it is not favoured as the origin of the luminous teraelectronvolt emission observed in GRB 190114C, owing to its low radiative efficiency. A more plausible mechanism may be inverse Compton emission by accelerated electrons <ref type="bibr" target="#b8">[9]</ref><ref type="bibr" target="#b9">[10]</ref><ref type="bibr" target="#b10">[11]</ref><ref type="bibr" target="#b50">51</ref> .</p><formula xml:id="formula_4">F ε ϵ ξ ϵ n E D t z ( = 1 TeV) =(1.1 × 10 erg cm s ) × ( 1 + )<label>(4)</label></formula></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Past teraelectronvolt-band observations of GRBs with MAGIC and other facilities</head><p>Although the search for teraelectronvolt γ-rays from GRBs has continued over many years using a variety of experimental techniques, no clear detections had been previously achieved <ref type="bibr" target="#b51">[52]</ref><ref type="bibr" target="#b52">[53]</ref><ref type="bibr" target="#b53">[54]</ref><ref type="bibr" target="#b54">[55]</ref><ref type="bibr" target="#b55">[56]</ref><ref type="bibr" target="#b56">[57]</ref><ref type="bibr" target="#b57">[58]</ref><ref type="bibr" target="#b58">[59]</ref><ref type="bibr" target="#b59">[60]</ref><ref type="bibr" target="#b60">[61]</ref><ref type="bibr" target="#b61">[62]</ref><ref type="bibr" target="#b62">[63]</ref> . Designed with the primary goal of GRB follow-up observations, MAGIC has been responding to GRB alerts since 15 July 2004. For the first five years, MAGIC operated as a single telescope (MAGIC-I), reacting mainly to alerts from Swift. After the second telescope (MAGIC-II) was added in 2009, GRB observations have been carried out in stereoscopic mode. Excluding cases when useful data could not be taken owing to hardware problems or adverse weather conditions, 105 GRBs were observed from July 2004 to February 2019. Of these, 40 have determined redshifts, among which 8 and 3 have redshifts lower than 1 and 0.5, respectively. Observations started less than 30 min after the burst for 66 events (of which 33 lack redshifts) and less than 60 s for 14 events; the small number of events in the latter case is mainly due to bad weather conditions or observational criteria not being fulfilled at the time of the alert.</p><p>Despite 15 years of dedicated efforts, no unambiguous evidence for γ-ray signals from GRBs had been seen by MAGIC before GRB 190114C. The flux upper limits for GRBs observed in 2005-2006 were found to be consistent with simple power-law extrapolations of their low-energy spectra when EBL attenuation was taken into account <ref type="bibr" target="#b63">64</ref> . More detailed studies were presented for GRB 080430 <ref type="bibr" target="#b64">65</ref> and GRB 090102 66 , which were observed simultaneously with MAGIC and other instruments in different energy bands. Since 2013, GRB observations have been performed with the new automatic procedure described above <ref type="bibr" target="#b36">37,</ref><ref type="bibr" target="#b37">38</ref> . In addition, for some bright GRBs detected by Fermi-LAT, late-time observations have been conducted up to one day after the burst to search for potential signals extended in time.</p><p>The case of GRB 190114C can be compared with other GRBs followed up by MAGIC under similar conditions. Aside from the intrinsic spectrum, the main factors affecting the detectability of a GRB by IACTs are the redshift z (stronger EBL attenuation for higher z), the zenith distance (higher energy threshold for higher zenith distance), the external light conditions and the delay time T delay between the GRB and the beginning of the observations. If we select GRBs with z &lt; 1 and T delay &lt; 1 h, only four events remain, as listed in Extended Data Table <ref type="table">5</ref>. Except for GRB 190114C, these are all short GRBs, which is not surprising as they are known to be distributed at redshifts appreciably lower than those of long GRBs <ref type="bibr" target="#b66">67</ref> . A few other long GRBs with z &lt; 1 and T delay &lt; 1 h were followed up by MAGIC, but the observations were not successful owing to technical problems or adverse observing conditions. There is also a fair fraction of events without measured redshifts. Assuming that they follow the known z distribution of long GRBs, ~20% of the events are expected at z &lt; 1 (ref. <ref type="bibr" target="#b67">68</ref> ). Since 30 long GRBs without redshifts were observed by MAGIC with T delay &lt; 1 h, only a few events with observing conditions and z similar to that of GRB 190114C are expected to be observed during the whole MAGIC GRB campaign .</p><p>A similar analysis for past GRBs observed by other Cherenkov telescopes is not possible, because not all of the relevant ancillary information is available. However, summaries of past efforts have been reported. Of the 150 GRBs followed up by VERITAS until February 2018 <ref type="bibr" target="#b62">63</ref> , 50 had observations starting within 180 s from the satellite trigger time. H.E.S.S. also conducted several tens of GRB follow-up observations until 2017 <ref type="bibr" target="#b57">58,</ref><ref type="bibr" target="#b68">69</ref> . 64 GRBs were observed by HAWC <ref type="bibr" target="#b60">61</ref> until February 2017. Milagrito and Milagro observed 54 GRBs from February 1997 to May 1998 <ref type="bibr" target="#b69">70</ref> and more than 130 GRBs from January 2000 to March 2008, respectively <ref type="bibr" target="#b70">71,</ref><ref type="bibr" target="#b71">72</ref> . None of these considerable observational efforts provided any convincing detection, although some hints at low significance have been found. A case of particular interest was the Milagrito result for GRB 970417A <ref type="bibr" target="#b52">53</ref> , although its statistical significance was not high enough to fully rule out a background event.</p><p>Extended Data Fig. <ref type="figure" target="#fig_0">1</ref> | Light curves in the teraelectronvolt and kiloelectronvolt bands for GRB 190114C. Photon flux light curve above 0.3 TeV measured by MAGIC (red; from T 0 + 62 s to T 0 + 210 s), compared with that between 15 keV and 50 keV measured by Swift-BAT <ref type="bibr" target="#b72">73</ref> (grey; from T 0 to T 0 + 210 s) and the photon flux above 0.3 TeV of the Crab Nebula (blue dashed line). The errors on the MAGIC photon fluxes correspond to one standard deviation. Vertical lines indicate the times when the alert was received (T 0 + 22 s) by MAGIC, when the tracking of the GRB by the telescopes started (T 0 + 50 s), when the data acquisition started (T 0 + 57 s), and when the data acquisition system (DAQ) became stable (T 0 + 62 s; dotted line).</p><p>Extended Data Fig. <ref type="figure" target="#fig_1">2</ref> | Significance of the γ-ray signal between T 0 + 62 s and T 0 + 1,227 s for GRB 190114C. Distribution of the squared angular distance, θ 2 , for the MAGIC data (points) and background events (grey shaded area). θ 2 is defined as the squared angular distance between the nominal position of the source and the reconstructed arrival direction of the events. The dashed vertical line represents the value of the cut on θ 2 . This defines the signal region, where the number of events coming from the source (N on ) and from the background (N off ) are computed. The errors for 'on' events are derived from Poissonian statistics. From N on and N off , the number of excess events (N ex ) is computed. The significance is calculated using the Li &amp; Ma method <ref type="bibr" target="#b41">42</ref> .</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1 |</head><label>1</label><figDesc>Photon index</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2 |</head><label>2</label><figDesc>Fig.2| Spectrum above 0.2 TeV averaged over the period between T 0 + 62 s and T 0 + 2,454 s for GRB 190114C. Spectral-energy distributions for the spectrum observed by MAGIC (grey open circles) and the intrinsic spectrum corrected for EBL attenuation<ref type="bibr" target="#b24">25</ref> (blue filled circles). The errors on the flux correspond to one standard deviation. The upper limits at 95% confidence level are shown for the first non-significant bin at high energies. Also shown is the best-fit model for the intrinsic spectrum (black curve) when assuming a powerlaw function. The grey solid curve for the observed spectrum is obtained by convolving this curve with the effect of EBL attenuation. The grey dashed curve is the forward-folding fit to the observed spectrum with a power-law function (Methods).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 3 |</head><label>3</label><figDesc>Fig. 3 | Distribution of the number of teraelectronvolt-band γ-rays in time and energy for GRB 190114C. The number of events in each bin of energy and time are colour-coded (Methods). The vertical line indicates the beginning of the data acquisition. The curves show the expected maximum photon energy ε syn,max of electron synchrotron radiation in the standard afterglow theory for two extreme cases giving high values of ε syn,max . The dotted curve corresponds to an isotropic-equivalent blast-wave kinetic energy of E k,aft = 3 × 10 55 erg and a homogeneous external medium with density n = 0.01 cm -3 ; the dashed curve corresponds to E k,aft = 3 × 10 55 erg and an external medium describing a progenitor stellar wind with a density profile of n(R) = AR -2 as a function of radius R, where A = 3 × 10 33 cm -1 (Methods).</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>20</head><figDesc>Centro de Investigaciones Energéticas, Medioambientales y Tecnológicas, Madrid, Spain.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>21</head><label>21</label></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><figDesc>of ϵ B = 0.5, η = 1, ϵ p = 0.5 and ξ p = 0.1, accounting for the observed 0.3-1 TeV flux at t ≈ 100 s of F ≈ 4 × 10 -8 erg cm -2 s -1 necessitates n E</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="12,39.69,71.57,410.76,226.92" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0"><graphic coords="15,39.69,60.03,330.24,226.44" type="bitmap" /></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgements</head><p>We are grateful to <rs type="person">G. Sinnis</rs> for remarks that helped us improve the format and content of this manuscript. We dedicate this paper to the memory of <rs type="person">E. Lorenz</rs>. With his innovative spirit, infinite enthusiasm and vast knowledge of experimental methods, techniques and materials, he played a key role in optimizing the design of MAGIC, specifically for observations of GRBs. We thank the <rs type="institution">Instituto de Astrofísica de Canarias</rs> for the excellent working conditions at the <rs type="institution">Observatorio del Roque de los Muchachos in La Palma</rs>. We acknowledge financial support by the <rs type="funder">German BMBF and MPG</rs>, the <rs type="funder">Italian INFN</rs> and <rs type="funder">INAF</rs>, the <rs type="funder">Swiss National Fund (SNF)</rs>, the <rs type="funder">ERDF</rs> under the <rs type="funder">Spanish Ministry of Economy and Competitiveness</rs> (<rs type="grantNumber">FPA2017-87859-P</rs>, <rs type="grantNumber">FPA2017-85668-P</rs>,<rs type="grantNumber">FPA2017-82729-C6-2-R</rs>, <rs type="grantNumber">FPA2017-82729-C6-6-R</rs>, <rs type="grantNumber">FPA2017-82729-C6-5-R</rs>, <rs type="grantNumber">AYA2015-71042-P</rs>,<rs type="grantNumber">AYA2016-76012-C3-1-P</rs>,<rs type="grantNumber">ESP2017-87055-C2-2-P</rs>,<rs type="grantNumber">FPA2017-90566-REDC</rs>), the <rs type="funder">Indian Department of Atomic Energy</rs>, the <rs type="funder">Japanese JSPS and MEXT</rs>, the <rs type="funder">Bulgarian Ministry of Education and Science, National RI Roadmap</rs> Project <rs type="grantNumber">DO1-153/28.08.2018</rs>, and the <rs type="funder">Academy of Finland</rs> for grant number <rs type="grantNumber">320045</rs>. This work was also supported by the <rs type="funder">Spanish Centro de Excelencia 'Severo Ochoa</rs>' <rs type="grantNumber">SEV-2016-0588</rs> and <rs type="grantNumber">SEV-2015-0548</rs> and <rs type="funder">Unidad de Excelencia 'María de Maeztu</rs>' <rs type="grantNumber">MDM-2014-0369</rs>, by the <rs type="funder">Croatian Science Foundation (HrZZ)</rs> Project <rs type="grantNumber">IP-2016-06-9782</rs> and the <rs type="funder">University of Rijeka</rs> Project <rs type="grantNumber">13.12.1.3.02</rs>, by the <rs type="funder">DFG Collaborative Research Centers</rs> <rs type="grantNumber">SFB823/C4</rs> and <rs type="grantNumber">SFB876/C3</rs>, the <rs type="funder">Polish National Research Centre</rs> grant <rs type="grantNumber">UMO-2016/22/M/ST9/00382</rs>, and by the <rs type="funder">Brazilian MCTIC</rs>, <rs type="funder">CNPq</rs> and FAPERJ. S.I. is supported by <rs type="funder">JSPS KAKENHI</rs> grant number <rs type="grantNumber">JP17K05460</rs>, <rs type="funder">MEXT, Japan</rs>, the <rs type="funder">RIKEN</rs> <rs type="programName">iTHEMS programme</rs> and the <rs type="programName">joint research programme</rs> of <rs type="funder">ICRR, University of Tokyo</rs>. L. Nava acknowledges funding from the <rs type="funder">European Union</rs>'s <rs type="programName">Horizon 2020 Research and Innovation programme</rs> under the <rs type="grantName">Marie Skłodowska-Curie</rs> grant agreement number <rs type="grantNumber">664931</rs>. <rs type="person">K. Noda</rs> is supported by <rs type="funder">JSPS KAKENHI</rs> grant number <rs type="grantNumber">JP19K21043</rs>, <rs type="funder">MEXT, Japan</rs>. <rs type="person">A. Berti</rs> acknowledges support from the <rs type="funder">Physics Department of the University of Torino</rs> (through funding from the <rs type="funder">Department of Excellence)</rs> and from the <rs type="funder">Torino division of the Italian INFN</rs>. E. Moretti acknowledges funding from the <rs type="funder">European Union</rs>'s <rs type="programName">Horizon 2020 research and innovation programme</rs> under <rs type="grantName">Marie Skłodowska-Curie</rs> grant agreement number <rs type="grantNumber">665919</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_UNG9CUE">
+					<idno type="grant-number">FPA2017-87859-P</idno>
+				</org>
+				<org type="funding" xml:id="_Q9yYSQY">
+					<idno type="grant-number">FPA2017-85668-P</idno>
+				</org>
+				<org type="funding" xml:id="_MvVk5kE">
+					<idno type="grant-number">FPA2017-82729-C6-2-R</idno>
+				</org>
+				<org type="funding" xml:id="_bUs2PJ5">
+					<idno type="grant-number">FPA2017-82729-C6-6-R</idno>
+				</org>
+				<org type="funding" xml:id="_MWebG8v">
+					<idno type="grant-number">FPA2017-82729-C6-5-R</idno>
+				</org>
+				<org type="funding" xml:id="_6N9Yyyq">
+					<idno type="grant-number">AYA2015-71042-P</idno>
+				</org>
+				<org type="funding" xml:id="_PNPb2aa">
+					<idno type="grant-number">AYA2016-76012-C3-1-P</idno>
+				</org>
+				<org type="funding" xml:id="_abmAPeP">
+					<idno type="grant-number">ESP2017-87055-C2-2-P</idno>
+				</org>
+				<org type="funding" xml:id="_5NzBptK">
+					<idno type="grant-number">FPA2017-90566-REDC</idno>
+				</org>
+				<org type="funding" xml:id="_rMjPkpz">
+					<idno type="grant-number">DO1-153/28.08.2018</idno>
+				</org>
+				<org type="funding" xml:id="_vqrjgAB">
+					<idno type="grant-number">320045</idno>
+				</org>
+				<org type="funding" xml:id="_U5hyD6E">
+					<idno type="grant-number">SEV-2016-0588</idno>
+				</org>
+				<org type="funding" xml:id="_RK5VBxt">
+					<idno type="grant-number">SEV-2015-0548</idno>
+				</org>
+				<org type="funding" xml:id="_ynGFWX5">
+					<idno type="grant-number">MDM-2014-0369</idno>
+				</org>
+				<org type="funding" xml:id="_nahPMm4">
+					<idno type="grant-number">IP-2016-06-9782</idno>
+				</org>
+				<org type="funding" xml:id="_h6qaDZX">
+					<idno type="grant-number">13.12.1.3.02</idno>
+				</org>
+				<org type="funding" xml:id="_buJwfC9">
+					<idno type="grant-number">SFB823/C4</idno>
+				</org>
+				<org type="funding" xml:id="_2EhkhM4">
+					<idno type="grant-number">SFB876/C3</idno>
+				</org>
+				<org type="funding" xml:id="_7XFwt4M">
+					<idno type="grant-number">UMO-2016/22/M/ST9/00382</idno>
+				</org>
+				<org type="funding" xml:id="_5Yu8rZF">
+					<idno type="grant-number">JP17K05460</idno>
+				</org>
+				<org type="funding" xml:id="_SJX32v4">
+					<orgName type="program" subtype="full">iTHEMS programme</orgName>
+				</org>
+				<org type="funding" xml:id="_j9cqtM6">
+					<orgName type="program" subtype="full">joint research programme</orgName>
+				</org>
+				<org type="funding" xml:id="_FeS5NGV">
+					<idno type="grant-number">664931</idno>
+					<orgName type="grant-name">Marie Skłodowska-Curie</orgName>
+					<orgName type="program" subtype="full">Horizon 2020 Research and Innovation programme</orgName>
+				</org>
+				<org type="funding" xml:id="_GYwJnqV">
+					<idno type="grant-number">JP19K21043</idno>
+				</org>
+				<org type="funding" xml:id="_76cb8kE">
+					<idno type="grant-number">665919</idno>
+					<orgName type="grant-name">Marie Skłodowska-Curie</orgName>
+					<orgName type="program" subtype="full">Horizon 2020 research and innovation programme</orgName>
+				</org>
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data availability</head><p>Raw data were generated at the MAGIC telescopes large-scale facility. Derived data supporting the findings of this study are available from the corresponding authors upon request. Source data for Figs. <ref type="figure">1</ref><ref type="figure">2</ref><ref type="figure">3</ref>are provided with the paper.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Code availability</head><p>Proprietary data reconstruction codes were generated at the MAGIC telescope large-scale facility. Information supporting the findings of this study is available from the corresponding authors upon request.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Extended Data Table 1 | Energy flux between 0.3 and 1 TeV in selected time bins for GRB 190114C</head><p>Values listed correspond to the light curve in Fig. <ref type="figure">1</ref>. For each time bin, columns represent the start and end time of the bin, the EBL-corrected energy flux in the 0.3-1 TeV range, and the best-fit spectral photon indices. The last row reports the value of the intrinsic spectral index for the time-integrated spectrum (Fig. <ref type="figure">2</ref>). The reported statistical errors (stat) correspond to one standard deviation, whereas systematic errors (sys) are derived from the variation of the light scale by ±15% (see Methods).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Extended Data Table 4 | Spectral indices for different EBL models</head><p>The abbreviations refer to the different EBL model adopted in each case. D11: Dominguez et al. <ref type="bibr" target="#b24">25</ref> (reported also in Extended Data Table <ref type="table">1</ref>); F08: Franceschini et al. <ref type="bibr" target="#b43">44</ref> ; FI10: Finke et al. <ref type="bibr" target="#b44">45</ref> ; G12: Gilmore et al. <ref type="bibr" target="#b45">46</ref> . The errors correspond to one standard deviation.</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Author contributions The MAGIC telescope system was designed and constructed by the MAGIC Collaboration. The operation, data processing, calibration, Monte Carlo simulations of the detector and of theoretical models, and data analyses were performed by the members of the MAGIC Collaboration, who also discussed and approved the scientific results. All MAGIC collaborators contributed to the editing and comments to the final version of the manuscript. S.I. and L. Nava coordinated the interpretation of the data and, together with S. Covino, wrote the corresponding sections and contributed to the structuring and editing of the rest of the paper. K. Noda and A. Berti coordinated the analysis of the MAGIC data; together with E. Moretti they contributed to the analysis and the writing of the relevant sections. I.V. performed the Fermi-LAT analysis and, together with D. Miceli contributed to the calculation of limits, excesses and the curves in Fig. <ref type="figure">3</ref>. R.M. contributed to coordinating, structuring and editing this paper.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Competing interests</head><p>The authors declare no competing interests.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Additional information</head><p>Correspondence and requests for materials should be addressed to V.A.A. Peer review information Nature thanks Gus Sinnis and the other, anonymous, reviewer(s) for their contribution to the peer review of this work. Reprints and permissions information is available at <ref type="url" target="http://www.nature.com/reprints">http://www.nature.com/reprints</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Extended Data Table 2 | Number of γ-rays from GRB 190114C in the highest-energy bins</head><p>The number of γ-ray counts was estimated from the MAGIC data using the power-law spectral model for the time interval between T 0 + 62 s and T 0 + 1,227 s.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Article</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Extended Data Table 3 | Observed and expected number of events in estimated-energy bins for GRB 190114C</head><p>The number of expected events is calculated from the intrinsic spectrum power-law model, by convolving it with the effect of EBL attenuation and the instrument response function of the telescope for these large zenith angles. The energy binning in estimated energy matches the one in true energy (after unfolding) shown in Fig. <ref type="figure">2</ref> and Extended Data Table <ref type="table">2</ref>. The large uncertainty in the number of expected events in the lowest-energy bin is dominated by the uncertainty in the very low effective area of the telescopes close to the energy threshold of this analysis. The numbers reported in this table cannot be used directly for any physical inference. The measured spectrum needs to be first unfolded using the energy migration matrix <ref type="bibr" target="#b20">21</ref> .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Article</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Extended Data Table 5 | List of GRBs observed under adequate technical and weather conditions by MAGIC with z &lt; 1 and T delay &lt; 1 h</head><p>The zenith angle at the beginning of the observations is reported in the last column. All GRBs except GRB 061217 were observed in stereoscopic mode. GRB 061217, GRB 100816A and GRB 160821B are short GRBs, whereas GRB 190114C is a long GRB. Observations of a few other long GRBs with the same criteria were also conducted but are not listed here, because they were affected by technical problems or adverse observing conditions.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Gamma-ray bursts</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Gehrels</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Mészáros</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Science</title>
+		<imprint>
+			<biblScope unit="volume">337</biblScope>
+			<biblScope unit="page" from="932" to="936" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">The physics of gamma-ray bursts &amp; relativistic jets</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Kumar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Phys. Rep</title>
+		<imprint>
+			<biblScope unit="volume">561</biblScope>
+			<biblScope unit="page" from="1" to="109" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Theories of gamma-ray bursts</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Mészáros</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Annu. Rev. Astron. Astrophys</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<biblScope unit="page" from="137" to="169" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">The physics of gamma-ray bursts</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Piran</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Rev. Mod. Phys</title>
+		<imprint>
+			<biblScope unit="volume">76</biblScope>
+			<biblScope unit="page" from="1143" to="1210" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">GeV-TeV emission from γ-ray bursts</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Mészáros</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Razzaque</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">New Astron. Rev</title>
+		<imprint>
+			<biblScope unit="volume">48</biblScope>
+			<biblScope unit="page" from="445" to="451" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">High-energy γ-ray emission from gamma-ray bursts -before GLAST</title>
+		<author>
+			<persName><forename type="first">Y.-Z</forename><surname>Fan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Piran</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Front. Phys. China</title>
+		<imprint>
+			<biblScope unit="volume">3</biblScope>
+			<biblScope unit="page" from="306" to="330" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Gamma-ray burst science in the era of the Cherenkov Telescope Array</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Inoue</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astropart. Phys</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="page" from="252" to="275" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">High-energy emission from gamma-ray bursts</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Nava</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Int. J. Mod. Phys. D</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="page">1842003</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Spectral properties of blast-wave models of gamma-ray burst sources</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Mészáros</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Rees</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Papathanassiou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">432</biblScope>
+			<biblScope unit="page" from="181" to="193" />
+			<date type="published" when="1994">1994</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">High-energy spectral components in gamma-ray burst afterglows</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Mészáros</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">559</biblScope>
+			<biblScope unit="page" from="110" to="122" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Energies of GRB blast waves and prompt efficiencies as implied by modelling of X-ray and GeV afterglows</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Beniamini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Nava</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">B</forename><surname>Duran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Piran</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mon. Not. R. Astron. Soc</title>
+		<imprint>
+			<biblScope unit="volume">454</biblScope>
+			<biblScope unit="page" from="1073" to="1085" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">GeV photons from ultrahigh energy cosmic rays accelerated in gamma-ray bursts</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Vietri</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Phys. Rev. Lett</title>
+		<imprint>
+			<biblScope unit="volume">78</biblScope>
+			<biblScope unit="page" from="4328" to="4331" />
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">High-energy gamma rays from ultra-high-energy cosmic-ray protons in gamma-ray bursts</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Böttcher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">D</forename><surname>Dermer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J. Lett</title>
+		<imprint>
+			<biblScope unit="volume">499</biblScope>
+			<biblScope unit="page" from="131" to="134" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">C: Swift detection of a very bright burst with a bright optical counterpart</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Gropp</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Grb</surname></persName>
+		</author>
+		<ptr target="https://gcn.gsfc.nasa.gov/gcn3/23688.gcn3" />
+	</analytic>
+	<monogr>
+		<title level="j">GCN Circulars</title>
+		<imprint>
+			<biblScope unit="volume">23688</biblScope>
+			<date type="published" when="2019">190114. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">C: Fermi GBM detection</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Hamburg</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Grb</surname></persName>
+		</author>
+		<ptr target="https://gcn.gsfc.nasa.gov/gcn3/23707.gcn3" />
+	</analytic>
+	<monogr>
+		<title level="j">GCN Circulars</title>
+		<imprint>
+			<biblScope unit="volume">23707</biblScope>
+			<date type="published" when="2019">190114. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">GRB 190114C: Swift-BAT refined analysis</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">A</forename><surname>Krimm</surname></persName>
+		</author>
+		<ptr target="https://gcn.gsfc.nasa.gov/gcn3/23724.gcn3" />
+	</analytic>
+	<monogr>
+		<title level="j">GCN Circulars</title>
+		<imprint>
+			<biblScope unit="volume">23724</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Observation of inverse Compton emission from a long γ-ray burst</title>
+		<author>
+			<orgName type="collaboration">MAGIC Collaboration</orgName>
+		</author>
+		<idno type="DOI">10.1038/s41586-019-1754-6</idno>
+		<ptr target="https://doi.org/10.1038/s41586-019-1754-6" />
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b17">
+	<analytic>
+		<title level="a" type="main">C: NOT optical counterpart and redshift</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Selsing</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Grb</surname></persName>
+		</author>
+		<ptr target="https://gcn.gsfc.nasa.gov/gcn3/23695.gcn3" />
+	</analytic>
+	<monogr>
+		<title level="j">GCN Circulars</title>
+		<imprint>
+			<biblScope unit="volume">23695</biblScope>
+			<date type="published" when="2019">190114. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b18">
+	<analytic>
+		<title level="a" type="main">C: refined redshift by the 10.4m GTC</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Castro-Tirado</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Grb</surname></persName>
+		</author>
+		<ptr target="https://gcn.gsfc.nasa.gov/gcn3/23708.gcn3" />
+	</analytic>
+	<monogr>
+		<title level="j">GCN Circulars</title>
+		<imprint>
+			<biblScope unit="volume">23708</biblScope>
+			<date type="published" when="2019">190114. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b19">
+	<analytic>
+		<title level="a" type="main">The major upgrade of the MAGIC telescopes, part I: the hardware improvements and the commissioning of the system</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Aleksić</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astropart. Phys</title>
+		<imprint>
+			<biblScope unit="volume">72</biblScope>
+			<biblScope unit="page" from="61" to="75" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b20">
+	<analytic>
+		<title level="a" type="main">The major upgrade of the MAGIC telescopes, part II: a performance study using observations of the Crab Nebula</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Aleksić</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astropart. Phys</title>
+		<imprint>
+			<biblScope unit="volume">72</biblScope>
+			<biblScope unit="page" from="76" to="94" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b21">
+	<monogr>
+		<title level="m" type="main">First time detection of a GRB at sub-TeV energies; MAGIC detects the GRB 190114C</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Mirzoyan</surname></persName>
+		</author>
+		<idno>Telegram 12390</idno>
+		<ptr target="http://www.astronomerstelegram.org/?read=12390" />
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b22">
+	<monogr>
+		<title level="m" type="main">MAGIC detects the GRB 190114C in the TeV energy domain</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Mirzoyan</surname></persName>
+		</author>
+		<idno>23701</idno>
+		<ptr target="https://gcn.gsfc.nasa.gov/gcn3/23701.gcn3" />
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">GCN Circulars</note>
+</biblStruct>
+
+<biblStruct xml:id="b23">
+	<analytic>
+		<title level="a" type="main">The extragalactic background light and the gamma-ray opacity of the universe</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Dwek</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Krennrich</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astropart. Phys</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="page" from="112" to="133" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Extragalactic background light inferred from AEGIS galaxy-SED-type fractions</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Domínguez</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mon. Not. R. Astron. Soc</title>
+		<imprint>
+			<biblScope unit="volume">410</biblScope>
+			<biblScope unit="page" from="2556" to="2578" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b25">
+	<analytic>
+		<title level="a" type="main">GRB 190114C: from prompt to afterglow?</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E</forename><surname>Ravasio</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astron. Astrophys</title>
+		<imprint>
+			<biblScope unit="volume">626</biblScope>
+			<biblScope unit="page">12</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Synchrotron self-Compton emission from afterglow shocks as the origin of the sub-TeV emission in GRB 180720B and GRB</title>
+		<author>
+			<persName><forename type="first">X.-Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R.-Y</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H.-M</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S.-Q</forename><surname>Xi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Zhang</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">C. Astrophys. J</title>
+		<imprint>
+			<date>190114</date>
+		</imprint>
+	</monogr>
+	<note>in the press</note>
+</biblStruct>
+
+<biblStruct xml:id="b27">
+	<analytic>
+		<title level="a" type="main">The first Fermi-LAT gamma-ray burst catalog</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ackermann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J. Suppl. Ser</title>
+		<imprint>
+			<biblScope unit="volume">209</biblScope>
+			<biblScope unit="page">11</biblScope>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b28">
+	<analytic>
+		<title level="a" type="main">On the external shock synchrotron model for gamma-ray bursts&apos; GeV emission</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Piran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Nakar</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J. Lett</title>
+		<imprint>
+			<biblScope unit="volume">718</biblScope>
+			<biblScope unit="page" from="63" to="67" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Fermi-LAT observations of the gamma-ray burst GRB 130427</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Ackermann</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">A. Science</title>
+		<imprint>
+			<biblScope unit="volume">343</biblScope>
+			<biblScope unit="page" from="42" to="47" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b30">
+	<analytic>
+		<title level="a" type="main">NuSTAR observations of GRB 130427A establish a single component synchrotron afterglow origin for the late optical to multi-GeV emission</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Kouveliotou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J. Lett</title>
+		<imprint>
+			<biblScope unit="volume">779</biblScope>
+			<biblScope unit="page">1</biblScope>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Intrinsic spectra and energetics of BeppoSAX gamma-ray bursts with known redshifts</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Amati</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astron. Astrophys</title>
+		<imprint>
+			<biblScope unit="volume">390</biblScope>
+			<biblScope unit="page" from="81" to="89" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Gamma-ray burst formation rate inferred from the spectral peak energy-peak luminosity relation</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Yonetoku</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">609</biblScope>
+			<biblScope unit="page" from="935" to="951" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b33">
+	<analytic>
+		<title level="a" type="main">A complete sample of bright Swift long gamma-ray bursts: testing the spectral-energy correlations</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Nava</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mon. Not. R. Astron. Soc</title>
+		<imprint>
+			<biblScope unit="volume">421</biblScope>
+			<biblScope unit="page" from="1256" to="1264" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b34">
+	<analytic>
+		<title level="a" type="main">C: Search for high-energy neutrinos with IceCube</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Vandenbroucke</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Grb</surname></persName>
+		</author>
+		<ptr target="http://www.astronomerstelegram.org/?read=12395" />
+	</analytic>
+	<monogr>
+		<title level="m">The Astronomer&apos;s Telegram 12395</title>
+		<imprint>
+			<date type="published" when="2019">190114. 2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b35">
+	<analytic>
+		<title level="a" type="main">GCN capabilities and status, and the incorporation of LIGO/Virgo</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Barthelmy</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">APS Meeting Abstracts</title>
+		<imprint>
+			<publisher>APS</publisher>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page">4</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Recent follow-up observations of GRBs in the very high energy band with the MAGIC Telescopes</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Carosi</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">34th International Cosmic Ray Conference (ICRC2015)</title>
+		<editor>
+			<persName><forename type="first">A</forename><forename type="middle">S</forename><surname>Borisov</surname></persName>
+		</editor>
+		<imprint>
+			<publisher>POS</publisher>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page">809</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Search for high energy emission from GRBs with MAGIC</title>
+		<author>
+			<persName><surname>Magic Grb Group</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. Int. Astron. Union</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page" from="70" to="73" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b38">
+	<analytic>
+		<title level="a" type="main">New methods of atmospheric Cherenkov imaging for gamma-ray astronomy. I. The false source method</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Fomin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astropart. Phys</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="137" to="150" />
+			<date type="published" when="1994">1994</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Performance of the MAGIC telescopes under moonlight</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">L</forename><surname>Ahnen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astropart. Phys</title>
+		<imprint>
+			<biblScope unit="volume">94</biblScope>
+			<biblScope unit="page" from="29" to="41" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b40">
+	<monogr>
+		<title level="m" type="main">A novel LIDAR-based atmospheric calibration method for improving the data analysis of MAGIC</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Fruck</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/1403.3591" />
+		<imprint>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">Preprint at</note>
+</biblStruct>
+
+<biblStruct xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Analysis methods for results in gamma-ray astronomy</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">P</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">Q</forename><surname>Ma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">272</biblScope>
+			<biblScope unit="page" from="317" to="324" />
+			<date type="published" when="1983">1983</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b42">
+	<analytic>
+		<title level="a" type="main">The method of reduced cross-entropy. A general approach to unfold probability distributions</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Schmelling</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nucl. Instrum. Methods Phys. Res. A</title>
+		<imprint>
+			<biblScope unit="volume">340</biblScope>
+			<biblScope unit="page" from="400" to="412" />
+			<date type="published" when="1994">1994</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Extragalactic optical-infrared background radiation, its time evolution and the cosmic photon-photon opacity</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Franceschini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Rodighiero</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Vaccari</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astron. Astrophys</title>
+		<imprint>
+			<biblScope unit="volume">487</biblScope>
+			<biblScope unit="page" from="837" to="852" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Modeling the extragalactic background light from stars and dust</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Finke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Razzaque</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">D</forename><surname>Dermer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">712</biblScope>
+			<biblScope unit="page" from="238" to="249" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Semi-analytic modelling of the extragalactic background light and consequences for extragalactic gamma-ray spectra</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">C</forename><surname>Gilmore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">S</forename><surname>Somerville</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Primack</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Domínguez</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mon. Not. R. Astron. Soc</title>
+		<imprint>
+			<biblScope unit="volume">422</biblScope>
+			<biblScope unit="page" from="3189" to="3207" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b46">
+	<analytic>
+		<title level="a" type="main">The Swift-XRT WT mode spectrum of GRB190114C</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Beardmore</surname></persName>
+		</author>
+		<ptr target="https://gcn.gsfc.nasa.gov/gcn3/23736.gcn3" />
+	</analytic>
+	<monogr>
+		<title level="j">GCN Circulars</title>
+		<imprint>
+			<biblScope unit="volume">23736</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Afterglow emission in gammaray bursts -I. Pair-enriched ambient medium and radiative blast waves</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Nava</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Sironi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Ghisellini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Celotti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Ghirlanda</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mon. Not. R. Astron. Soc</title>
+		<imprint>
+			<biblScope unit="volume">433</biblScope>
+			<biblScope unit="page" from="2107" to="2121" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Very strong TeV emission as gamma-ray burst afterglows</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Totani</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J. Lett</title>
+		<imprint>
+			<biblScope unit="volume">502</biblScope>
+			<biblScope unit="page" from="13" to="16" />
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b49">
+	<analytic>
+		<title level="a" type="main">A leptonic-hadronic model for the afterglow of gamma-ray burst 090510</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Razzaque</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J. Lett</title>
+		<imprint>
+			<biblScope unit="volume">724</biblScope>
+			<biblScope unit="page" from="109" to="112" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Prospects for detection of very high-energy emission from GRB in the context of the external shock model</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Galli</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Piro</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astron. Astrophys</title>
+		<imprint>
+			<biblScope unit="volume">489</biblScope>
+			<biblScope unit="page" from="1073" to="1077" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Gamma-ray bursts at VERITAS energies</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Connaughton</surname></persName>
+			<affiliation>
+				<orgName type="collaboration">VERITAS Collaboration</orgName>
+			</affiliation>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astropart. Phys</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="page" from="255" to="257" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Evidence for TEV Emission from GRB 970417A</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Atkins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J. Lett</title>
+		<imprint>
+			<biblScope unit="volume">533</biblScope>
+			<biblScope unit="page" from="119" to="122" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Limits on very high energy emission from gamma-ray bursts with the milagro observatory</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Atkins</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J. Lett</title>
+		<imprint>
+			<biblScope unit="volume">604</biblScope>
+			<biblScope unit="page" from="25" to="28" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Milagro constraints on very high energy emission from short-duration gamma-ray bursts</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">A</forename><surname>Abdo</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">666</biblScope>
+			<biblScope unit="page" from="361" to="367" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Very high energy observations of gamma-ray burst locations with the Whipple telescope</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Horan</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">655</biblScope>
+			<biblScope unit="page" from="396" to="405" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b56">
+	<analytic>
+		<title level="a" type="main">HESS observations of the prompt and afterglow phases of GRB 060602</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Aharonian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">B. Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">690</biblScope>
+			<biblScope unit="page" from="1068" to="1073" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b57">
+	<analytic>
+		<title level="a" type="main">HESS observations of γ-ray bursts in 2003-2007</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Aharonian</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astron. Astrophys</title>
+		<imprint>
+			<biblScope unit="volume">495</biblScope>
+			<biblScope unit="page" from="505" to="512" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b58">
+	<analytic>
+		<title level="a" type="main">VERITAS observations of gamma-ray bursts detected by Swift</title>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">A</forename><surname>Acciari</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">743</biblScope>
+			<biblScope unit="page">62</biblScope>
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Search for TeV gamma-ray emission from GRB 100621A, an extremely bright GRB in X-rays</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">E S S</forename><surname>Collaboration</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">with H.E.S.S. Astron. Astrophys</title>
+		<imprint>
+			<biblScope unit="volume">565</biblScope>
+			<biblScope unit="page">16</biblScope>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Search for very-high-energy emission from gamma-ray bursts using the first 18 months of data from the HAWC gamma-ray observatory</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Alfaro</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">843</biblScope>
+			<biblScope unit="page">88</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b61">
+	<monogr>
+		<author>
+			<persName><forename type="first">C</forename><surname>Hoischen</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/1708.01088" />
+		<title level="m">International Cosmic Ray Conference (ICRC2017)</title>
+		<imprint>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b62">
+	<analytic>
+		<title level="a" type="main">A strong limit on the very-high-energy emission from GRB 150323A</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">U</forename><surname>Abeysekara</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">857</biblScope>
+			<biblScope unit="page">33</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b63">
+	<analytic>
+		<title level="a" type="main">MAGIC upper limits on the very high energy emission from gamma-ray bursts</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Albert</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">667</biblScope>
+			<biblScope unit="page" from="358" to="366" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b64">
+	<analytic>
+		<title level="a" type="main">MAGIC observation of the GRB 080430 afterglow</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Aleksić</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astron. Astrophys</title>
+		<imprint>
+			<biblScope unit="volume">517</biblScope>
+			<biblScope unit="page">5</biblScope>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b65">
+	<analytic>
+		<title level="a" type="main">MAGIC upper limits on the GRB 090102 afterglow</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Aleksić</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Mon. Not. R. Astron. Soc</title>
+		<imprint>
+			<biblScope unit="volume">437</biblScope>
+			<biblScope unit="page" from="3103" to="3111" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b66">
+	<analytic>
+		<title level="a" type="main">Short gamma-ray bursts at the dawn of the gravitational wave era</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Ghirlanda</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astron. Astrophys</title>
+		<imprint>
+			<biblScope unit="volume">594</biblScope>
+			<biblScope unit="page">84</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b67">
+	<analytic>
+		<title level="a" type="main">The Swift gamma-ray burst host galaxy legacy survey. I. Sample selection and redshift distribution</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Perley</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astrophys. J</title>
+		<imprint>
+			<biblScope unit="volume">817</biblScope>
+			<biblScope unit="page">7</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b68">
+	<monogr>
+		<title level="m" type="main">Searching for TeV emission from GRBs: the status of the</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Lennarz</surname></persName>
+		</author>
+		<ptr target="https://arxiv.org/abs/1307.6897" />
+		<editor>H.E.S.S.</editor>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+	<note type="report_type">GRB programme</note>
+</biblStruct>
+
+<biblStruct xml:id="b69">
+	<analytic>
+		<title level="a" type="main">Results from the Milagrito experiment</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Smith</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AIP Conf. Proc</title>
+		<imprint>
+			<date type="published" when="2000">2000</date>
+			<biblScope unit="volume">515</biblScope>
+			<biblScope unit="page" from="441" to="447" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b70">
+	<analytic>
+		<title level="a" type="main">A search for GeV-TeV emission from GRBs using the Milagro detector</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Aune</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">AIP Conf. Proc</title>
+		<imprint>
+			<date type="published" when="2009">2009</date>
+			<biblScope unit="volume">1133</biblScope>
+			<biblScope unit="page" from="385" to="387" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b71">
+	<analytic>
+		<title level="a" type="main">A search for GeV-TeV emission from gamma-ray bursts using the Milagro detector</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">M</forename><surname>Saz Parkinson</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">AIP Conf. Proc</title>
+		<imprint>
+			<biblScope unit="volume">1112</biblScope>
+			<biblScope unit="page" from="181" to="186" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b72">
+	<analytic>
+		<title level="a" type="main">The Swift Burst Analyser. I. BAT and XRT spectral and flux evolution of gamma-ray bursts</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Evans</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Astron. Astrophys</title>
+		<imprint>
+			<biblScope unit="volume">519</biblScope>
+			<biblScope unit="page">102</biblScope>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>
