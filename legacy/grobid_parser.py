@@ -41,6 +41,9 @@ class GrobidParser:
         self.timeout = self.config.get('timeout', 180)
         self.sleep_time = self.config.get('sleep_time', 5)
         self.coordinates = self.config.get('coordinates', [])
+        self.max_workers = self.config.get('max_workers', 4)
+        self.consolidate_header = self.config.get('consolidate_header', 1)
+        self.consolidate_citations = self.config.get('consolidate_citations', 0)
         self.offline_mode = offline_mode
         
         # Create output directory if it doesn't exist
@@ -84,7 +87,10 @@ class GrobidParser:
                 'batch_size': 1000,
                 'timeout': 180,
                 'sleep_time': 5,
-                'coordinates': []
+                'coordinates': [],
+                'max_workers': 4,
+                'consolidate_header': 1,
+                'consolidate_citations': 0
             }
     
     def _check_grobid_server(self):
@@ -119,13 +125,12 @@ class GrobidParser:
         """
         if self.offline_mode:
             logger.warning("Running in offline mode. Cannot process PDF with GROBID.")
-            logger.info("Extracting basic metadata from PDF filename instead.")
-            return self._extract_metadata_from_filename(pdf_path)
+            logger.error("GROBID processing failed - server not available")
+            return None
             
         if not self._check_grobid_server():
             logger.error("GROBID server is not running. Cannot process PDF.")
-            logger.info("Extracting basic metadata from PDF filename instead.")
-            return self._extract_metadata_from_filename(pdf_path)
+            return None
         
         if not os.path.exists(pdf_path):
             logger.error(f"PDF file not found: {pdf_path}")
@@ -148,10 +153,13 @@ class GrobidParser:
             
             # Prepare the files and data for the request
             files = {'input': open(pdf_path, 'rb')}
-            data = {}
+            data = {
+                'consolidateHeader': str(self.consolidate_header),
+                'consolidateCitations': str(self.consolidate_citations)
+            }
             
             if coord_param:
-                data['coordinates'] = coord_param
+                data['teiCoordinates'] = coord_param
             
             # Send the request
             logger.info(f"Processing {pdf_path} with GROBID")
@@ -436,20 +444,23 @@ class GrobidParser:
         
         return extracted_data
     
-    def batch_process(self, pdf_dir, output_dir=None, max_workers=4):
+    def batch_process(self, pdf_dir, output_dir=None, max_workers=None):
         """
         Process multiple PDFs in a directory.
         
         Args:
             pdf_dir (str): Directory containing PDF files
             output_dir (str): Directory to save the output
-            max_workers (int): Maximum number of worker threads
+            max_workers (int): Maximum number of worker threads (default: from config)
             
         Returns:
             list: List of processed files with their status
         """
         if not output_dir:
             output_dir = self.output_dir
+        
+        if max_workers is None:
+            max_workers = self.max_workers
         
         # Create output directory if it doesn't exist
         if not os.path.exists(output_dir):
@@ -463,7 +474,7 @@ class GrobidParser:
             logger.warning(f"No PDF files found in {pdf_dir}")
             return []
         
-        logger.info(f"Found {len(pdf_files)} PDF files to process")
+        logger.info(f"Found {len(pdf_files)} PDF files to process with {max_workers} parallel workers")
         
         # Process files in parallel
         results = []
@@ -490,8 +501,9 @@ class GrobidParser:
                         'error': str(e)
                     })
                 
-                # Sleep to avoid overloading the server
-                time.sleep(self.sleep_time)
+                # Sleep to avoid overloading the server (only if sleep_time > 0)
+                if self.sleep_time > 0:
+                    time.sleep(self.sleep_time)
         
         # Generate a summary report
         success_count = sum(1 for r in results if r['status'] == 'success')

@@ -9,3 +9,4 @@ grobid-client>=0.7.3
 json5>=0.9.10
 pandas>=1.5.3
 tqdm>=4.65.0
+PyMuPDF>=1.23.0

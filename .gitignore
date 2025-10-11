@@ -1,3 +1,31 @@
+# Virtual environment
 venv/
-__pycache__
-*.DS_store
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# System files
+.DS_Store
+*.DS_Store
+
+# Downloaded papers and output
+papers/*.pdf
+output/*.json
+output/*.xml
+
+# Log files
+logs/*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.bak

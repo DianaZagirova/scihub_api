@@ -56,6 +56,46 @@ class SciHubGrobidDownloader:
         if not os.path.exists(self.processed_dir):
             os.makedirs(self.processed_dir)
             logger.info(f"Created processed data directory: {self.processed_dir}")
+        
+        # Create separate log files for different failure types
+        self.logs_dir = os.path.join(os.getcwd(), 'logs')
+        if not os.path.exists(self.logs_dir):
+            os.makedirs(self.logs_dir)
+        
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        self.not_found_log = os.path.join(self.logs_dir, f"not_found_scihub_{timestamp}.log")
+        self.processing_failed_log = os.path.join(self.logs_dir, f"grobid_processing_failed_{timestamp}.log")
+        self.success_log = os.path.join(self.logs_dir, f"grobid_success_{timestamp}.log")
+        
+        # Initialize log files with headers
+        if self.log_failed:
+            with open(self.not_found_log, 'w') as f:
+                f.write(f"# Papers Not Found on Sci-Hub - Created at {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write("# Format: [Timestamp] DOI - Reason\n\n")
+            
+            with open(self.processing_failed_log, 'w') as f:
+                f.write(f"# Papers Downloaded but Failed GROBID Processing - Created at {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write("# Format: [Timestamp] DOI - PDF Path - Error\n\n")
+            
+            with open(self.success_log, 'w') as f:
+                f.write(f"# Successfully Processed Papers with GROBID - Created at {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write("# Format: [Timestamp] DOI - PDF Path\n\n")
+            
+            logger.info(f"Created log files in {self.logs_dir}")
+    
+    def log_entry(self, log_file, doi, message):
+        """Log an entry to a specific log file."""
+        if not self.log_failed:
+            return
+        
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log_entry = f"[{timestamp}] {doi} - {message}\n"
+        
+        try:
+            with open(log_file, 'a') as f:
+                f.write(log_entry)
+        except Exception as e:
+            logger.error(f"Error writing to log file: {e}")
     
     def download_and_process(self, doi):
         """
@@ -65,14 +105,15 @@ class SciHubGrobidDownloader:
             doi (str): DOI of the paper to download
             
         Returns:
-            tuple: (pdf_path, extracted_data) or (None, None) if failed
+            tuple: (pdf_path, extracted_data, status) where status is 'success', 'not_found', or 'processing_failed'
         """
         # Download the paper
         pdf_path = self.downloader.download_paper(doi)
         
         if not pdf_path:
             logger.error(f"Failed to download paper with DOI: {doi}")
-            return None, None
+            self.log_entry(self.not_found_log, doi, "Not found on Sci-Hub or download failed")
+            return None, None, 'not_found'
         
         logger.info(f"Successfully downloaded paper to: {pdf_path}")
         
@@ -82,14 +123,17 @@ class SciHubGrobidDownloader:
             
             if extracted_data:
                 logger.info(f"Successfully processed paper with GROBID: {doi}")
-                return pdf_path, extracted_data
+                self.log_entry(self.success_log, doi, pdf_path)
+                return pdf_path, extracted_data, 'success'
             else:
                 logger.error(f"Failed to process paper with GROBID: {doi}")
-                return pdf_path, None
+                self.log_entry(self.processing_failed_log, doi, f"{pdf_path} - GROBID processing returned no data")
+                return pdf_path, None, 'processing_failed'
                 
         except Exception as e:
             logger.error(f"Error processing paper with GROBID: {e}")
-            return pdf_path, None
+            self.log_entry(self.processing_failed_log, doi, f"{pdf_path} - {str(e)}")
+            return pdf_path, None, 'processing_failed'
     
     def batch_download_and_process(self, dois):
         """
@@ -111,13 +155,14 @@ class SciHubGrobidDownloader:
             logger.info(f"Processing DOI {i+1}/{len(dois)} ({progress:.1f}%): {doi}")
             
             # Download and process the paper
-            pdf_path, extracted_data = self.download_and_process(doi)
+            pdf_path, extracted_data, status = self.download_and_process(doi)
             
             # Record the result
             result = {
                 'doi': doi,
                 'pdf_path': pdf_path,
                 'processed': extracted_data is not None,
+                'status': status,
                 'metadata': extracted_data.get('metadata', {}) if extracted_data else None
             }
             
@@ -130,11 +175,19 @@ class SciHubGrobidDownloader:
                 time.sleep(delay)
         
         # Print summary
-        success_download = sum(1 for r in results if r['pdf_path'])
-        success_process = sum(1 for r in results if r['processed'])
+        success_count = sum(1 for r in results if r['status'] == 'success')
+        not_found_count = sum(1 for r in results if r['status'] == 'not_found')
+        processing_failed_count = sum(1 for r in results if r['status'] == 'processing_failed')
         
-        logger.info(f"Download summary: {success_download}/{len(dois)} papers downloaded successfully")
-        logger.info(f"Processing summary: {success_process}/{len(dois)} papers processed successfully")
+        logger.info(f"\n=== Processing Summary ===")
+        logger.info(f"Total DOIs: {len(dois)}")
+        logger.info(f"Successfully processed: {success_count}")
+        logger.info(f"Not found on Sci-Hub: {not_found_count}")
+        logger.info(f"Downloaded but failed GROBID processing: {processing_failed_count}")
+        logger.info(f"\nLog files created in: {self.logs_dir}")
+        logger.info(f"  - Not found: {os.path.basename(self.not_found_log)}")
+        logger.info(f"  - Processing failed: {os.path.basename(self.processing_failed_log)}")
+        logger.info(f"  - Success: {os.path.basename(self.success_log)}")
         
         return results
     
@@ -229,12 +282,18 @@ def main():
     total_time = time.time() - start_time
     minutes, seconds = divmod(total_time, 60)
     
-    success_download = sum(1 for r in results if r['pdf_path'])
-    success_process = sum(1 for r in results if r['processed'])
+    success_count = sum(1 for r in results if r['status'] == 'success')
+    not_found_count = sum(1 for r in results if r['status'] == 'not_found')
+    processing_failed_count = sum(1 for r in results if r['status'] == 'processing_failed')
     
-    print(f"\nDownload and processing complete in {int(minutes)}m {int(seconds)}s")
-    print(f"Download results: {success_download}/{len(cleaned_dois)} papers downloaded successfully")
-    print(f"Processing results: {success_process}/{len(cleaned_dois)} papers processed with GROBID successfully")
+    print(f"\n{'='*50}")
+    print(f"Download and processing complete in {int(minutes)}m {int(seconds)}s")
+    print(f"{'='*50}")
+    print(f"Total DOIs processed: {len(cleaned_dois)}")
+    print(f"  ✓ Successfully processed: {success_count}")
+    print(f"  ✗ Not found on Sci-Hub: {not_found_count}")
+    print(f"  ⚠ Downloaded but failed GROBID processing: {processing_failed_count}")
+    print(f"{'='*50}")
     
     return 0
 

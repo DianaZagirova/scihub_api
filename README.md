@@ -240,3 +240,88 @@ This tool is for educational and research purposes only. Please respect copyrigh
 ## License
 
 This project is open source and available under the MIT License.
+
+## Commands
+python scihub_fast_downloader.py -f test_dois.txt --mode structured
+
+This will:
+
+Read the DOI from 
+test_dois.txt
+ (currently: DOI: 10.1093/geronj/11.3.298)
+Download the PDF from Sci-Hub
+Process it with the fast PDF parser in structured mode
+Save the PDF to the papers/ directory
+Save the extracted structured data to the output/ directory
+
+If you want to use simple mode (fastest, plain text only) instead:
+python scihub_fast_downloader.py -f test_dois.txt --mode simple
+
+Or for full mode (everything - metadata + structured text):
+python scihub_fast_downloader.py -f test_dois.txt --mode full
+
+
+Simple Mode - Fastest
+Extracts: Plain text only
+Speed: ~0.1-0.5 seconds per paper
+Output: Just the raw text content from the PDF
+Use when: You only need the text and don't care about structure
+Example output:
+json
+{
+  "text": "Introduction This paper discusses... Methods We used..."
+}
+Structured Mode - Fast (Default)
+Extracts: Text organized by sections + references
+Speed: ~0.5-1 second per paper
+Output:
+Sections with headings (Introduction, Methods, etc.)
+Paragraphs organized under each section
+References extracted separately
+Basic metadata
+Use when: You want to preserve document structure
+Example output:
+json
+{
+  "structured_text": {
+    "sections": [
+      {
+        "title": "Introduction",
+        "content": ["paragraph 1", "paragraph 2"]
+      },
+      {
+        "title": "Methods",
+        "content": ["paragraph 1", "paragraph 2"]
+      }
+    ],
+    "references": ["ref1", "ref2", "..."]
+  }
+}
+Full Mode - Fast
+Extracts: Everything (metadata + structured text)
+Speed: ~0.5-1 second per paper (same as structured)
+Output: Complete metadata + all structured text features
+Use when: You need comprehensive information
+Example output:
+json
+{
+  "metadata": {
+    "doi": "10.1038/...",
+    "title": "Paper Title",
+    "author": "Authors",
+    "page_count": 15,
+    "keywords": ["keyword1", "keyword2"]
+  },
+  "structured_text": {
+    "sections": [...],
+    "references": [...]
+  }
+}
+Quick Comparison
+Mode	Speed	Metadata	Structure	References
+simple	⚡⚡⚡ Fastest	✗	✗	✗
+structured	⚡⚡ Fast	Basic	✓	✓
+full	⚡⚡ Fast	✓ Complete	✓	✓
+Recommendation: Use structured mode (default) for most cases - it gives you good structure preservation with fast speed.
+
+
