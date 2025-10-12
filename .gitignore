@@ -35,3 +35,6 @@ papers_missing/
 papers/
 logs/
 /documentation/
+
+**.ipynb
+working_test.ipynb
