@@ -174,3 +174,6 @@ This will extract basic metadata from the filename but won't provide full text e
 
 - [GROBID Documentation](https://grobid.readthedocs.io/)
 - [GROBID GitHub Repository](https://github.com/kermitt2/grobid)
+
+# Start
+docker run --rm --gpus all --init --ulimit core=0 -p 8070:8070 grobid/grobid:0.8.2-full

@@ -9,7 +9,7 @@ import argparse
 from pathlib import Path
 
 # Add legacy to path for imports
-sys.path.insert(0, str(Path(__file__).parent / 'legacy'))
+sys.path.insert(0, str(Path(__file__).parent / 'src'))
 
 from scihub_fast_downloader import SciHubFastDownloader
 from scihub_grobid_downloader import SciHubGrobidDownloader
@@ -18,27 +18,33 @@ from scihub_grobid_downloader import SciHubGrobidDownloader
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
-        description='Download and process academic papers from Sci-Hub',
+        description='Download and process academic papers from Sci-Hub using DOI, PMID, or title',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Download and process with fast parser
+  # Download by DOI with fast parser
   python download_papers.py 10.1038/s41586-019-1750-x
   
+  # Download by PMID
+  python download_papers.py 32265220
+  
+  # Download by title
+  python download_papers.py "Deep learning for protein structure prediction"
+  
   # Download from file with GROBID
-  python download_papers.py -f dois.txt --parser grobid
+  python download_papers.py -f identifiers.txt --parser grobid
   
   # Process existing PDFs only
   python download_papers.py -p --mode full
   
   # Use simple mode (fastest)
-  python download_papers.py -f dois.txt --mode simple
+  python download_papers.py -f identifiers.txt --mode simple
         """
     )
     
     # Input options
-    parser.add_argument('dois', nargs='*', help='DOIs to download and process')
-    parser.add_argument('-f', '--file', help='File containing DOIs (one per line)')
+    parser.add_argument('identifiers', nargs='*', help='DOIs, PMIDs, or titles to download and process')
+    parser.add_argument('-f', '--file', help='File containing identifiers (one per line - DOI, PMID, or title)')
     parser.add_argument('-p', '--process-only', action='store_true', 
                        help='Process existing papers only (no download)')
     
@@ -78,26 +84,26 @@ Examples:
         print(f"\nProcessed {len(results)} papers: {success_count} succeeded")
         return 0
     
-    # Collect DOIs
-    dois = []
-    if args.dois:
-        dois.extend(args.dois)
+    # Collect identifiers
+    identifiers = []
+    if args.identifiers:
+        identifiers.extend(args.identifiers)
     
     if args.file:
         try:
             with open(args.file, 'r') as f:
-                dois.extend([line.strip() for line in f if line.strip()])
+                identifiers.extend([line.strip() for line in f if line.strip()])
         except Exception as e:
             print(f"Error reading file: {e}")
             return 1
     
-    if not dois:
-        print("Error: No DOIs provided")
+    if not identifiers:
+        print("Error: No identifiers provided (DOI, PMID, or title)")
         parser.print_help()
         return 1
     
-    # Process DOIs
-    results = downloader.batch_download_and_process(dois)
+    # Process identifiers
+    results = downloader.batch_download_and_process(identifiers)
     
     # Print summary
     success = sum(1 for r in results if r.get('status') == 'success')

@@ -29,3 +29,9 @@ logs/*.log
 # Temporary files
 *.tmp
 *.bak
+
+#Outputs
+papers_missing/
+papers/
+logs/
+/documentation/

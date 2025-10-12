@@ -1,24 +1,41 @@
 # Sci-Hub Paper Downloader
 
-A Python tool to download academic papers from Sci-Hub using DOIs (Digital Object Identifiers) and extract full text and metadata using GROBID.
+A Python tool to download academic papers from Sci-Hub using **DOI (Digital Object Identifier)**, **PMID (PubMed ID)**, or **paper title** and extract full text and metadata using GROBID or fast PDF parser.
 
-This repository contains three implementations:
+This repository contains multiple implementations:
 1. `scihub_downloader.py` - A standalone implementation that directly scrapes Sci-Hub
 2. `scihub_api_downloader.py` - An implementation that uses the `scihub.py` library
-3. `scihub_grobid_downloader.py` - An implementation that downloads papers and processes them with GROBID
+3. `scihub_fast_downloader.py` - Downloads papers and processes them with fast PDF parser
+4. `scihub_grobid_downloader.py` - Downloads papers and processes them with GROBID
+5. `download_papers.py` - Main CLI that provides unified access to all downloaders
 
 ## Features
 
-- Download papers from Sci-Hub using DOIs, PMIDs, or URLs
-- Validate DOI format
+- **Download papers from Sci-Hub using:**
+  - **DOI (Digital Object Identifier)** - e.g., `10.1038/s41586-019-1750-x` - Direct download
+  - **PMID (PubMed ID)** - e.g., `27353257` - Automatically converts to DOI via PubMed API
+  - **Paper title** - e.g., `"A synopsis on aging—Theories, mechanisms and future prospects"` - Automatically finds DOI via CrossRef API
+- **Automatic identifier detection** - the system automatically detects what type of identifier you provide
+- **Smart conversion**: PMIDs and titles are automatically converted to DOIs using public APIs (PubMed E-utilities and CrossRef)
+- Validate DOI and PMID formats
 - Support for multiple Sci-Hub domains (in case some are blocked)
 - Command-line interface for easy use
-- Batch download from a file containing multiple identifiers
+- Batch download from a file containing multiple identifiers (can mix DOIs, PMIDs, and titles)
 - Search for papers on Google Scholar and download them
 - Customizable output directory
-- Extract full text and metadata from PDFs using GROBID
+- **Two PDF parsing options:**
+  - **Fast PDF parser** - Quick extraction with structured text (recommended)
+  - **GROBID** - Comprehensive extraction with detailed metadata
 - Save extracted data in structured JSON format
-- Process existing PDFs with GROBID without downloading
+- Process existing PDFs without downloading
+
+### How It Works
+
+1. **DOI**: Downloads directly from Sci-Hub
+2. **PMID**: Queries PubMed E-utilities API to get the DOI, then downloads from Sci-Hub
+3. **Title**: Queries CrossRef API to find matching papers and their DOIs (high-confidence matches only), then downloads from Sci-Hub
+
+**Note**: Rate limits apply to PubMed and CrossRef APIs. If you're processing many papers, DOI is the fastest method.
 
 ## Installation
 
@@ -53,14 +70,131 @@ This repository contains three implementations:
 
 ## Usage
 
+### Quick Start (Recommended)
+
+The simplest way to use this tool is via the main CLI `download_papers.py`:
+
+#### Download by DOI
+```bash
+python download_papers.py 10.1038/s41586-019-1750-x
+```
+
+#### Download by PMID
+```bash
+python download_papers.py 32265220
+```
+
+#### Download by Title
+```bash
+python download_papers.py "Deep learning for protein structure prediction"
+```
+
+#### Download from File (Mixed Identifiers)
+Create a file `identifiers.txt` with one identifier per line (can mix DOIs, PMIDs, and titles):
+```
+10.1038/s41586-019-1750-x
+32265220
+Deep learning applications in biology
+10.1126/science.aau2582
+```
+
+Then run:
+```bash
+python download_papers.py -f identifiers.txt
+```
+
+#### Use GROBID Parser
+```bash
+python download_papers.py 10.1038/s41586-019-1750-x --parser grobid
+```
+
+#### Use Fast Parser with Different Modes
+```bash
+# Simple mode (text only, fastest)
+python download_papers.py 10.1038/s41586-019-1750-x --mode simple
+
+# Structured mode (sections + references, default)
+python download_papers.py 10.1038/s41586-019-1750-x --mode structured
+
+# Full mode (metadata + structured text)
+python download_papers.py 10.1038/s41586-019-1750-x --mode full
+```
+
+---
+
+### 🚀 **Parallel Processing (For Large Batches)**
+
+For processing **many papers** (100+), use the parallel downloader for **6-8x faster** processing:
+
+#### Fast Parallel Processing
+```bash
+# Process 100 papers with 8 parallel workers
+python parallel_download.py -f dois.txt -w 8
+
+# Expected: ~2-3 hours for 1000 papers (vs 16-20 hours sequential)
+```
+
+#### GROBID Parallel Processing
+```bash
+# Process with 4 workers (GROBID is CPU-intensive)
+python parallel_download.py -f dois.txt -w 4 --parser grobid
+
+# Expected: ~4-6 hours for 1000 papers
+```
+
+#### 📊 Automatic Comprehensive Reports
+
+Each run automatically generates a detailed report (`logs/processing_report_*.txt`) with:
+- ✅ Summary statistics (success rate, failures)
+- ✅ Complete list of processed papers with PDF paths
+- ✅ Papers not found on Sci-Hub
+- ✅ Processing failures
+- ✅ Ready-to-use retry list
+
+```bash
+# View the report
+cat logs/processing_report_*.txt
+```
+
+**See `PERFORMANCE_GUIDE.md` for detailed optimization strategies.**
+
+#### 🚀 GPU Acceleration (GROBID)
+
+Enable GPU for **1.5-2x faster** GROBID processing:
+
+```bash
+# Configure GROBID with GPU support (grobid.yaml)
+grobid:
+  delft:
+    enabled: true
+    use_gpu: true
+    gpu_device: 0
+  concurrency: 8
+  poolSize: 8
+
+# Verify GPU is working
+python verify_grobid_parallel.py
+
+# Process with GPU
+python parallel_download.py -f dois.txt -w 6 --parser grobid
+```
+
+**Performance**: CPU (4 workers): ~8 papers/min | GPU (6 workers): ~15-20 papers/min
+
+**See `GROBID_GPU_SETUP.md` for detailed GPU setup and verification.**
+
+---
+
 ### Implementation 1: Direct Sci-Hub Scraper
 
 #### Basic Usage
 
-Download a single paper by providing its DOI:
+Download a single paper by providing its DOI, PMID, or title:
 
 ```bash
 python scihub_downloader.py 10.1038/s41586-019-1750-x
+python scihub_downloader.py 32265220
+python scihub_downloader.py "Machine learning in genomics"
 ```
 
 #### Multiple DOIs
@@ -324,4 +458,18 @@ structured	⚡⚡ Fast	Basic	✓	✓
 full	⚡⚡ Fast	✓ Complete	✓	✓
 Recommendation: Use structured mode (default) for most cases - it gives you good structure preservation with fast speed.
 
+
+#C
+ommands
+# 1. Run parallel download
+python parallel_download.py -f my_papers.txt -w 8
+
+# 2. View the report
+cat logs/processing_report_20251011_200206.txt
+
+# 3. Extract failures for retry
+grep -A 100 "RETRY LIST" logs/processing_report_*.txt | tail -n +4 > retry.txt
+
+# 4. Retry failed papers
+python parallel_download.py -f retry.txt -w 4
 
