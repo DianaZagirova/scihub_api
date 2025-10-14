@@ -34,7 +34,7 @@ logs/*.log
 papers_missing/
 papers/
 logs/
-/documentation/
+documentation/
 
 **.ipynb
 working_test.ipynb

@@ -433,7 +433,7 @@ class SciHubDownloader:
             return filepath
         
         # Maximum number of attempts for the entire download process
-        max_attempts = 4
+        max_attempts = 3
         for attempt in range(max_attempts):
             try:
                 # Find a working domain
