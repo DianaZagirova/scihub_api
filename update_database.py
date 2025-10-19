@@ -18,6 +18,7 @@ import argparse
 import logging
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+from trackers.doi_tracker_db import DOITracker
 
 # Configure logging
 logging.basicConfig(
@@ -30,16 +31,19 @@ logger = logging.getLogger(__name__)
 class UnifiedDatabaseUpdater:
     """Comprehensive database updater for papers.db"""
     
-    def __init__(self, db_path: str, output_dir: str = './output'):
+    def __init__(self, db_path: str, output_dir: str = './output', tracker_db: str = 'processing_tracker.db'):
         """
         Initialize the updater.
         
         Args:
             db_path: Path to papers.db
             output_dir: Directory containing JSON outputs
+            tracker_file: Path to DOI tracker CSV file
         """
         self.db_path = db_path
         self.output_dir = output_dir
+        self.tracker_db = tracker_db
+        self.tracker = DOITracker(db_path=self.tracker_db)
         self.conn = None
         self.cursor = None
         
@@ -47,6 +51,7 @@ class UnifiedDatabaseUpdater:
         self.stats = {
             'total_papers': 0,
             'json_updates': 0,
+            'skipped_already_complete': 0,
             'abstract_updated': 0,
             'sections_updated': 0,
             'status_from_jsons': 0,
@@ -62,6 +67,13 @@ class UnifiedDatabaseUpdater:
         self.conn = sqlite3.connect(self.db_path)
         self.cursor = self.conn.cursor()
         
+        # Enable WAL mode for better write performance
+        self.cursor.execute("PRAGMA journal_mode=WAL")
+        # Increase cache size for better performance (negative = KB, 10MB cache)
+        self.cursor.execute("PRAGMA cache_size=-10000")
+        # Disable synchronous for much faster writes (less safe but acceptable for this use case)
+        self.cursor.execute("PRAGMA synchronous=NORMAL")
+        
         # Ensure parsing_status column exists
         self.cursor.execute("PRAGMA table_info(papers)")
         columns = [col[1] for col in self.cursor.fetchall()]
@@ -70,6 +82,14 @@ class UnifiedDatabaseUpdater:
             logger.info("Adding parsing_status column to papers table")
             self.cursor.execute("ALTER TABLE papers ADD COLUMN parsing_status TEXT")
             self.conn.commit()
+        
+        # Create index on doi for faster lookups if not exists
+        logger.info("Ensuring database indices for performance...")
+        try:
+            self.cursor.execute("CREATE INDEX IF NOT EXISTS idx_papers_doi ON papers(doi)")
+            self.conn.commit()
+        except Exception as e:
+            logger.warning(f"Could not create index: {e}")
         
         # Get total papers
         self.cursor.execute("SELECT COUNT(*) FROM papers")
@@ -164,46 +184,111 @@ class UnifiedDatabaseUpdater:
             logger.error(f"Error extracting PyMuPDF data from {json_path}: {e}")
             return None, None
     
-    def update_from_jsons(self, dois_file: str, log_files: List[str] = None):
+    def update_from_jsons(self, dois_files: List[str] = None):
         """
         Update database with data extracted from JSONs.
         
+        NEW LOGIC:
+        - Automatically finds DOIs from database that need updating:
+          1. Papers missing abstract OR full_text, OR
+          2. Papers parsed with non-Grobid (if Grobid JSON available)
+        - Checks for corresponding JSON files
+        - Extracts and updates data
+        - Applies Grobid priority logic
+        - Uses DOI tracker for parsing status (not logs)
+        
         Args:
-            dois_file: File containing DOIs to process (usually missing_dois.txt)
-            log_files: Optional log files to extract parsing status
+            dois_files: Optional list of files with DOIs (legacy support, can be None)
         """
         logger.info("\n" + "="*70)
-        logger.info("STEP 1: UPDATING FROM JSON FILES")
+        logger.info("STEP 1: UPDATING FROM JSON FILES (with tracker)")
         logger.info("="*70)
         
-        # Read DOIs
-        try:
-            with open(dois_file, 'r', encoding='utf-8') as f:
-                dois = [line.strip() for line in f if line.strip()]
-        except FileNotFoundError:
-            logger.error(f"DOIs file not found: {dois_file}")
+        # NEW: Get DOIs directly from database that need updating
+        logger.info("Querying database for DOIs that need updating...")
+        
+        self.cursor.execute("""
+            SELECT doi, abstract, full_text_sections, parsing_status
+            FROM papers
+            WHERE doi IS NOT NULL AND doi != ''
+            AND (
+                -- Missing abstract OR full text
+                (abstract IS NULL OR abstract = '' OR 
+                 full_text_sections IS NULL OR full_text_sections = '')
+                OR
+                -- Parsed but NOT with Grobid (to apply Grobid priority)
+                (parsing_status IS NOT NULL AND parsing_status != '' 
+                 AND parsing_status NOT LIKE '%grobid%')
+            )
+        """)
+        
+        all_rows = self.cursor.fetchall()
+        logger.info(f"Found {len(all_rows):,} DOIs in database that need updating")
+        
+        # Build DOI list and state dict
+        dois = []
+        db_state = {}
+        
+        for row in all_rows:
+            doi, abstract, full_text, parsing_status = row
+            dois.append(doi)
+            db_state[doi] = (abstract, full_text, parsing_status)
+        
+        if not dois:
+            logger.info("No DOIs found that need updating. Database is up-to-date!")
             return
         
-        logger.info(f"Processing {len(dois)} DOIs from {dois_file}")
-        
-        # Parse logs if provided
-        log_status_map = {}
-        if log_files:
-            log_status_map = self._parse_log_files(log_files)
+        logger.info(f"Processing {len(dois):,} DOIs from database")
+        logger.info(f"Using tracker for parsing status (DB): {self.tracker_db}")
         
         # Process each DOI
+        processed = 0
+        skipped_no_json = 0
         for i, doi in enumerate(dois, 1):
-            if i % 100 == 0:
-                logger.info(f"Progress: {i}/{len(dois)} DOIs processed")
+            if i % 1000 == 0:
+                logger.info(f"Progress: {i}/{len(dois)} DOIs checked, {processed} JSONs found, {skipped_no_json} skipped (no JSON)")
             
             try:
-                # Find JSON
+                # Find JSON first (fast file check)
                 json_path, parser_type = self.find_json_for_doi(doi)
                 
                 if not json_path:
+                    skipped_no_json += 1
                     continue
                 
+                processed += 1
                 self.stats['json_updates'] += 1
+                
+                # Get current database state from pre-loaded cache
+                if doi not in db_state:
+                    continue
+                
+                current_abstract, current_sections, current_parsing_status = db_state[doi]
+                
+                # Check what's missing in the database
+                has_abstract = current_abstract and current_abstract.strip() != ''
+                has_full_text = current_sections and current_sections.strip() != ''
+                
+                # SPECIAL CASE: If parsed with non-Grobid but Grobid JSON exists,
+                # prefer Grobid for full_text (and abstract if missing)
+                check_grobid_override = False
+                if current_parsing_status and 'grobid' not in current_parsing_status.lower():
+                    # Paper was parsed with something else (PyMuPDF, etc)
+                    # Check if Grobid JSON exists
+                    normalized = self.normalize_doi_to_filename(doi)
+                    grobid_path = os.path.join(self.output_dir, f'{normalized}.json')
+                    
+                    if os.path.exists(grobid_path) and parser_type != 'grobid':
+                        # Grobid JSON exists but we found PyMuPDF first
+                        # Override to use Grobid for full text
+                        json_path = grobid_path
+                        parser_type = 'grobid'
+                        check_grobid_override = True
+                
+                # Skip if paper already has BOTH abstract AND full text (unless Grobid override)
+                if has_abstract and has_full_text and not check_grobid_override:
+                    self.stats['skipped_already_complete'] += 1
+                    continue
                 
                 # Extract data based on parser type
                 if parser_type == 'grobid':
@@ -211,21 +296,28 @@ class UnifiedDatabaseUpdater:
                 else:  # PyMuPDF
                     abstract, sections = self.extract_pymupdf_data(json_path)
                 
-                # Get parsing status from logs
-                result_status = log_status_map.get(doi, (None, None, None))[0]
-                parsing_status = f"{result_status} (parser: {parser_type})" if result_status else f"parser: {parser_type}"
+                # Get parsing status from TRACKER (not logs)
+                tracker_status = self.tracker.get_status(doi)
                 
-                # Check current database state
-                self.cursor.execute(
-                    "SELECT abstract, full_text_sections FROM papers WHERE doi = ?",
-                    (doi,)
-                )
-                row = self.cursor.fetchone()
-                
-                if not row:
-                    continue
-                
-                current_abstract, current_sections = row
+                # Determine parsing status based on tracker and current parsing
+                if check_grobid_override and current_parsing_status:
+                    # Grobid override: append Grobid to existing
+                    parsing_status = f"{current_parsing_status} | grobid: success"
+                elif tracker_status:
+                    # Use tracker status
+                    pymupdf_status = tracker_status.get('pymupdf_status', '')
+                    grobid_status = tracker_status.get('grobid_status', '')
+                    
+                    status_parts = []
+                    if pymupdf_status == self.tracker.STATUS_SUCCESS:
+                        status_parts.append("success (parser: PyMuPDF)")
+                    if grobid_status == self.tracker.STATUS_SUCCESS:
+                        status_parts.append("grobid: success" if status_parts else "success (parser: grobid)")
+                    
+                    parsing_status = " | ".join(status_parts) if status_parts else f"parser: {parser_type}"
+                else:
+                    # Fallback: basic parser info
+                    parsing_status = f"parser: {parser_type}"
                 
                 # Prepare updates
                 updates = []
@@ -237,13 +329,16 @@ class UnifiedDatabaseUpdater:
                     params.append(abstract)
                     self.stats['abstract_updated'] += 1
                 
-                # Update full_text_sections if missing and we have data
-                if (not current_sections or current_sections.strip() == '') and sections:
+                # Update full_text_sections if:
+                # 1. Missing and we have data, OR
+                # 2. Grobid override (replace non-Grobid full text with Grobid)
+                if ((not current_sections or current_sections.strip() == '') and sections) or \
+                   (check_grobid_override and sections):
                     updates.append("full_text_sections = ?")
                     params.append(json.dumps(sections, ensure_ascii=False))
                     self.stats['sections_updated'] += 1
                 
-                # Always update parsing_status
+                # Update parsing_status
                 updates.append("parsing_status = ?")
                 params.append(parsing_status)
                 self.stats['status_from_jsons'] += 1
@@ -257,40 +352,52 @@ class UnifiedDatabaseUpdater:
             except Exception as e:
                 logger.error(f"Error processing DOI {doi}: {e}")
                 self.stats['errors'] += 1
+            
+            # Commit every 5000 records for better performance
+            if i % 5000 == 0:
+                self.conn.commit()
         
         self.conn.commit()
-        logger.info(f"Updated {self.stats['json_updates']} papers from JSON files")
+        logger.info(f"\nProcessing complete:")
+        logger.info(f"  Total DOIs checked: {len(dois):,}")
+        logger.info(f"  JSONs found: {self.stats['json_updates']:,}")
+        logger.info(f"  Skipped (no JSON): {skipped_no_json:,}")
+        logger.info(f"  Papers updated: {self.stats['abstract_updated']:,}")
     
     # ==================== COMPLETE PAPERS STATUS ====================
     
-    def mark_complete_papers(self, missing_dois_file: str):
+    def mark_complete_papers(self, missing_dois_files: List[str]):
         """
-        Mark papers NOT in missing_dois.txt as 'not required - already populated'.
+        Mark papers NOT in missing_dois files as 'not required - already populated'.
         
         Args:
-            missing_dois_file: File containing DOIs that needed processing
+            missing_dois_files: List of files containing DOIs that needed processing
         """
         logger.info("\n" + "="*70)
         logger.info("STEP 2: MARKING ALREADY-COMPLETE PAPERS")
         logger.info("="*70)
         
-        # Read missing DOIs
-        try:
-            with open(missing_dois_file, 'r', encoding='utf-8') as f:
-                missing_dois = set(line.strip() for line in f if line.strip())
-            logger.info(f"Found {len(missing_dois)} DOIs in {missing_dois_file}")
-        except FileNotFoundError:
-            logger.error(f"File not found: {missing_dois_file}")
-            return
+        # Read missing DOIs from all files
+        missing_dois = set()
+        for dois_file in missing_dois_files:
+            try:
+                with open(dois_file, 'r', encoding='utf-8') as f:
+                    file_dois = set(line.strip() for line in f if line.strip())
+                    missing_dois.update(file_dois)
+                    logger.info(f"Loaded {len(file_dois)} DOIs from {dois_file}")
+            except FileNotFoundError:
+                logger.error(f"File not found: {dois_file}")
+        
+        logger.info(f"Total {len(missing_dois)} unique DOIs across all files")
         
         # Get all DOIs from database
         self.cursor.execute("SELECT doi FROM papers")
         all_dois = [row[0] for row in self.cursor.fetchall()]
         
-        # Find papers NOT in missing_dois.txt
+        # Find papers NOT in missing_dois files
         complete_papers = [doi for doi in all_dois if doi and doi not in missing_dois]
         
-        logger.info(f"Papers NOT in {missing_dois_file}: {len(complete_papers):,}")
+        logger.info(f"Papers NOT in missing_dois files: {len(complete_papers):,}")
         
         # Update parsing_status for these papers (only if NULL or empty)
         for doi in complete_papers:
@@ -350,13 +457,17 @@ class UnifiedDatabaseUpdater:
         
         return doi_status
     
-    def update_from_logs(self, log_files: List[str]):
+    def update_from_logs(self, log_files: List[str] = None):
         """
         Update parsing_status from log files for papers without status.
         
         Args:
-            log_files: List of log file paths
+            log_files: List of log file paths (optional)
         """
+        if not log_files:
+            logger.warning("No log files specified, skipping log-based status update")
+            return
+        
         logger.info("\n" + "="*70)
         logger.info("STEP 3: UPDATING FROM LOG FILES")
         logger.info("="*70)
@@ -441,8 +552,9 @@ class UnifiedDatabaseUpdater:
         logger.info(f"\nTotal papers in database: {self.stats['total_papers']:,}")
         logger.info(f"\nData updates:")
         logger.info(f"  Papers with JSON found: {self.stats['json_updates']:,}")
+        logger.info(f"  Papers skipped (already have abstract): {self.stats['skipped_already_complete']:,}")
         logger.info(f"  Abstracts updated: {self.stats['abstract_updated']:,}")
-        logger.info(f"  Full text sections updated: {self.stats['sections_updated']:,}")
+        logger.info(f"  Full text sections updated (disabled): {self.stats['sections_updated']:,}")
         
         logger.info(f"\nParsing status updates:")
         logger.info(f"  From JSON processing: {self.stats['status_from_jsons']:,}")
@@ -499,22 +611,31 @@ def main():
         epilog="""
 Operations (can be combined):
   --update-from-jsons    Extract data from JSON files and update database
-  --mark-complete        Mark already-complete papers (not in missing DOIs)
-  --update-from-logs     Update parsing status from log files
+                         (Auto-discovers DOIs + uses tracker for status)
+  --mark-complete        Mark already-complete papers (requires --dois)
+  --update-from-logs     Update parsing status from log files (LEGACY - tracker preferred)
   --mark-no-doi          Mark papers without DOI
 
+NEW BEHAVIOR:
+  --update-from-jsons now automatically queries the database for DOIs that need
+  updating (missing abstract/full_text OR parsed with non-Grobid). 
+  
+  Parsing status is read from doi_processing_tracker.csv (the source of truth),
+  not from log files. The tracker is updated by download_papers_optimized.py,
+  grobid_tracker_integration.py, and reconcile_all_status.py.
+
 Examples:
-  # Run all updates (recommended)
+  # Run all updates (recommended) - auto-discovers DOIs, uses tracker
   python update_database.py --all
   
-  # Only update from JSONs
+  # Only update from JSONs (auto-discovery with tracker status)
   python update_database.py --update-from-jsons
   
-  # Update from JSONs and mark complete papers
-  python update_database.py --update-from-jsons --mark-complete
+  # Update with specific DOI files (legacy mode)
+  python update_database.py --update-from-jsons --dois file1.txt file2.txt
   
-  # Only update parsing status
-  python update_database.py --update-from-logs --mark-no-doi
+  # Mark complete papers (requires DOI files)
+  python update_database.py --mark-complete --dois missing_dois.txt
         """
     )
     
@@ -526,8 +647,11 @@ Examples:
     )
     parser.add_argument(
         '--dois',
-        default='missing_dois.txt',
-        help='Path to file containing DOIs (one per line)'
+        nargs='+',
+        default=None,
+        help='(Optional) Path(s) to file(s) containing DOIs. '
+             'Only required for --mark-complete. '
+             '--update-from-jsons auto-discovers DOIs from database if not specified.'
     )
     parser.add_argument(
         '--output-dir',
@@ -537,14 +661,8 @@ Examples:
     parser.add_argument(
         '--logs',
         nargs='+',
-        default=[
-            'logs/comprehensive_log_20251012_191215.log',
-            'logs/comprehensive_log_20251012_193823.log',
-            'logs/comprehensive_log_20251013_081309.log',
-            'logs/comprehensive_log_20251013_083748.log',
-            'logs/comprehensive_log_20251013_085654.log'
-        ],
-        help='Paths to log files'
+        default=None,
+        help='(Optional) Paths to log files for parsing status extraction'
     )
     
     # Operation flags
@@ -564,7 +682,7 @@ Examples:
     # If --all is specified, enable all operations
     if args.all:
         args.update_from_jsons = True
-        args.mark_complete = True
+        args.mark_complete = False  # Skip mark_complete as it requires --dois
         args.update_from_logs = True
         args.mark_no_doi = True
     
@@ -573,6 +691,11 @@ Examples:
                 args.update_from_logs, args.mark_no_doi]):
         parser.print_help()
         print("\nError: Please specify at least one operation or use --all")
+        return 1
+    
+    # Validate mark_complete requires DOI files
+    if args.mark_complete and not args.dois:
+        print("\nError: --mark-complete requires --dois to specify DOI files")
         return 1
     
     # Create updater
@@ -587,7 +710,8 @@ Examples:
         
         # Run requested operations in logical order
         if args.update_from_jsons:
-            updater.update_from_jsons(args.dois, args.logs)
+            # Pass None for dois to enable auto-discovery, unless user specified --dois
+            updater.update_from_jsons(args.dois)
         
         if args.mark_complete:
             updater.mark_complete_papers(args.dois)

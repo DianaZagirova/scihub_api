@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """
-Create missing_dois-2.txt with papers that lack abstract OR full text,
-excluding papers already listed in multiple batch files.
+Identify papers with missing abstract or full text that are not in existing missing_dois list.
 """
 
 import sqlite3
 import os
 import logging
 from pathlib import Path
-from typing import List, Set
+from typing import List
 
 logging.basicConfig(
     level=logging.INFO,
@@ -17,50 +16,35 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def load_exclude_dois(exclude_files: List[str]) -> Set[str]:
-    """
-    Load DOIs from multiple exclude files.
-    
-    Args:
-        exclude_files: List of file paths containing DOIs to exclude
-    
-    Returns:
-        Set of DOIs to exclude
-    """
-    exclude_dois = set()
-    
-    for file_path in exclude_files:
-        if os.path.exists(file_path):
-            with open(file_path, 'r', encoding='utf-8') as f:
-                file_dois = set(line.strip() for line in f if line.strip())
-                exclude_dois.update(file_dois)
-                logger.info(f"Loaded {len(file_dois):,} DOIs from {file_path}")
-        else:
-            logger.warning(f"Exclude file not found: {file_path}")
-    
-    logger.info(f"Total DOIs to exclude: {len(exclude_dois):,}")
-    return exclude_dois
-
-
 def identify_missing_content(
     db_path: str,
-    exclude_files: List[str],
+    exclude_dois_files: List[str],
     output_file: str
 ):
     """
-    Find papers with missing abstract OR full text, excluding DOIs from multiple files.
+    Find papers with missing abstract OR full text, excluding already-listed DOIs.
     
     Args:
         db_path: Path to papers.db
-        exclude_files: List of files with DOIs to exclude
+        exclude_dois_files: List of files with DOIs to exclude (already processed)
         output_file: Output file for new missing DOIs
     """
     logger.info("="*70)
     logger.info("IDENTIFYING PAPERS WITH MISSING CONTENT")
     logger.info("="*70)
     
-    # Load all DOIs to exclude
-    exclude_dois = load_exclude_dois(exclude_files)
+    # Read DOIs to exclude from all files
+    exclude_dois = set()
+    for exclude_file in exclude_dois_files:
+        if os.path.exists(exclude_file):
+            with open(exclude_file, 'r', encoding='utf-8') as f:
+                file_dois = set(line.strip() for line in f if line.strip())
+                exclude_dois.update(file_dois)
+                logger.info(f"Loaded {len(file_dois):,} DOIs from {exclude_file}")
+        else:
+            logger.warning(f"Exclude file not found: {exclude_file}")
+    
+    logger.info(f"Total DOIs to exclude: {len(exclude_dois):,}")
     
     # Connect to database
     logger.info(f"Connecting to database: {db_path}")
@@ -93,7 +77,7 @@ def identify_missing_content(
     
     logger.info(f"Papers with missing abstract OR full text: {len(results):,}")
     
-    # Filter out DOIs already in exclude lists
+    # Filter out DOIs already in exclude list
     new_missing = []
     stats = {
         'total_missing': len(results),
@@ -153,62 +137,49 @@ if __name__ == '__main__':
     import argparse
     
     parser = argparse.ArgumentParser(
-        description='Identify papers with missing content, excluding multiple batch files',
+        description='Identify papers with missing content for batch processing',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Use default settings
-  python create_missing_dois_2.py
+  # Exclude from single file
+  python identify_missing_content.py --exclude file1.txt
   
-  # Custom database and output location
-  python create_missing_dois_2.py --db /path/to/papers.db --output ./missing_dois/batch_2_broad_aging/missing_dois_2.txt
+  # Exclude from multiple files
+  python identify_missing_content.py --exclude file1.txt file2.txt file3.txt
   
-  # Add additional exclude files
-  python create_missing_dois_2.py --exclude-files file1.txt file2.txt file3.txt
+  # With custom output
+  python identify_missing_content.py --exclude file1.txt file2.txt --output new_missing.txt
         """
     )
-    
     parser.add_argument(
         '--db',
         default='/home/diana.z/hack/download_papers_pubmed/paper_collection/data/papers.db',
         help='Path to papers.db database'
     )
     parser.add_argument(
-        '--exclude-files',
+        '--exclude',
         nargs='+',
         default=[
-            'missing_dois/batch_2_broad_aging/missing_dois.txt',
-            'missing_dois/batch_1_Initial query/missing_dois_2.txt',
-            'missing_dois/batch_1_Initial query/missing_dois.txt'
+            '/home/diana.z/hack/scihub_api/missing_dois/batch_1_Initial query/missing_dois.txt',
+            '/home/diana.z/hack/scihub_api/missing_dois/batch_1_Initial query/missing_dois_2.txt',
+            '/home/diana.z/hack/scihub_api/missing_dois/batch_2_broad_aging/missing_dois_2_with_hallmarks.txt',
+            "/home/diana.z/hack/scihub_api/missing_dois/batch_2_broad_aging/missing_dois.txt"
         ],
         help='Files with DOIs to exclude (space-separated list)'
     )
     parser.add_argument(
         '--output',
-        default='./missing_dois/batch_2_broad_aging/missing_dois_2.txt',
+        default='/home/diana.z/hack/scihub_api/missing_dois/batch_3_interventions_model_organisms/missing_dois.txt',
         help='Output file for new missing DOIs'
     )
     
     args = parser.parse_args()
     
-    # Convert relative paths to absolute paths based on script location
-    script_dir = Path(__file__).parent
-    exclude_files_abs = []
-    for file_path in args.exclude_files:
-        if not os.path.isabs(file_path):
-            file_path = str(script_dir / file_path)
-        exclude_files_abs.append(file_path)
-    
-    output_path = args.output
-    if not os.path.isabs(output_path):
-        output_path = str(script_dir / output_path)
-    
     count = identify_missing_content(
         db_path=args.db,
-        exclude_files=exclude_files_abs,
-        output_file=output_path
+        exclude_dois_files=args.exclude,
+        output_file=args.output
     )
     
     print(f"\n✓ Found {count:,} new papers with missing content")
-    print(f"✓ Output saved to: {output_path}")
-    print(f"✓ Ready to process with: python download_papers.py -f {output_path} --parser fast -w 5 --delay 2.0")
+    print(f"✓ Ready to process with: python download_papers.py -f {args.output} --parser fast -w 5 --delay 2.0")

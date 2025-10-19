@@ -114,7 +114,8 @@ class SciHubAPIDownloader:
         # DOI regex pattern (comprehensive)
         # Format: 10.NNNN/suffix where NNNN is 4+ digits and suffix can contain various characters
         # Based on CrossRef and DataCite DOI patterns
-        doi_pattern = r'^10\.\d{4,9}/[-._;()/:A-Z0-9]+[-._;()/:A-Z0-9]*$'
+        # Allows all printable ASCII except whitespace (DOI spec allows <>;# and other special chars)
+        doi_pattern = r'^10\.\d{4,9}/[!-~]+$'
         
         # Clean the DOI
         normalized_doi = normalized_doi.strip().upper()

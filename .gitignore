@@ -33,8 +33,20 @@ logs/*.log
 #Outputs
 papers_missing/
 papers/
+pdfs/
 logs/
 documentation/
 
 **.ipynb
 working_test.ipynb
+
+##temp
+legacy/
+extra_logs/
+
+#tracker db
+processing_tracker.db**
+/missing_dois/
+/pending_dois/
+
+/trackers/backup/

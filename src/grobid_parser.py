@@ -112,13 +112,14 @@ class GrobidParser:
             logger.error(f"Error connecting to GROBID server: {e}")
             return False
     
-    def process_pdf(self, pdf_path, output_format='tei'):
+    def process_pdf(self, pdf_path, output_format='tei', max_retries=3):
         """
-        Process a single PDF file with GROBID.
+        Process a single PDF file with GROBID with retry logic.
         
         Args:
             pdf_path (str): Path to the PDF file
             output_format (str): Output format ('tei', 'json', etc.)
+            max_retries (int): Maximum number of retry attempts for 500 errors
             
         Returns:
             dict: Extracted data or None if failed
@@ -136,51 +137,91 @@ class GrobidParser:
             logger.error(f"PDF file not found: {pdf_path}")
             return None
         
-        try:
-            # Determine which GROBID service to use based on output format
-            if output_format == 'tei':
-                service = 'processFulltextDocument'
-            else:
-                service = 'processHeaderDocument'
-            
-            # Prepare the request
-            url = f"{self.grobid_server}/api/{service}"
-            
-            # Prepare coordinates parameter if needed
-            coord_param = ""
-            if self.coordinates and output_format == 'tei':
-                coord_param = ",".join(self.coordinates)
-            
-            # Prepare the files and data for the request
-            files = {'input': open(pdf_path, 'rb')}
-            data = {
-                'consolidateHeader': str(self.consolidate_header),
-                'consolidateCitations': str(self.consolidate_citations)
-            }
-            
-            if coord_param:
-                data['teiCoordinates'] = coord_param
-            
-            # Send the request
-            logger.info(f"Processing {pdf_path} with GROBID")
-            response = requests.post(url, files=files, data=data, timeout=self.timeout)
-            
-            # Close the file
-            files['input'].close()
-            
-            if response.status_code != 200:
-                logger.error(f"GROBID returned status code {response.status_code}")
-                return None
-            
-            # Return the response content
-            if output_format == 'tei':
-                return response.text
-            else:
-                return response.json()
+        # Retry loop for 500 errors
+        for attempt in range(max_retries):
+            try:
+                # Determine which GROBID service to use based on output format
+                if output_format == 'tei':
+                    service = 'processFulltextDocument'
+                else:
+                    service = 'processHeaderDocument'
                 
-        except Exception as e:
-            logger.error(f"Error processing PDF with GROBID: {e}")
-            return None
+                # Prepare the request
+                url = f"{self.grobid_server}/api/{service}"
+                
+                # Prepare coordinates parameter if needed
+                coord_param = ""
+                if self.coordinates and output_format == 'tei':
+                    coord_param = ",".join(self.coordinates)
+                
+                # Prepare the files and data for the request
+                files = {'input': open(pdf_path, 'rb')}
+                data = {
+                    'consolidateHeader': str(self.consolidate_header),
+                    'consolidateCitations': str(self.consolidate_citations)
+                }
+                
+                if coord_param:
+                    data['teiCoordinates'] = coord_param
+                
+                # Send the request
+                if attempt > 0:
+                    logger.info(f"Retry {attempt}/{max_retries-1}: Processing {pdf_path} with GROBID")
+                else:
+                    logger.info(f"Processing {pdf_path} with GROBID")
+                response = requests.post(url, files=files, data=data, timeout=self.timeout)
+                
+                # Close the file
+                files['input'].close()
+                
+                if response.status_code == 500:
+                    # Log detailed error for 500
+                    error_msg = f"GROBID returned status code 500"
+                    error_detail = ""
+                    try:
+                        error_detail = response.text[:500]  # First 500 chars of error
+                        if error_detail:
+                            logger.error(f"{error_msg}: {error_detail}")
+                        else:
+                            logger.error(error_msg)
+                    except:
+                        logger.error(error_msg)
+                    
+                    # Don't retry [NO_BLOCKS] errors - they indicate scanned/unparseable PDFs
+                    if "[NO_BLOCKS]" in error_detail:
+                        logger.warning("PDF has no extractable text blocks (likely scanned/image PDF), skipping retries")
+                        return None
+                    
+                    # Retry on other 500 errors
+                    if attempt < max_retries - 1:
+                        wait_time = (attempt + 1) * 2  # Exponential backoff: 2s, 4s, 6s
+                        logger.warning(f"Retrying in {wait_time}s...")
+                        time.sleep(wait_time)
+                        continue
+                    else:
+                        logger.error(f"Failed after {max_retries} attempts, skipping PDF")
+                        return None
+                
+                elif response.status_code != 200:
+                    logger.error(f"GROBID returned status code {response.status_code}")
+                    return None
+                
+                # Success - return the response content
+                if output_format == 'tei':
+                    return response.text
+                else:
+                    return response.json()
+                    
+            except Exception as e:
+                logger.error(f"Error processing PDF with GROBID: {e}")
+                if attempt < max_retries - 1:
+                    wait_time = (attempt + 1) * 2
+                    logger.warning(f"Retrying in {wait_time}s...")
+                    time.sleep(wait_time)
+                    continue
+                return None
+        
+        return None
     
     def extract_metadata(self, tei_content):
         """
@@ -385,13 +426,79 @@ class GrobidParser:
             logger.error(f"Error extracting full text from TEI: {e}")
             return {'body': [], 'references': []}
     
-    def process_and_save(self, pdf_path, output_dir=None):
+    def _fallback_text_extraction(self, pdf_path):
+        """
+        Fallback method to extract raw text from PDF when GROBID fails.
+        
+        Args:
+            pdf_path (str): Path to the PDF file
+            
+        Returns:
+            dict: Basic extracted data or None
+        """
+        try:
+            import pypdf
+            
+            logger.info(f"Attempting fallback text extraction for {pdf_path}")
+            
+            with open(pdf_path, 'rb') as f:
+                pdf = pypdf.PdfReader(f)
+                
+                # Check if PDF has any text
+                total_text = ""
+                for i, page in enumerate(pdf.pages[:5]):  # Check first 5 pages
+                    text = page.extract_text()
+                    if text:
+                        total_text += text
+                
+                if not total_text.strip():
+                    logger.warning(f"PDF appears to be scanned/image-only: {pdf_path}")
+                    return None
+                
+                # Extract all text
+                full_text = ""
+                for page in pdf.pages:
+                    full_text += page.extract_text() + "\n\n"
+                
+                # Get base filename for DOI
+                base_name = os.path.splitext(os.path.basename(pdf_path))[0]
+                doi = base_name.replace('_', '/')
+                
+                # Create basic structure
+                extracted_data = {
+                    'metadata': {
+                        'doi': doi,
+                        'title': None,
+                        'abstract': None,
+                        'authors': [],
+                        'journal': None,
+                        'year': None
+                    },
+                    'full_text': {
+                        'body': [{
+                            'title': 'Full Text (Fallback Extraction)',
+                            'content': full_text.strip()
+                        }],
+                        'references': []
+                    },
+                    'extraction_method': 'fallback_pypdf'
+                }
+                
+                logger.info(f"Fallback extraction successful: {len(full_text)} characters")
+                return extracted_data
+                
+        except Exception as e:
+            logger.error(f"Fallback text extraction failed: {e}")
+            return None
+    
+    def process_and_save(self, pdf_path, output_dir=None, use_fallback=True):
         """
         Process a PDF and save the extracted data.
         
         Args:
             pdf_path (str): Path to the PDF file
             output_dir (str): Directory to save the output
+            use_fallback (bool): Try fallback text extraction if GROBID fails
             
         Returns:
             dict: Extracted data or None if failed
@@ -406,32 +513,44 @@ class GrobidParser:
         # Get the base filename without extension
         base_name = os.path.splitext(os.path.basename(pdf_path))[0]
         
-        # Process the PDF
+        # Process the PDF with GROBID
         tei_content = self.process_pdf(pdf_path, output_format='tei')
+        
+        extracted_data = None
+        
         if not tei_content:
-            logger.error(f"Failed to process PDF: {pdf_path}")
-            return None
+            logger.error(f"Failed to process PDF with GROBID: {pdf_path}")
+            
+            # Try fallback extraction
+            if use_fallback:
+                extracted_data = self._fallback_text_extraction(pdf_path)
+                if not extracted_data:
+                    return None
+            else:
+                return None
+        else:
+            # Extract metadata
+            metadata = self.extract_metadata(tei_content)
+            
+            # Extract full text
+            full_text = self.extract_full_text(tei_content)
+            
+            # Combine metadata and full text
+            extracted_data = {
+                'metadata': metadata,
+                'full_text': full_text,
+                'extraction_method': 'grobid'
+            }
         
-        # Save the raw TEI content
-        tei_path = os.path.join(output_dir, f"{base_name}.tei.xml")
-        try:
-            with open(tei_path, 'w', encoding='utf-8') as f:
-                f.write(tei_content)
-            logger.info(f"Saved TEI content to {tei_path}")
-        except Exception as e:
-            logger.error(f"Error saving TEI content: {e}")
-        
-        # Extract metadata
-        metadata = self.extract_metadata(tei_content)
-        
-        # Extract full text
-        full_text = self.extract_full_text(tei_content)
-        
-        # Combine metadata and full text
-        extracted_data = {
-            'metadata': metadata,
-            'full_text': full_text
-        }
+        # Save the raw TEI content (only if GROBID was successful)
+        if tei_content:
+            tei_path = os.path.join(output_dir, f"{base_name}.tei.xml")
+            try:
+                with open(tei_path, 'w', encoding='utf-8') as f:
+                    f.write(tei_content)
+                logger.info(f"Saved TEI content to {tei_path}")
+            except Exception as e:
+                logger.error(f"Error saving TEI content: {e}")
         
         # Save the extracted data as JSON
         json_path = os.path.join(output_dir, f"{base_name}.json")
