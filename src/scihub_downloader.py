@@ -16,6 +16,7 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, quote
+from .config import Config
 
 # Configure logging
 logging.basicConfig(
@@ -195,7 +196,11 @@ class SciHubDownloader:
         try:
             # Use PubMed E-utilities to get article details
             url = f"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id={pmid}&retmode=json"
-            response = self.session.get(url, timeout=10)
+            
+            # Add NCBI credentials for better rate limiting
+            params = Config.get_ncbi_params({'db': 'pubmed', 'id': pmid, 'retmode': 'json'})
+            
+            response = self.session.get(url, params=params, timeout=10)
             response.raise_for_status()
             
             data = response.json()

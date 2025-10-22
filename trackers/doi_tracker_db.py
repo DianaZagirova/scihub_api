@@ -400,3 +400,67 @@ class DOITracker:
             self._log_event(doi, 'bulk_update', None, None, None)
         conn.commit()
         conn.close()
+
+    def reset_doi(self, doi: str):
+        """
+        Reset all tracking fields for a DOI to initial state.
+        This clears download status, parsing status, and retry count.
+        """
+        conn = None
+        try:
+            conn = sqlite3.connect(self.db_path, timeout=30.0)  # 30 second timeout
+            cur = conn.cursor()
+            
+            # Enable WAL mode for better concurrent access
+            cur.execute("PRAGMA journal_mode=WAL")
+            
+            # Check if row exists
+            cur.execute("SELECT doi FROM processing_tracker WHERE doi = ?", (doi,))
+            exists = cur.fetchone() is not None
+            
+            if exists:
+                # Reset all fields to initial state
+                cur.execute(
+                    """
+                    UPDATE processing_tracker 
+                    SET scihub_available = NULL,
+                        scihub_downloaded = NULL,
+                        oa_available = NULL,
+                        oa_downloaded = NULL,
+                        arxiv_attempted = NULL,
+                        arxiv_downloaded = NULL,
+                        biorxiv_attempted = NULL,
+                        biorxiv_downloaded = NULL,
+                        europepmc_attempted = NULL,
+                        europepmc_downloaded = NULL,
+                        unpaywall_attempted = NULL,
+                        unpaywall_downloaded = NULL,
+                        downloaded = NULL,
+                        download_date = NULL,
+                        download_source = NULL,
+                        has_content_in_db = NULL,
+                        pymupdf_status = NULL,
+                        pymupdf_date = NULL,
+                        grobid_status = NULL,
+                        grobid_date = NULL,
+                        error_msg = NULL,
+                        retry_count = 0,
+                        last_updated = ?
+                    WHERE doi = ?
+                    """,
+                    (self._now(), doi)
+                )
+            else:
+                # Create new row with default values
+                cur.execute(
+                    "INSERT INTO processing_tracker (doi, last_updated, retry_count) VALUES (?, ?, 0)",
+                    (doi, self._now())
+                )
+            
+            conn.commit()
+            
+            # Log event in separate connection to avoid keeping main connection open
+            self._log_event(doi, 'reset', None, None, 'DOI tracking reset to initial state' if exists else 'New DOI entry created')
+        finally:
+            if conn:
+                conn.close()

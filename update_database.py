@@ -109,22 +109,41 @@ class UnifiedDatabaseUpdater:
     
     def find_json_for_doi(self, doi: str) -> Tuple[Optional[str], Optional[str]]:
         """
-        Find JSON file for DOI.
+        Find JSON file for DOI. Prefers GROBID if it has content, otherwise PyMuPDF.
         
         Returns:
             Tuple of (json_path, parser_type) or (None, None)
         """
         normalized = self.normalize_doi_to_filename(doi)
         
-        # Try GROBID format first (no suffix)
         grobid_path = os.path.join(self.output_dir, f'{normalized}.json')
-        if os.path.exists(grobid_path):
-            return grobid_path, 'grobid'
-        
-        # Try PyMuPDF format (_fast suffix)
         fast_path = os.path.join(self.output_dir, f'{normalized}_fast.json')
-        if os.path.exists(fast_path):
+        
+        grobid_exists = os.path.exists(grobid_path)
+        fast_exists = os.path.exists(fast_path)
+        
+        # If only one exists, return it
+        if grobid_exists and not fast_exists:
+            return grobid_path, 'grobid'
+        if fast_exists and not grobid_exists:
             return fast_path, 'PyMuPDF'
+        
+        # If both exist, prefer GROBID but check if it has content
+        if grobid_exists and fast_exists:
+            try:
+                with open(grobid_path, 'r', encoding='utf-8') as f:
+                    grobid_data = json.load(f)
+                body_list = grobid_data.get('full_text', {}).get('body', [])
+                
+                # If GROBID has body content, use it
+                if body_list and len(body_list) > 0:
+                    return grobid_path, 'grobid'
+                
+                # Otherwise, use PyMuPDF
+                return fast_path, 'PyMuPDF'
+            except:
+                # If error reading GROBID, fall back to PyMuPDF
+                return fast_path, 'PyMuPDF'
         
         return None, None
     
@@ -208,12 +227,13 @@ class UnifiedDatabaseUpdater:
         logger.info("Querying database for DOIs that need updating...")
         
         self.cursor.execute("""
-            SELECT doi, abstract, full_text_sections, parsing_status
+            SELECT doi, abstract, full_text, full_text_sections, parsing_status
             FROM papers
             WHERE doi IS NOT NULL AND doi != ''
             AND (
                 -- Missing abstract OR full text
                 (abstract IS NULL OR abstract = '' OR 
+                 full_text IS NULL OR full_text = '' OR
                  full_text_sections IS NULL OR full_text_sections = '')
                 OR
                 -- Parsed but NOT with Grobid (to apply Grobid priority)
@@ -230,9 +250,9 @@ class UnifiedDatabaseUpdater:
         db_state = {}
         
         for row in all_rows:
-            doi, abstract, full_text, parsing_status = row
+            doi, abstract, full_text, full_text_sections, parsing_status = row
             dois.append(doi)
-            db_state[doi] = (abstract, full_text, parsing_status)
+            db_state[doi] = (abstract, full_text, full_text_sections, parsing_status)
         
         if not dois:
             logger.info("No DOIs found that need updating. Database is up-to-date!")
@@ -263,11 +283,11 @@ class UnifiedDatabaseUpdater:
                 if doi not in db_state:
                     continue
                 
-                current_abstract, current_sections, current_parsing_status = db_state[doi]
+                current_abstract, current_full_text, current_sections, current_parsing_status = db_state[doi]
                 
                 # Check what's missing in the database
                 has_abstract = current_abstract and current_abstract.strip() != ''
-                has_full_text = current_sections and current_sections.strip() != ''
+                has_full_text = (current_full_text and current_full_text.strip() != '') or (current_sections and current_sections.strip() != '')
                 
                 # SPECIAL CASE: If parsed with non-Grobid but Grobid JSON exists,
                 # prefer Grobid for full_text (and abstract if missing)
@@ -278,9 +298,10 @@ class UnifiedDatabaseUpdater:
                     normalized = self.normalize_doi_to_filename(doi)
                     grobid_path = os.path.join(self.output_dir, f'{normalized}.json')
                     
-                    if os.path.exists(grobid_path) and parser_type != 'grobid':
-                        # Grobid JSON exists but we found PyMuPDF first
-                        # Override to use Grobid for full text
+                    if os.path.exists(grobid_path):
+                        # Grobid JSON exists - use it to override PyMuPDF data
+                        # Note: find_json_for_doi already prefers GROBID, so parser_type
+                        # would already be 'grobid' if both files exist
                         json_path = grobid_path
                         parser_type = 'grobid'
                         check_grobid_override = True
@@ -329,14 +350,25 @@ class UnifiedDatabaseUpdater:
                     params.append(abstract)
                     self.stats['abstract_updated'] += 1
                 
-                # Update full_text_sections if:
+                # Update full_text and full_text_sections if:
                 # 1. Missing and we have data, OR
                 # 2. Grobid override (replace non-Grobid full text with Grobid)
-                if ((not current_sections or current_sections.strip() == '') and sections) or \
-                   (check_grobid_override and sections):
-                    updates.append("full_text_sections = ?")
-                    params.append(json.dumps(sections, ensure_ascii=False))
-                    self.stats['sections_updated'] += 1
+                if sections:
+                    # Convert sections dict to full_text string
+                    full_text_str = '\n\n'.join([f"{title}\n{content}" for title, content in sections.items()])
+                    
+                    # Update full_text if missing or Grobid override
+                    if ((not current_full_text or current_full_text.strip() == '') and full_text_str) or \
+                       (check_grobid_override and full_text_str):
+                        updates.append("full_text = ?")
+                        params.append(full_text_str)
+                        self.stats['sections_updated'] += 1
+                    
+                    # Update full_text_sections if missing or Grobid override
+                    if ((not current_sections or current_sections.strip() == '') and sections) or \
+                       (check_grobid_override and sections):
+                        updates.append("full_text_sections = ?")
+                        params.append(json.dumps(sections, ensure_ascii=False))
                 
                 # Update parsing_status
                 updates.append("parsing_status = ?")

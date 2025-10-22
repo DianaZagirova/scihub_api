@@ -2,6 +2,9 @@
 venv/
 env/
 
+# Environment variables
+.env
+
 # Python cache
 __pycache__/
 *.py[cod]
@@ -14,8 +17,8 @@ __pycache__/
 
 # Downloaded papers and output
 papers/*.pdf
-output/*.json
-output/*.xml
+output/
+output/
 
 # Log files
 logs/*.log
@@ -36,6 +39,8 @@ papers/
 pdfs/
 logs/
 documentation/
+missing_dois/
+pending_dois/
 
 **.ipynb
 working_test.ipynb
@@ -43,10 +48,16 @@ working_test.ipynb
 ##temp
 legacy/
 extra_logs/
+reseted_dois/
 
 #tracker db
 processing_tracker.db**
 /missing_dois/
 /pending_dois/
+trackers/backup/
+suspicious_dois
+supicious_pdfs
 
-/trackers/backup/
+
+demo_output/
+demo_papers/

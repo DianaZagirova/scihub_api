@@ -22,6 +22,10 @@ from pathlib import Path
 from typing import Optional, Dict, List, Any
 from urllib.parse import quote
 
+# Add src to path for imports
+sys.path.insert(0, str(Path(__file__).parent / 'src'))
+from config import Config
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -41,18 +45,17 @@ class UnpaywallDownloader:
     
     BASE_URL = "https://api.unpaywall.org/v2"
     
-    def __init__(self, email: str, output_dir: str = './papers'):
+    def __init__(self, email: str = None, output_dir: str = './papers'):
         """
         Initialize Unpaywall downloader.
         
         Args:
-            email: Your email address (required by Unpaywall API)
+            email: Your email address (required by Unpaywall API). If None, uses config.
             output_dir: Directory to save downloaded PDFs
         """
-        if not email:
-            raise ValueError("Email is required for Unpaywall API")
-        
-        self.email = email
+        self.email = email or Config.UNPAYWALL_EMAIL
+        if not self.email:
+            raise ValueError("Email is required for Unpaywall API. Set UNPAYWALL_EMAIL environment variable or pass email parameter.")
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
@@ -313,7 +316,7 @@ def main():
     parser = argparse.ArgumentParser(
         description='Download Open Access papers using Unpaywall API'
     )
-    parser.add_argument('--email', default='diana.zagirova@skoltech.ru', help='Your email (required by API)')
+    parser.add_argument('--email', default=None, help='Your email (required by API). If not provided, uses UNPAYWALL_EMAIL environment variable.')
     parser.add_argument('--doi', help='Single DOI to download')
     parser.add_argument('--file', help='File with DOIs (one per line)')
     parser.add_argument('--search', help='Search by title')

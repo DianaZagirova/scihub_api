@@ -18,6 +18,10 @@ import requests
 import argparse
 import json
 import time
+
+# Add src to path for imports
+sys.path.insert(0, str(os.path.dirname(os.path.abspath(__file__)) + '/src'))
+from config import Config
 import datetime
 import logging
 from pathlib import Path
@@ -27,12 +31,53 @@ from collections import deque
 import re
 from urllib.parse import urlparse, quote
 
+# Import validation functions from sync script
+sys.path.insert(0, str(Path(__file__).parent / 'status_sync'))
+
 # Add legacy to path for imports
 sys.path.insert(0, str(Path(__file__).parent / 'src'))
 
 from scihub_fast_downloader import SciHubFastDownloader
 from scihub_grobid_downloader import SciHubGrobidDownloader
 from trackers.doi_tracker_db import DOITracker
+
+# Import validation functions
+try:
+    from sync_processing_state_to_db import is_valid_pdf, is_valid_json
+except ImportError:
+    # Fallback if import fails
+    def is_valid_pdf(path):
+        try:
+            p = Path(path)
+            if not p.exists() or p.stat().st_size < 1024:
+                return False
+            with p.open('rb') as f:
+                header = f.read(5)
+                if header != b'%PDF-':
+                    return False
+                try:
+                    f.seek(-4096, os.SEEK_END)
+                    tail = f.read(4096)
+                except OSError:
+                    f.seek(0, os.SEEK_SET)
+                    tail = f.read()
+            if b'%%EOF' not in tail:
+                return False
+            return True
+        except Exception:
+            return False
+    
+    def is_valid_json(path, parser_hint):
+        try:
+            if not Path(path).exists() or Path(path).stat().st_size < 10:
+                return False
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            if not isinstance(data, dict) or not data:
+                return False
+            return True
+        except Exception:
+            return False
 
 # Configure logging
 logging.basicConfig(
@@ -292,7 +337,7 @@ def resolve_sciencedirect_pdf_url(source_url_or_pii: str, timeout: int = 20) -> 
 
 def fetch_unpaywall_pdf_url(doi: str, timeout: int = 15) -> str | None:
     try:
-        email = os.environ.get('UNPAYWALL_EMAIL', 'diana.zagirova@skoltech.ru')
+        email = Config.UNPAYWALL_EMAIL
         if not email:
             return None
         doi_encoded = quote(doi, safe='')
@@ -715,8 +760,8 @@ def partition_identifiers(identifiers, parser_type, papers_dir='./papers', outpu
     needs_parse_only = []
     complete = []
     skipped_failed = []
-    RETRIED_ALLOW_SCIHUB = 4
-    RETRIED_ALLOW_PARSER= 3
+    RETRIED_ALLOW_SCIHUB = 1
+    RETRIED_ALLOW_PARSER= 2
     
     logger.info(f"Pre-scanning {len(identifiers)} identifiers with tracker intelligence...")
     
@@ -829,7 +874,7 @@ def partition_identifiers(identifiers, parser_type, papers_dir='./papers', outpu
     logger.info(f"Partition results:")
     logger.info(f"  - Needs download: {len(needs_download)}")
     logger.info(f"  - Needs parse only: {len(needs_parse_only)}")
-    logger.info(f"  - Already complete: {len(complete)}")
+    logger.info(f"  - Already complete: {len(complete)}. Examples: {complete[:15]}")
     logger.info(f"  - Skipped (failed/unavailable): {len(skipped_failed)}")
     
     return needs_download, needs_parse_only, complete, skipped_failed
@@ -1053,7 +1098,102 @@ def process_optimized(downloader, identifiers, num_workers, delay, log_file, par
     # Process parse-only (no rate limiting, just parsing)
     if needs_parse_only:
         logger.info(f"\nProcessing {len(needs_parse_only)} papers (parse only, no downloads)...")
-        # TODO: Implement fast parsing for these
+        
+        for identifier, pdf_path in needs_parse_only:
+            try:
+                # Normalize DOI
+                clean_doi = normalize_identifier(identifier)
+                
+                # Prepare result
+                result = {
+                    'identifier': identifier,
+                    'pdf_path': pdf_path,
+                    'json_path': None,
+                    'status': None,
+                    'download_status': 'skipped_exists',
+                    'parsing_status': None,
+                    'timestamp': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                }
+                
+                # Determine output filename
+                safe_name = os.path.splitext(os.path.basename(pdf_path))[0]
+                if parser_type == 'fast':
+                    json_filename = f'{safe_name}_fast.json'
+                else:
+                    json_filename = f'{safe_name}.json'
+                
+                output_dir = './output'
+                json_path = os.path.join(output_dir, json_filename)
+                
+                # Parse the PDF
+                if hasattr(downloader, 'parser'):
+                    if parser_type == 'fast':
+                        extracted_data = downloader.parser.process_and_save(
+                            pdf_path, mode=parse_mode, output_dir=output_dir
+                        )
+                    else:
+                        extracted_data = downloader.parser.process_and_save(
+                            pdf_path, output_dir=output_dir
+                        )
+                else:
+                    extracted_data = None
+                
+                if extracted_data:
+                    result['json_path'] = json_path
+                    result['parsing_status'] = 'success'
+                    result['status'] = 'success'
+                    logger.info(f"Parsed (parse-only): {clean_doi}")
+                    
+                    # Update tracker: parsing succeeded
+                    if tracker:
+                        if parser_type == 'fast':
+                            tracker.mark_pymupdf_processed(clean_doi, success=True)
+                        else:
+                            tracker.mark_grobid_processed(clean_doi, success=True)
+                else:
+                    result['parsing_status'] = 'failed'
+                    result['status'] = 'processing_failed'
+                    logger.error(f"Failed to parse (parse-only): {clean_doi}")
+                    
+                    # Update tracker: parsing failed
+                    if tracker:
+                        if parser_type == 'fast':
+                            tracker.mark_pymupdf_processed(clean_doi, success=False)
+                        else:
+                            tracker.mark_grobid_processed(clean_doi, success=False)
+                
+                # Log to buffer
+                log_entry = f"\n{'='*80}\n"
+                log_entry += f"DOI: {clean_doi}\n"
+                if identifier != clean_doi:
+                    log_entry += f"Original: {identifier}\n"
+                log_entry += f"Mode: Parse-only (PDF exists)\n"
+                log_entry += f"Status: {result['status']}\n"
+                log_entry += f"Timestamp: {result['timestamp']}\n"
+                buffered_logger.log(log_entry)
+                
+                results.append(result)
+                
+            except Exception as e:
+                logger.error(f"Error parsing (parse-only) {identifier}: {e}")
+                result = {
+                    'identifier': identifier,
+                    'pdf_path': pdf_path,
+                    'json_path': None,
+                    'status': 'processing_failed',
+                    'download_status': 'skipped_exists',
+                    'parsing_status': 'error',
+                    'timestamp': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                }
+                results.append(result)
+                
+                # Update tracker: parsing error
+                if tracker:
+                    clean_doi = normalize_identifier(identifier)
+                    if parser_type == 'fast':
+                        tracker.mark_pymupdf_processed(clean_doi, success=False, error_msg=str(e))
+                    else:
+                        tracker.mark_grobid_processed(clean_doi, success=False, error_msg=str(e))
     
     # Process downloads with rate limiting
     if needs_download:
@@ -1099,6 +1239,273 @@ def process_optimized(downloader, identifiers, num_workers, delay, log_file, par
     return results
 
 
+def reset_dois_for_list(dois, papers_dir='./papers', output_dir='./output', tracker=None, input_file=None):
+    """
+    Reset tracking and validate/delete invalid files for specific DOIs.
+    
+    Steps:
+    0. Remove previously reset DOIs from the list
+    1. Reset tracker for these DOIs in database
+    2. Check PDFs - if invalid, delete PDF and corresponding JSONs, reset tracker
+    3. Check JSONs - if invalid, delete them, reset parser status in tracker
+    4. Save the reset DOI list to reseted_dois/ with timestamp
+    
+    Args:
+        dois: List of DOI identifiers to reset
+        papers_dir: Directory containing PDFs
+        output_dir: Directory containing JSONs
+        tracker: DOITracker instance
+        input_file: Path to input file (for copying to reseted_dois/)
+    
+    Returns:
+        dict: Statistics about reset operations
+    """
+    logger.info("\n" + "="*70)
+    logger.info("RESET MODE: Validating and resetting DOIs")
+    logger.info("="*70)
+    
+    # Create reseted_dois directory if it doesn't exist
+    reseted_dois_dir = Path('./reseted_dois')
+    reseted_dois_dir.mkdir(exist_ok=True)
+    
+    # Step 0: Check for previously reset DOIs
+    previously_reset = set()
+    reset_history_file = reseted_dois_dir / 'reset_history.txt'
+    
+    if reset_history_file.exists():
+        logger.info("Checking for previously reset DOIs...")
+        with open(reset_history_file, 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    previously_reset.add(line)
+        logger.info(f"Found {len(previously_reset)} previously reset DOIs")
+    
+    # Filter out previously reset DOIs
+    original_count = len(dois)
+    dois_to_reset = []
+    skipped_already_reset = []
+    
+    for doi in dois:
+        clean_doi = normalize_identifier(doi)
+        if clean_doi and clean_doi in previously_reset:
+            skipped_already_reset.append(doi)
+            logger.debug(f"Skipping already reset DOI: {clean_doi}")
+        else:
+            dois_to_reset.append(doi)
+    
+    if skipped_already_reset:
+        logger.info(f"Skipped {len(skipped_already_reset)} DOIs that were previously reset")
+        logger.info(f"Processing {len(dois_to_reset)} DOIs (out of {original_count} total)")
+    
+    if not dois_to_reset:
+        logger.warning("No DOIs to reset after filtering. All DOIs were previously reset.")
+        return {
+            'total_dois': 0,
+            'skipped_previously_reset': len(skipped_already_reset),
+            'tracker_reset': 0,
+            'invalid_pdfs': 0,
+            'invalid_grobid_jsons': 0,
+            'invalid_pymupdf_jsons': 0,
+            'pdfs_deleted': 0,
+            'jsons_deleted': 0
+        }
+    
+    # Save the list of DOIs being reset to reseted_dois/ with timestamp
+    timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+    reset_list_file = reseted_dois_dir / f'reset_list_{timestamp}.txt'
+    
+    logger.info(f"Saving reset list to: {reset_list_file}")
+    with open(reset_list_file, 'w', encoding='utf-8') as f:
+        f.write(f"# Reset performed at: {datetime.datetime.now().isoformat()}\n")
+        f.write(f"# Total DOIs: {len(dois_to_reset)}\n")
+        if input_file:
+            f.write(f"# Source file: {input_file}\n")
+        f.write(f"# Skipped (previously reset): {len(skipped_already_reset)}\n")
+        f.write("\n")
+        for doi in dois_to_reset:
+            f.write(f"{doi}\n")
+    
+    logger.info(f"✓ Saved {len(dois_to_reset)} DOIs to {reset_list_file}")
+    
+    stats = {
+        'total_dois': len(dois_to_reset),
+        'skipped_previously_reset': len(skipped_already_reset),
+        'tracker_reset': 0,
+        'invalid_pdfs': 0,
+        'invalid_grobid_jsons': 0,
+        'invalid_pymupdf_jsons': 0,
+        'pdfs_deleted': 0,
+        'jsons_deleted': 0
+    }
+    
+    papers_path = Path(papers_dir)
+    output_path = Path(output_dir)
+    
+    logger.info(f"\nProcessing {len(dois_to_reset)} DOIs for reset...")
+    
+    # Track successfully reset DOIs for history
+    successfully_reset = []
+    
+    for i, identifier in enumerate(dois_to_reset, 1):
+        if i % 100 == 0:
+            logger.info(f"Progress: {i}/{len(dois_to_reset)} DOIs processed")
+        
+        # Normalize DOI
+        clean_doi = normalize_identifier(identifier)
+        if not clean_doi:
+            logger.warning(f"Could not normalize identifier: {identifier}")
+            continue
+        
+        safe_name = clean_doi.replace('/', '_')
+        
+        # Step 1: Reset tracker for this DOI
+        if tracker:
+            # Retry logic for database locks
+            max_retries = 5
+            retry_delay = 0.1  # Start with 100ms
+            
+            for attempt in range(max_retries):
+                try:
+                    # Reset all tracking fields for this DOI
+                    tracker.reset_doi(clean_doi)
+                    stats['tracker_reset'] += 1
+                    successfully_reset.append(clean_doi)
+                    logger.debug(f"Reset tracker for {clean_doi}")
+                    break  # Success, exit retry loop
+                except Exception as e:
+                    if 'database is locked' in str(e) and attempt < max_retries - 1:
+                        # Database locked, retry with exponential backoff
+                        time.sleep(retry_delay)
+                        retry_delay *= 2  # Exponential backoff
+                        logger.debug(f"Database locked for {clean_doi}, retrying (attempt {attempt + 2}/{max_retries})...")
+                    else:
+                        # Final failure or non-lock error
+                        logger.error(f"Failed to reset tracker for {clean_doi}: {e}")
+                        break
+        
+        # Small delay to reduce database contention
+        time.sleep(0.01)  # 10ms between DOIs
+        
+        # Step 2: Check PDF validity
+        pdf_path = papers_path / f"{safe_name}.pdf"
+        pdf_invalid = False
+        
+        if pdf_path.exists():
+            if not is_valid_pdf(pdf_path):
+                pdf_invalid = True
+                stats['invalid_pdfs'] += 1
+                logger.warning(f"Invalid PDF found: {pdf_path.name}")
+                
+                # Delete invalid PDF
+                try:
+                    pdf_path.unlink()
+                    stats['pdfs_deleted'] += 1
+                    logger.info(f"Deleted invalid PDF: {pdf_path.name}")
+                except Exception as e:
+                    logger.error(f"Failed to delete PDF {pdf_path}: {e}")
+                
+                # Delete corresponding JSONs (both fast and regular)
+                grobid_json = output_path / f"{safe_name}.json"
+                pymupdf_json = output_path / f"{safe_name}_fast.json"
+                
+                for json_path in [grobid_json, pymupdf_json]:
+                    if json_path.exists():
+                        try:
+                            json_path.unlink()
+                            stats['jsons_deleted'] += 1
+                            logger.info(f"Deleted JSON (PDF invalid): {json_path.name}")
+                        except Exception as e:
+                            logger.error(f"Failed to delete JSON {json_path}: {e}")
+                
+                # Reset tracker again after deletion
+                if tracker:
+                    try:
+                        tracker.reset_doi(clean_doi)
+                    except Exception as e:
+                        logger.error(f"Failed to reset tracker after PDF deletion for {clean_doi}: {e}")
+        
+        # Step 3: Check JSON validity (only if PDF was valid or doesn't exist)
+        if not pdf_invalid:
+            # Check Grobid JSON
+            grobid_json = output_path / f"{safe_name}.json"
+            if grobid_json.exists():
+                if not is_valid_json(grobid_json, 'grobid'):
+                    stats['invalid_grobid_jsons'] += 1
+                    logger.warning(f"Invalid Grobid JSON found: {grobid_json.name}")
+                    
+                    # Delete invalid JSON
+                    try:
+                        grobid_json.unlink()
+                        stats['jsons_deleted'] += 1
+                        logger.info(f"Deleted invalid Grobid JSON: {grobid_json.name}")
+                    except Exception as e:
+                        logger.error(f"Failed to delete Grobid JSON {grobid_json}: {e}")
+                    
+                    # Reset Grobid parser status in tracker
+                    if tracker:
+                        try:
+                            tracker.mark_grobid_processed(clean_doi, success=False)
+                            logger.debug(f"Reset Grobid status for {clean_doi}")
+                        except Exception as e:
+                            logger.error(f"Failed to reset Grobid status for {clean_doi}: {e}")
+            
+            # Check PyMuPDF JSON
+            pymupdf_json = output_path / f"{safe_name}_fast.json"
+            if pymupdf_json.exists():
+                if not is_valid_json(pymupdf_json, 'pymupdf'):
+                    stats['invalid_pymupdf_jsons'] += 1
+                    logger.warning(f"Invalid PyMuPDF JSON found: {pymupdf_json.name}")
+                    
+                    # Delete invalid JSON
+                    try:
+                        pymupdf_json.unlink()
+                        stats['jsons_deleted'] += 1
+                        logger.info(f"Deleted invalid PyMuPDF JSON: {pymupdf_json.name}")
+                    except Exception as e:
+                        logger.error(f"Failed to delete PyMuPDF JSON {pymupdf_json}: {e}")
+                    
+                    # Reset PyMuPDF parser status in tracker
+                    if tracker:
+                        try:
+                            tracker.mark_pymupdf_processed(clean_doi, success=False)
+                            logger.debug(f"Reset PyMuPDF status for {clean_doi}")
+                        except Exception as e:
+                            logger.error(f"Failed to reset PyMuPDF status for {clean_doi}: {e}")
+    
+    # Flush tracker to persist changes
+    if tracker:
+        logger.info("Flushing tracker to disk...")
+        tracker.flush()
+    
+    # Update reset history file
+    if successfully_reset:
+        logger.info(f"Updating reset history with {len(successfully_reset)} DOIs...")
+        with open(reset_history_file, 'a', encoding='utf-8') as f:
+            for doi in successfully_reset:
+                f.write(f"{doi}\n")
+        logger.info(f"✓ Updated {reset_history_file}")
+    
+    # Print summary
+    logger.info("\n" + "="*70)
+    logger.info("RESET SUMMARY")
+    logger.info("="*70)
+    logger.info(f"Original DOI count: {original_count}")
+    logger.info(f"Skipped (previously reset): {stats['skipped_previously_reset']}")
+    logger.info(f"DOIs processed: {stats['total_dois']}")
+    logger.info(f"Tracker entries reset: {stats['tracker_reset']}")
+    logger.info(f"Invalid PDFs found: {stats['invalid_pdfs']}")
+    logger.info(f"Invalid Grobid JSONs found: {stats['invalid_grobid_jsons']}")
+    logger.info(f"Invalid PyMuPDF JSONs found: {stats['invalid_pymupdf_jsons']}")
+    logger.info(f"PDFs deleted: {stats['pdfs_deleted']}")
+    logger.info(f"JSONs deleted: {stats['jsons_deleted']}")
+    logger.info(f"\nReset list saved to: {reset_list_file}")
+    logger.info(f"Reset history updated: {reset_history_file}")
+    logger.info("="*70 + "\n")
+    
+    return stats
+
+
 def main():
     """Main CLI entry point."""
     parser = argparse.ArgumentParser(
@@ -1125,6 +1532,9 @@ Examples:
   
   # Auto-generate with GROBID (creates timestamped file)
   python download_papers_optimized.py --parser grobid -w 4 --delay 2.0
+  
+  # Reset mode: validate and clean files for specific DOIs
+  python download_papers_optimized.py -f problematic_dois.txt --reset-for-list
         """
     )
     
@@ -1140,6 +1550,9 @@ Examples:
     parser.add_argument('--delay', type=float, default=2.0,
                        help='Delay between requests (default: 2.0s)')
     parser.add_argument('-v', '--verbose', action='store_true')
+    parser.add_argument('--reset-for-list', action='store_true',
+                       help='Reset mode: validate and clean files for DOIs in the list. '
+                            'Resets tracker, deletes invalid PDFs/JSONs, and resets parser status.')
     
     args = parser.parse_args()
     
@@ -1237,6 +1650,19 @@ Examples:
     logger.info("Initializing DB-backed DOI tracker...")
     tracker = DOITracker('processing_tracker.db')
     logger.info(f"Tracker ready (DB: processing_tracker.db)\n")
+    
+    # Handle reset mode
+    if args.reset_for_list:
+        logger.info("\n*** RESET MODE ACTIVATED ***\n")
+        reset_stats = reset_dois_for_list(
+            dois=identifiers,
+            papers_dir='./papers',
+            output_dir=args.output if args.output else './output',
+            tracker=tracker,
+            input_file=args.file
+        )
+        logger.info("Reset complete. Exiting.")
+        return 0
     
     # Process with optimizations
     start_time = time.time()

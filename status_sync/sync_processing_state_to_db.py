@@ -83,8 +83,24 @@ def is_valid_json(path: Path, parser_hint: str) -> bool:
                 authors = md.get('authors') or md.get('author')
                 if isinstance(authors, list) and len(authors) > 0:
                     authors_ok = True
+            # Check full_text - can be string or dict
             full_text = data.get('full_text') or data.get('fullText')
-            fulltext_ok = isinstance(full_text, str) and len(full_text.strip()) >= 100
+            fulltext_ok = False
+            if isinstance(full_text, str):
+                # String format: full_text is a plain string
+                fulltext_ok = len(full_text.strip()) >= 50
+            elif isinstance(full_text, dict):
+                # Dict format: full_text = {body: [...], references: [...]}
+                # where body is a list of {title, content} dicts
+                body = full_text.get('body', [])
+                if isinstance(body, list):
+                    total_content = 0
+                    for item in body:
+                        if isinstance(item, dict):
+                            content = item.get('content', '')
+                            if isinstance(content, str):
+                                total_content += len(content.strip())
+                    fulltext_ok = total_content >= 50
             sections = data.get('sections')
             sections_ok = False
             if isinstance(sections, list) and len(sections) > 0:
@@ -98,6 +114,27 @@ def is_valid_json(path: Path, parser_hint: str) -> bool:
             st = data.get('structured_text') if isinstance(data, dict) else None
             if not st:
                 return False
+            
+            # Check full_text field first (most reliable)
+            full_text = st.get('full_text', '')
+            if isinstance(full_text, str) and len(full_text.strip()) >= 50:
+                return True
+            
+            # Check sections with content arrays
+            sections = st.get('sections', [])
+            if isinstance(sections, list) and len(sections) > 0:
+                total_content = 0
+                for section in sections:
+                    if isinstance(section, dict):
+                        content = section.get('content', [])
+                        if isinstance(content, list):
+                            for item in content:
+                                if isinstance(item, str):
+                                    total_content += len(item.strip())
+                if total_content >= 50:
+                    return True
+            
+            # Fallback: accumulate any 'text' keys in nested structure
             total_text = 0
             def accumulate_text(node):
                 nonlocal total_text
@@ -111,8 +148,9 @@ def is_valid_json(path: Path, parser_hint: str) -> bool:
                     for v in node:
                         accumulate_text(v)
             accumulate_text(st)
-            if total_text >= 100:
+            if total_text >= 50:
                 return True
+            
             return False
         return True
     except Exception:
@@ -125,6 +163,11 @@ def scan_output(output_dir: Path) -> Dict[str, Set[str]]:
     if not output_dir.exists():
         logger.warning(f"Output dir not found: {output_dir}")
         return dois
+    
+    # Create quarantine directory for invalid JSONs
+    quarantine_dir = output_dir / 'invalid_jsons'
+    quarantine_dir.mkdir(exist_ok=True)
+    
     for p in output_dir.glob('*.json'):
         name = p.name[:-5] if p.name.endswith('.json') else p.name
         if name.endswith('_fast'):
@@ -137,10 +180,12 @@ def scan_output(output_dir: Path) -> Dict[str, Set[str]]:
             valid = is_valid_json(p, 'grobid')
         if not valid:
             try:
-                p.unlink(missing_ok=True)
-                logger.warning(f"Removed invalid JSON: {p}")
+                # Move to quarantine instead of deleting
+                quarantine_path = quarantine_dir / p.name
+                p.rename(quarantine_path)
+                logger.warning(f"Quarantined invalid JSON: {p.name} -> {quarantine_path}")
             except Exception as e:
-                logger.error(f"Failed to remove invalid JSON {p}: {e}")
+                logger.error(f"Failed to quarantine invalid JSON {p}: {e}")
             continue
         s = dois.setdefault(doi, set())
         s.add(parser)
@@ -153,13 +198,20 @@ def scan_papers(papers_dir: Path) -> Set[str]:
     if not papers_dir.exists():
         logger.warning(f"Papers dir not found: {papers_dir}")
         return dois
+    
+    # Create quarantine directory for invalid PDFs
+    quarantine_dir = papers_dir / 'invalid_pdfs'
+    quarantine_dir.mkdir(exist_ok=True)
+    
     for p in papers_dir.glob('*.pdf'):
         if not is_valid_pdf(p):
             try:
-                p.unlink(missing_ok=True)
-                logger.warning(f"Removed invalid PDF: {p}")
+                # Move to quarantine instead of deleting
+                quarantine_path = quarantine_dir / p.name
+                p.rename(quarantine_path)
+                logger.warning(f"Quarantined invalid PDF: {p.name} -> {quarantine_path}")
             except Exception as e:
-                logger.error(f"Failed to remove invalid PDF {p}: {e}")
+                logger.error(f"Failed to quarantine invalid PDF {p}: {e}")
             continue
         doi = p.stem.replace('_', '/')
         dois.add(doi)
