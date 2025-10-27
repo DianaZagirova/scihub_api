@@ -13,6 +13,15 @@ This repository represents **Stage 2** of a multi-phase aging research pipeline:
 The Stage 1 repository creates a comprehensive database of ids of potential aging-related papers through systematic querying of multiple academic sources. 
 This Stage 2 repository then retrieves and processes the full-text content of those papers using advanced PDF parsing and multi-source download capabilities.
 
+> **Note on System Architecture**: While numbered 1-2-3 for simplicity, Stages 1-3 are not truly sequential. Instead, the system operates as a **self-updating pipeline** with automated background processes:
+> 
+> 1. **Keyword Generation**: An LLM generates new search keywords
+> 2. **Paper Discovery ([Stage 1](https://github.com/DianaZagirova/download_agent))**: These keywords are executed as searches, and newly discovered papers are added to `papers.db`
+> 3. **Automatic Evaluation ([Stage 3](https://github.com/DianaZagirova/judge_agent))**: A background script monitors `papers.db` for updates and automatically triggers LLM-based evaluations, storing classification results in `evaluations.db`
+> 4. **Selective Full-Text Extraction ([Stage 2](https://github.com/DianaZagirova/scihub_api))**: When papers classified as "valid" or "doubted" appear in `evaluations.db`, the background script automatically initiates full-text extraction for only these relevant papers
+> 
+> This architecture creates a continuously running, self-updating system that efficiently prioritizes resources by extracting full texts only for papers that pass the initial relevance filter.
+
 ### Quick Start
 
 1. **Clone the repository**
