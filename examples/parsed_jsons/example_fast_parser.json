@@ -1,0 +1,42 @@
+{
+  "doi": "10.1234/example.2024",
+  "title": "Example Paper on Aging Mechanisms",
+  "parser": "fast",
+  "parser_version": "pymupdf-1.23.0",
+  "parsed_date": "2024-10-27T05:00:00",
+  "metadata": {
+    "authors": ["Smith, J.", "Doe, A."],
+    "year": "2024",
+    "journal": "Journal of Aging Research",
+    "abstract": "This is an example abstract discussing aging mechanisms..."
+  },
+  "full_text": "Introduction\n\nAging is a complex biological process...\n\nMethods\n\nWe conducted experiments on...\n\nResults\n\nOur findings show that...\n\nDiscussion\n\nThese results suggest...\n\nConclusion\n\nIn summary, we have demonstrated...",
+  "sections": [
+    {
+      "heading": "Introduction",
+      "text": "Aging is a complex biological process..."
+    },
+    {
+      "heading": "Methods",
+      "text": "We conducted experiments on..."
+    },
+    {
+      "heading": "Results",
+      "text": "Our findings show that..."
+    },
+    {
+      "heading": "Discussion",
+      "text": "These results suggest..."
+    },
+    {
+      "heading": "Conclusion",
+      "text": "In summary, we have demonstrated..."
+    }
+  ],
+  "references": [
+    "Smith et al. (2023). Previous work on aging. Nature.",
+    "Doe et al. (2022). Mechanisms of cellular senescence. Cell."
+  ],
+  "word_count": 1234,
+  "page_count": 8
+}

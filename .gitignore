@@ -10,6 +10,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.so
+.ipynb_checkpoints
 
 # System files
 .DS_Store
@@ -41,6 +42,10 @@ logs/
 documentation/
 missing_dois/
 pending_dois/
+
+# Allow examples folder
+!examples/
+!examples/**
 
 **.ipynb
 working_test.ipynb

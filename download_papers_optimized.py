@@ -952,15 +952,35 @@ def process_single_with_rate_limit(downloader, identifier, parser_type, parse_mo
                     tracker.mark_oa_available(clean_doi, available=True)
                     tracker.mark_downloaded(clean_doi, source=(source_label or 'oa'))
             else:
-                # Log and return if all fallbacks failed
-                if tracker:
-                    tracker.mark_oa_available(clean_doi, available=False)
-                    tracker.increment_retry(clean_doi)
-                log_entry = f"\n{'='*80}\n"
-                log_entry += f"DOI: {clean_doi}\n"
-                log_entry += f"Status: NOT FOUND (Sci-Hub + OA/APIs)\n"
-                buffered_logger.log(log_entry)
-                return result
+                # Check for manually added PDFs before giving up
+                safe_doi = re.sub(r'[^\w\-_.]', '_', clean_doi)
+                manual_pdf_paths = [
+                    f'./papers/{safe_doi}.pdf',
+                    f'./add_manually/{safe_doi}.pdf',
+                    f'./pdfs/{safe_doi}.pdf'
+                ]
+                
+                for manual_path in manual_pdf_paths:
+                    if os.path.exists(manual_path):
+                        logger.info(f"Found manually added PDF: {manual_path}")
+                        pdf_path = manual_path
+                        result['pdf_path'] = pdf_path
+                        result['download_status'] = 'manual'
+                        result['status'] = None  # continue to parse
+                        if tracker:
+                            tracker.mark_downloaded(clean_doi, source='manual')
+                        break
+                
+                if not pdf_path:
+                    # Log and return if all fallbacks failed
+                    if tracker:
+                        tracker.mark_oa_available(clean_doi, available=False)
+                        tracker.increment_retry(clean_doi)
+                    log_entry = f"\n{'='*80}\n"
+                    log_entry += f"DOI: {clean_doi}\n"
+                    log_entry += f"Status: NOT FOUND (Sci-Hub + OA/APIs + Manual)\n"
+                    buffered_logger.log(log_entry)
+                    return result
     except Exception as e:
         result['download_status'] = 'error'
         result['status'] = 'not_found'
@@ -1539,7 +1559,7 @@ Examples:
     )
     
     parser.add_argument('identifiers', nargs='*', help='DOIs to download and process')
-    parser.add_argument('-f', '--file', default=None, help='File containing identifiers (one per line). If not provided, automatically runs missing_dois/cerate_missing_eval.py to generate a timestamped file.')
+    parser.add_argument('-f', '--file', default=None, help='File containing identifiers (one per line). If not provided, automatically runs src/helper_scripts/create_missing_eval.py to generate a timestamped file.')
     parser.add_argument('--parser', choices=['fast', 'grobid'], default='fast')
     parser.add_argument('-m', '--mode', choices=['simple', 'structured', 'full'], default='structured')
     parser.add_argument('-o', '--output', help='Output directory')
@@ -1561,14 +1581,14 @@ Examples:
     
     # Auto-generate DOI file if not provided
     if not args.file and not args.identifiers:
-        logger.info("No input file specified. Auto-generating DOI list from missing_dois/cerate_missing_eval.py...")
+        logger.info("No input file specified. Auto-generating DOI list from src/helper_scripts/create_missing_eval.py...")
         
         # Create timestamped output filename
         timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
         auto_file = f'missing_dois/dois_to_process_{timestamp}.txt'
         
         # Run the missing DOI creation script
-        create_script = 'missing_dois/cerate_missing_eval.py'
+        create_script = 'src/helper_scripts/create_missing_eval.py'
         if not os.path.exists(create_script):
             logger.error(f"Missing DOI creation script not found: {create_script}")
             return 1

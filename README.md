@@ -132,6 +132,17 @@ To create the required test database, follow these steps:
 
 ~90% full-text recovering rate
 
+## 📁 Example Files
+
+> **Note**: The actual output files (`papers/`, `output/`, tracker database) are **NOT committed** to this repository due to their large size (hundreds of GB) and copyright concerns. 
+>
+> **See the `examples/` folder** for sample files demonstrating the structure and format of all generated data:
+> - **`examples/parsed_jsons/`** - Sample JSON outputs from fast and GROBID parsers
+> - **`examples/downloaded_pdfs/`** - PDF naming conventions and storage structure
+> - **`examples/tracker/`** - Processing tracker schema, workflow explanation, and example records
+>
+> These examples show exactly what the pipeline generates without including the actual large data files.
+
 ## 🚀 Key Features & Technologies
 
 ### 🔬 Advanced PDF Processing
@@ -204,6 +215,36 @@ graph TB
 - 50GB+ disk space (for paper storage)
 - **Stage 1 Database**: Test database from [download_agent](https://github.com/DianaZagirova/download_agent) repository
 
+### ⚠️ Important: Large Files Not Committed
+
+The following directories contain large files and are **NOT committed to the repository**:
+
+1. **`papers/`** - Downloaded PDF files
+   - Size: 1-5 MB per paper
+   - Total: 20-500 GB for large collections
+   - Reason: Large binary files, copyright concerns
+
+2. **`output/`** - Parsed JSON files
+   - Size: 50-500 KB per paper
+   - Total: 5-50 GB for large collections
+   - Reason: Generated files, can be reproduced
+
+3. **Processing Tracker** - SQLite database table in `papers.db`
+   - Location: `processing_tracker` table in Stage 1 database
+   - Size: ~1-10 MB depending on paper count
+   - Reason: Part of main database, user-specific paths
+   - **Purpose**: Single source of truth for tracking download attempts, parsing status, and source reliability
+   - **Tracks**: 6 download sources (Sci-Hub, Unpaywall, arXiv, bioRxiv, Europe PMC, Semantic Scholar)
+   - **Updated by**: `download_papers_optimized.py`, `sync_processing_state_to_db.py`, `grobid_tracker_integration.py`
+
+**See `examples/` folder for sample files:**
+- `examples/pdfs/` - PDF storage structure and naming conventions
+- `examples/parsed_jsons/` - Example outputs from fast and GROBID parsers
+- `examples/tracker/` - **Processing tracker schema, workflow explanation, and example records**
+  - `example_tracker_records.json` - Sample tracker data showing different processing states
+  - `README.md` - Complete explanation of how the tracker works
+
+These files are generated during the pipeline execution and can be reproduced by running the 4-step production pipeline.
 
 ### Advanced Setup
 
@@ -233,6 +274,131 @@ python demo.py
 ```
 
 ## 🚀 Usage Examples
+
+### Production Pipeline (Recommended Workflow)
+
+For large-scale paper processing, follow this 4-step pipeline:
+
+#### Step 1: Generate Missing DOI List
+**Goal**: Identify papers that need to be downloaded and parsed by comparing database state with filesystem.
+
+**Functionality**: 
+- Scans the Stage 1 database (`papers.db`) to find papers without full-text content
+- Generates a prioritized list of DOIs to process
+- Creates timestamped output files for tracking
+
+```bash
+python src/helper_scripts/create_missing_eval.py
+# Output: missing_dois/dois_to_process_YYYYMMDD_HHMMSS.txt
+```
+
+#### Step 2: Download and Parse Papers
+**Goal**: Download PDFs from multiple sources and extract structured text using fast or GROBID parser.
+
+**Functionality**:
+- Multi-source download: Sci-Hub, Unpaywall, arXiv, bioRxiv, Europe PMC, Semantic Scholar
+- Parallel processing with configurable workers and rate limiting
+- Automatic retry logic and fallback mechanisms
+- Real-time status tracking via `DOITracker`
+- Validates PDFs and generates JSON output with extracted text
+
+**Fast Parser** (Recommended for speed):
+```bash
+python download_papers_optimized.py \
+  -f missing_dois/dois_to_process.txt \
+  --parser fast -w 4 --delay 3.0
+```
+
+**GROBID Parser** (Recommended for quality):
+```bash
+python download_papers_optimized.py \
+  -f missing_dois/dois_to_process.txt \
+  --parser grobid -w 2 --delay 3.0
+```
+
+**Key Parameters**:
+- `-f`: Input file with DOIs (one per line)
+- `--parser`: Choose `fast` (PyMuPDF, faster) or `grobid` (higher quality)
+- `-w`: Number of parallel workers (4-8 for fast, 2-4 for GROBID)
+- `--delay`: Rate limit delay between requests (seconds)
+
+#### Step 3: Sync Filesystem State to Tracker
+**Goal**: Validate all downloaded PDFs and parsed JSONs, update the processing tracker database.
+
+**Functionality**:
+- Scans filesystem for PDFs and JSON files
+- Validates file integrity (PDF headers, JSON structure)
+- Updates `doi_processing_tracker.csv` with current state
+- Identifies missing or corrupted files
+- Seeds tracker with papers that have missing JSON but exist in database
+
+```bash
+python status_sync/sync_processing_state_to_db.py --seed-missing
+```
+
+**What it does**:
+- `--seed-missing`: Adds papers to tracker if they exist in database but not in tracker
+- Validates all PDFs (checks for valid PDF header and EOF marker)
+- Validates all JSONs (checks for valid JSON structure and content)
+- Updates download and parsing status for each DOI
+
+#### Step 4: Update Papers Database
+**Goal**: Import extracted text and metadata from JSON files into the main SQLite database.
+
+**Functionality**:
+- Reads all JSON files from parsing output
+- Extracts full text, sections, references, and metadata
+- Updates `papers.db` with structured content
+- Marks papers as processed in database
+- Generates processing statistics and reports
+
+```bash
+python update_database.py --update-from-jsons \
+  --db /home/diana.z/hack/download_papers_pubmed/paper_collection/data/papers.db \
+  --output-dir ./output
+```
+
+**Key Parameters**:
+- `--update-from-jsons`: Import mode for JSON files
+- `--db`: Path to Stage 1 database (papers.db)
+- `--output-dir`: Directory containing parsed JSON files
+
+**Output**:
+- Updated database with full-text content
+- Processing logs in `logs/` directory
+- Statistics on successful imports and failures
+
+---
+
+### Complete Pipeline Example
+
+```bash
+# Step 1: Generate DOI list
+python src/helper_scripts/create_missing_eval.py
+
+# Step 2: Download and parse (fast parser, 4 workers)
+python download_papers_optimized.py \
+  -f missing_dois/dois_to_process_20241027_045500.txt \
+  --parser fast -w 4 --delay 3.0
+
+# Step 3: Sync and validate filesystem
+python status_sync/sync_processing_state_to_db.py --seed-missing
+
+# Step 4: Update database with extracted content
+python update_database.py --update-from-jsons \
+  --db /path/to/papers.db \
+  --output-dir ./output
+
+# Optional: Check status
+python check_scripts/check_database_status.py
+```
+
+**Expected Results**:
+- ~90% full-text recovery rate
+- Processing speed: 60-180 papers/minute (depending on parser and workers)
+- Complete tracking of all download attempts and parsing results
+
+---
 
 ### Basic Usage
 

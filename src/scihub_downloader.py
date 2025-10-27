@@ -16,7 +16,7 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, quote
-from .config import Config
+from config import Config
 
 # Configure logging
 logging.basicConfig(
